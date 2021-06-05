@@ -31,6 +31,9 @@ class _SearchTabState extends State<SearchTab> {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        SizedBox(
+          height: 30,
+        ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 25),
           child: CustomInput(

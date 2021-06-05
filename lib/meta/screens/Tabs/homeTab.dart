@@ -2,6 +2,7 @@ import 'package:bikroy/app/constants/Constantcolors.dart';
 import 'package:bikroy/app/constants/ConstantsStyle.dart';
 import 'package:bikroy/app/widgets/actionBar.dart';
 import 'package:bikroy/app/widgets/homePageSlider.dart';
+import 'package:bikroy/meta/screens/singleProduct.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_grid/responsive_grid.dart';
 
@@ -13,9 +14,9 @@ class HomeTab extends StatelessWidget {
     return Column(
       children: [
         SizedBox(
-          height: 40,
+          height: 10,
         ),
-        ActionBar(title: "bikroy", hasBackArrow: false, showCart: false),
+        ActionBar(title: "TradeBangla", hasBackArrow: false, showCart: false),
         Container(
           height: 1,
           width: double.infinity,
@@ -44,9 +45,7 @@ class HomeTab extends StatelessWidget {
                         ),
                         Text(
                           "Dhaka",
-                          style: TextStyle(
-                              fontSize: 15,
-                              color: ConstantColors().greyPrimary),
+                          style: ConstantsStyle().paraGraphStyle,
                         ),
                       ],
                     ),
@@ -79,9 +78,7 @@ class HomeTab extends StatelessWidget {
                         ),
                         Text(
                           "Category",
-                          style: TextStyle(
-                              fontSize: 15,
-                              color: ConstantColors().greyPrimary),
+                          style: ConstantsStyle().paraGraphStyle,
                         ),
                       ],
                     ),
@@ -94,7 +91,7 @@ class HomeTab extends StatelessWidget {
         HomePageSlider(),
         //product grid list
         Container(
-          padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+          padding: const EdgeInsets.all(20),
           child: GridView.count(
             scrollDirection: Axis.vertical,
             mainAxisSpacing: 20,
@@ -104,37 +101,43 @@ class HomeTab extends StatelessWidget {
             shrinkWrap: true,
             childAspectRatio: 4 / 6.5,
             children: List.generate(6, (index) {
-              return Container(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      height: 200,
-                      width: double.infinity,
-                      child: Container(
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(12),
-                          child: Image.network(
-                              "https://images.unsplash.com/photo-1572635196243-4dd75fbdbd7f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
-                              fit: BoxFit.cover),
+              return InkWell(
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => SingleProduct()));
+                },
+                child: Container(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        height: 200,
+                        width: double.infinity,
+                        child: Container(
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(12),
+                            child: Image.network(
+                                "https://images.unsplash.com/photo-1572635196243-4dd75fbdbd7f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+                                fit: BoxFit.cover),
+                          ),
                         ),
                       ),
-                    ),
-                    SizedBox(
-                      height: 12,
-                    ),
-                    Text(
-                      "Product name",
-                      style: ConstantsStyle().regularHeading,
-                    ),
-                    SizedBox(
-                      height: 6,
-                    ),
-                    Text(
-                      "Tk 200",
-                      style: ConstantsStyle().priceStyle,
-                    ),
-                  ],
+                      SizedBox(
+                        height: 12,
+                      ),
+                      Text(
+                        "Product name",
+                        style: ConstantsStyle().regularHeading,
+                      ),
+                      SizedBox(
+                        height: 6,
+                      ),
+                      Text(
+                        "Tk 200",
+                        style: ConstantsStyle().priceStyle,
+                      ),
+                    ],
+                  ),
                 ),
               );
             }),

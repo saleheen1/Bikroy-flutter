@@ -30,16 +30,18 @@ class _HomePageState extends State<HomePage> {
       //   elevation: 0,
       // ),
       body: SingleChildScrollView(
-        child: Container(
-          decoration: BoxDecoration(
-            color: Colors.white,
-          ),
-          child: Column(
-            children: [
-              Center(
-                  child: Provider.of<NavHelper>(context, listen: false)
-                      .getPage(bottomNavigationKey, context)),
-            ],
+        child: SafeArea(
+          child: Container(
+            decoration: BoxDecoration(
+              color: Colors.white,
+            ),
+            child: Column(
+              children: [
+                Center(
+                    child: Provider.of<NavHelper>(context, listen: false)
+                        .getPage(bottomNavigationKey, context)),
+              ],
+            ),
           ),
         ),
       ),

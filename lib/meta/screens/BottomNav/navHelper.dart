@@ -18,7 +18,7 @@ class NavHelper extends ChangeNotifier {
       case 1:
         return SearchTab();
       case 2:
-        return SingleProduct();
+        return Text("Message", style: TextStyle(fontSize: 40));
       default:
         return Column(
           mainAxisSize: MainAxisSize.min,

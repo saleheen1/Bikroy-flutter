@@ -11,4 +11,9 @@ class ConstantsStyle {
       fontSize: 15,
       fontWeight: FontWeight.w600,
       color: ConstantColors().primaryColor);
+
+  final paraGraphStyle = TextStyle(
+    fontSize: 14,
+    color: ConstantColors().greyPrimary,
+  );
 }

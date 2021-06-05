@@ -1,5 +1,6 @@
-import 'package:bikroy/screens/Tabs/homeTab.dart';
-import 'package:fancy_bottom_navigation/fancy_bottom_navigation.dart';
+import 'package:bikroy/meta/screens/Tabs/homeTab.dart';
+import 'package:bikroy/meta/screens/Tabs/searchTab.dart';
+import 'package:bikroy/meta/screens/singleProduct.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -15,31 +16,15 @@ class NavHelper extends ChangeNotifier {
       case 0:
         return HomeTab();
       case 1:
-        return Column(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            Text(
-              "Search",
-              style: TextStyle(fontSize: 40),
-            ),
-          ],
-        );
+        return SearchTab();
       case 2:
-        return Column(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            Text(
-              "Message",
-              style: TextStyle(fontSize: 40),
-            ),
-          ],
-        );
+        return SingleProduct();
       default:
         return Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             Text(
-              "Cart",
+              "Profile",
               style: TextStyle(fontSize: 40),
             ),
           ],

@@ -1,14 +1,14 @@
-import 'package:bikroy/Constants/Constantcolors.dart';
+import 'package:bikroy/app/constants/Constantcolors.dart';
 import 'package:flutter/material.dart';
 
 class ConstantsStyle {
   final regularHeading = TextStyle(
-      fontSize: 21,
+      fontSize: 17,
       fontWeight: FontWeight.w600,
       color: ConstantColors().headingColor);
 
   final priceStyle = TextStyle(
-      fontSize: 18,
+      fontSize: 15,
       fontWeight: FontWeight.w600,
       color: ConstantColors().primaryColor);
 }

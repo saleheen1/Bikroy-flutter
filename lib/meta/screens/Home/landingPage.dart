@@ -1,6 +1,5 @@
-import 'package:bikroy/Constants/Constantcolors.dart';
-import 'package:bikroy/screens/BottomNav/navHelper.dart';
-import 'package:bikroy/screens/Tabs/homeTab.dart';
+import 'package:bikroy/app/constants/Constantcolors.dart';
+import 'package:bikroy/meta/screens/BottomNav/navHelper.dart';
 import 'package:flutter/material.dart';
 import 'package:fancy_bottom_navigation/fancy_bottom_navigation.dart';
 import 'package:provider/provider.dart';
@@ -17,19 +16,19 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text("Bikroy",
-                style: TextStyle(
-                    color: ConstantColors().primaryColor,
-                    fontWeight: FontWeight.bold)),
-          ],
-        ),
-        backgroundColor: Colors.white,
-        elevation: 0,
-      ),
+      // appBar: AppBar(
+      //   title: Row(
+      //     mainAxisAlignment: MainAxisAlignment.center,
+      //     children: [
+      //       Text("bikroy",
+      //           style: TextStyle(
+      //               color: ConstantColors().primaryColor,
+      //               fontWeight: FontWeight.bold)),
+      //     ],
+      //   ),
+      //   backgroundColor: Colors.white,
+      //   elevation: 0,
+      // ),
       body: SingleChildScrollView(
         child: Container(
           decoration: BoxDecoration(
@@ -45,6 +44,7 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       bottomNavigationBar: FancyBottomNavigation(
+        inactiveIconColor: ConstantColors().greyPrimary,
         tabs: [
           TabData(
             iconData: Icons.home,
@@ -56,15 +56,15 @@ class _HomePageState extends State<HomePage> {
           ),
           TabData(
             iconData: Icons.message,
-            title: "Search",
+            title: "Message",
           ),
-          TabData(iconData: Icons.shopping_cart, title: "Basket")
+          TabData(iconData: Icons.perm_identity, title: "Profile")
         ],
         initialSelection: 0,
         key: bottomNavigationKey,
         onTabChangedListener: (position) {
           setState(() {
-            Provider.of<NavHelper>(context, listen: false).setCurrentPage =
+            Provider.of<NavHelper>(context, listen: false).currentPage =
                 position;
           });
         },

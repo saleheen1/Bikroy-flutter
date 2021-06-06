@@ -4,61 +4,54 @@ import 'package:flutter/material.dart';
 class ActionBar extends StatelessWidget {
   final String title;
   final bool hasBackArrow;
-  final bool showCart;
+  final Color arrowColor;
+  final Color bgColor;
 
-  const ActionBar(
-      {Key? key,
-      required this.title,
-      required this.hasBackArrow,
-      required this.showCart})
-      : super(key: key);
+  const ActionBar({
+    Key? key,
+    required this.title,
+    required this.hasBackArrow,
+    this.arrowColor = Colors.grey,
+    this.bgColor = Colors.white,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white,
-      padding: EdgeInsets.only(top: 15, left: 25, right: 25, bottom: 15),
+      color: bgColor,
+      padding: EdgeInsets.only(top: 0, left: 0, right: 25, bottom: 15),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           if (hasBackArrow)
             InkWell(
-              onTap: () {},
+              onTap: () {
+                Navigator.pop(context);
+              },
               child: Container(
+                  margin: EdgeInsets.only(right: 17),
                   alignment: Alignment.center,
                   height: 30,
                   width: 30,
                   // color: Constants.kPrimary,
                   child: Icon(
                     Icons.arrow_back,
-                    color: ConstantColors().greyPrimary,
+                    color: arrowColor,
                     size: 25,
                   )),
             ),
           title != ""
               ? Text(
                   title,
-                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold,
+                      color: ConstantColors().greyPrimary),
                 )
               : Container(
                   color: Colors.transparent,
                   height: 0,
                   width: 0,
                   child: Center(),
-                ),
-          showCart == true
-              ? InkWell(
-                  onTap: () {},
-                  child: Container(
-                    alignment: Alignment.center,
-                    height: 40,
-                    width: 40,
-                    // color: Constants.kPrimary,
-                  ),
-                )
-              : Container(
-                  height: 20,
-                  width: 20,
                 ),
         ],
       ),

@@ -88,8 +88,8 @@ class _SearchTabState extends State<SearchTab> {
                         Text("Change location",
                             style: TextStyle(
                                 fontSize: 15,
-                                // fontWeight: FontWeight.w600,
-                                color: ConstantColors().greyPrimary))
+                                fontWeight: FontWeight.w600,
+                                color: ConstantColors().primaryColor))
                       ],
                     ),
                   ),

@@ -119,7 +119,7 @@ class _SearchTabState extends State<SearchTab> {
                       children: [
                         Icon(
                           Icons.car_rental,
-                          color: Colors.orange[800],
+                          color: ConstantColors().primaryColor,
                           size: 29,
                         ),
                         SizedBox(

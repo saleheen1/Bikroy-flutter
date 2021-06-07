@@ -2,6 +2,7 @@ import 'package:bikroy/app/constants/Constantcolors.dart';
 import 'package:bikroy/app/widgets/bottomNav.dart';
 import 'package:bikroy/meta/screens/Categories/categoriesPage.dart';
 import 'package:bikroy/meta/screens/Home/homeTab.dart';
+import 'package:bikroy/meta/screens/Posts/addPost.dart';
 import 'package:bikroy/meta/screens/Tabs/postAd.dart';
 import 'package:bikroy/meta/screens/Tabs/postPage.dart';
 import 'package:bikroy/meta/screens/Tabs/searchTab.dart';
@@ -25,7 +26,12 @@ class _HomePageState extends State<HomePage> {
 
   int _currentIndex = 0;
   //Bottom nav pages
-  final List<Widget> _children = [HomeTab(), SearchTab(), CategoriesPage()];
+  final List<Widget> _children = [
+    HomeTab(),
+    AddPost(),
+    SearchTab(),
+    CategoriesPage()
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(

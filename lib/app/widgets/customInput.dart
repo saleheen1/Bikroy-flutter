@@ -6,7 +6,8 @@ class CustomInput extends StatelessWidget {
   final Function(String) onSubmitted;
   final TextInputAction textInputAction;
   final bool isPasswordField;
-  final FocusNode focusNode;
+  final FocusNode? focusNode;
+  final bool isNumberField;
 
   const CustomInput(
       {Key? key,
@@ -15,7 +16,8 @@ class CustomInput extends StatelessWidget {
       required this.onSubmitted,
       this.textInputAction = TextInputAction.next,
       this.isPasswordField = false,
-      required this.focusNode})
+      this.focusNode,
+      this.isNumberField = false})
       : super(key: key);
 
   @override
@@ -29,6 +31,8 @@ class CustomInput extends StatelessWidget {
           // inputFormatters: [
           //   FilteringTextInputFormatter.deny(new RegExp(r"\s\b|\b\s"))
           // ],
+          keyboardType:
+              isNumberField ? TextInputType.number : TextInputType.text,
           focusNode: focusNode,
           onChanged: onChanged, //its's like saying onChanged:
           //(value){_userEmail/pass... = value} basically the value is sent to other page or in other words we are writing the function in other page referencing that function here

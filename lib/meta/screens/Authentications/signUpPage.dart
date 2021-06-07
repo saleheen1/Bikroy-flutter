@@ -6,6 +6,7 @@ import 'package:bikroy/meta/screens/Authentications/loginPage.dart';
 import 'package:bikroy/meta/screens/Home/homePage.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({Key? key}) : super(key: key);
@@ -20,6 +21,7 @@ class _SignUpPageState extends State<SignUpPage>
 
   AnimationController? _controller;
   Animation? _animation;
+  bool checkedValue = false;
 
   String dropdownValue = 'Select Account Type';
 
@@ -136,7 +138,6 @@ class _SignUpPageState extends State<SignUpPage>
                         onSubmitted: (value) {
                           focusNode.nextFocus();
                         },
-                        focusNode: focusNode,
                       ),
                     ],
                   ),
@@ -175,17 +176,40 @@ class _SignUpPageState extends State<SignUpPage>
                             value: value,
                             child: Text(
                               value,
+                              style: TextStyle(
+                                  color: ConstantColors().primaryColor),
                             ),
                           );
                         }).toList(),
                       ),
                     ),
                   ),
+
+                  //Checkbox
                   SizedBox(
-                    height: 30,
+                    height: 15,
+                  ),
+                  CheckboxListTile(
+                    contentPadding: EdgeInsets.all(0),
+                    title: Text(
+                      "I agree to the terms and condition",
+                      style: ConstantsStyle().paraGraphStyle,
+                    ),
+                    value: checkedValue,
+                    onChanged: (newValue) {
+                      setState(() {
+                        checkedValue = !checkedValue;
+                      });
+                    },
+                    controlAffinity: ListTileControlAffinity
+                        .leading, //  <-- leading Checkbox
+                  ),
+                  SizedBox(
+                    height: 15,
                   ),
                   CustomButton(
                     text: "Register",
+                    color: ConstantColors().primaryColor,
                     outlineBtn: false,
                     onPressed: () {
                       Navigator.push(
@@ -195,8 +219,80 @@ class _SignUpPageState extends State<SignUpPage>
                               type: PageTransitionType.rightToLeft));
                     },
                   ),
+
+                  Container(
+                    margin: EdgeInsets.only(bottom: 25),
+                    child: Text(
+                      "OR",
+                      style: ConstantsStyle().regularHeading,
+                    ),
+                  ),
+
+                  //sign Up with google
+                  // CustomButton(
+                  //   text: "Sign up with Google",
+                  //   color: Color(0xffdb4a39),
+                  //   outlineBtn: false,
+                  //   hasIcon: true,
+                  //   icon: Icons.
+                  //   onPressed: () {
+                  //     Navigator.push(
+                  //         context,
+                  //         PageTransition(
+                  //             child: HomePage(),
+                  //             type: PageTransitionType.rightToLeft));
+                  //   },
+                  // ),
+
+                  Material(
+                    child: InkWell(
+                      onTap: () {},
+                      child: Container(
+                        decoration: BoxDecoration(
+                            color: Color(0xffdb4a39),
+                            borderRadius: BorderRadius.circular(6)),
+                        alignment: Alignment.center,
+                        height: 50,
+                        width: double.infinity,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              EvaIcons.google,
+                              color: Colors.white,
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Text(
+                              "Sign up with Google",
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 22,
+                  ),
                   CustomButton(
-                    text: "login",
+                    text: "Sign up with Facebook",
+                    color: Color(0xff3b5998),
+                    outlineBtn: false,
+                    hasIcon: true,
+                    icon: Icons.facebook,
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          PageTransition(
+                              child: HomePage(),
+                              type: PageTransitionType.rightToLeft));
+                    },
+                  ),
+                  CustomButton(
+                    text: "Back to login",
+                    color: ConstantColors().primaryColor,
                     outlineBtn: true,
                     onPressed: () {
                       Navigator.push(

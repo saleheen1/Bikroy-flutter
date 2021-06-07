@@ -97,6 +97,7 @@ class _LoginPageState extends State<LoginPage>
                   ),
                   CustomButton(
                     text: "Login",
+                    color: ConstantColors().primaryColor,
                     outlineBtn: false,
                     onPressed: () {
                       Navigator.push(
@@ -108,6 +109,7 @@ class _LoginPageState extends State<LoginPage>
                   ),
                   CustomButton(
                     text: "Register",
+                    color: ConstantColors().primaryColor,
                     outlineBtn: true,
                     onPressed: () {
                       Navigator.push(

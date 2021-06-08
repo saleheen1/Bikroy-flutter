@@ -1,5 +1,6 @@
 import 'package:bikroy/app/constants/Constantcolors.dart';
 import 'package:bikroy/app/constants/ConstantsStyle.dart';
+import 'package:bikroy/core/services/helper.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -136,7 +137,9 @@ class DrawerPage extends StatelessWidget {
             for (var i = 0; i < 10; i++)
               ListTile(
                 minLeadingWidth: 0,
-                leading: Icon(Icons.handyman),
+                leading: Icon(
+                  Helper().getIcon(i),
+                ),
                 title: Text(
                   getText(i),
                   style: TextStyle(

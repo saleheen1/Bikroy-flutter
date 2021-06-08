@@ -52,7 +52,7 @@ class HomeTab extends StatelessWidget {
         //   ],
         // ),
         SizedBox(
-          height: 10,
+          height: 50,
         ),
         // ActionBar(title: "TradeBangla", hasBackArrow: false, showCart: false),
         Container(
@@ -117,7 +117,7 @@ class HomeTab extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Icon(
-                          EvaIcons.star,
+                          Icons.filter_alt_outlined,
                           color: ConstantColors().primaryColor,
                           size: 23,
                         ),
@@ -143,6 +143,7 @@ class HomeTab extends StatelessWidget {
         Container(
           padding: const EdgeInsets.all(20),
           child: GridView.count(
+            padding: EdgeInsets.zero,
             scrollDirection: Axis.vertical,
             mainAxisSpacing: 20,
             crossAxisSpacing: 20,
@@ -158,7 +159,7 @@ class HomeTab extends StatelessWidget {
                 },
                 child: Container(
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Container(
                         height: 200,
@@ -167,7 +168,7 @@ class HomeTab extends StatelessWidget {
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(12),
                             child: Image.network(
-                                "https://images.unsplash.com/photo-1503602642458-232111445657?ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8cHJvZHVjdHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+                                "https://cdn.pixabay.com/photo/2016/02/02/14/42/bank-1175430__340.png",
                                 fit: BoxFit.cover),
                           ),
                         ),

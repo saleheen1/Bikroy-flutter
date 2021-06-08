@@ -41,17 +41,31 @@ class _SearchTabState extends State<SearchTab> {
     }
   }
 
+  // getColor(index) {
+  //   if (index == 0) {
+  //     return Color(0xff00C7FF);
+  //   } else if (index == 1) {
+  //     return Color(0xffFE9327);
+  //   } else if (index == 2) {
+  //     return Color(0xff782ECA);
+  //   } else if (index == 3) {
+  //     return Color(0xffFF3E34);
+  //   } else {
+  //     return Color(0xffFF544B);
+  //   }
+  // }
+
   getColor(index) {
     if (index == 0) {
-      return Color(0xff00C7FF);
+      return Color(0xff197B72);
     } else if (index == 1) {
-      return Color(0xffFE9327);
+      return Color(0xff19537B);
     } else if (index == 2) {
-      return Color(0xff782ECA);
+      return Color(0xff69197B);
     } else if (index == 3) {
-      return Color(0xffFF3E34);
+      return Color(0xff47901E);
     } else {
-      return Color(0xffFF544B);
+      return Color(0xffDD811C);
     }
   }
 
@@ -62,7 +76,57 @@ class _SearchTabState extends State<SearchTab> {
       child: Column(
         children: [
           SizedBox(
-            height: 30,
+            height: 50,
+          ),
+          //location row
+          Row(
+            children: [
+              Material(
+                color: Colors.transparent,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 17),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Icon(
+                        Icons.location_on,
+                        size: 19,
+                        color: ConstantColors().greyPrimary,
+                      ),
+                      SizedBox(
+                        width: 7,
+                      ),
+                      Text("Dhaka",
+                          style: TextStyle(
+                              fontSize: 15,
+                              // fontWeight: FontWeight.w600,
+                              color: ConstantColors().greyPrimary))
+                    ],
+                  ),
+                ),
+              ),
+              Expanded(
+                child: InkWell(
+                  splashColor: Colors.transparent,
+                  // hoverColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  onTap: () {},
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 20),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Text("Change location",
+                            style: TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.w600,
+                                color: ConstantColors().primaryColor))
+                      ],
+                    ),
+                  ),
+                ),
+              )
+            ],
           ),
           CustomInput(
               hintText: "Search",
@@ -71,60 +135,7 @@ class _SearchTabState extends State<SearchTab> {
               },
               onSubmitted: (value) {},
               focusNode: _searchFocusNode),
-          //location row
-          Row(
-            children: [
-              Expanded(
-                child: Material(
-                  color: Colors.transparent,
-                  child: InkWell(
-                    onTap: () {},
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 17),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(
-                            Icons.location_on,
-                            color: ConstantColors().primaryColor,
-                          ),
-                          SizedBox(
-                            width: 7,
-                          ),
-                          Text("Dhaka",
-                              style: TextStyle(
-                                  fontSize: 15,
-                                  // fontWeight: FontWeight.w600,
-                                  color: ConstantColors().greyPrimary))
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              Expanded(
-                child: Material(
-                  color: Colors.transparent,
-                  child: InkWell(
-                    onTap: () {},
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 20),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text("Change location",
-                              style: TextStyle(
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w600,
-                                  color: ConstantColors().primaryColor))
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              )
-            ],
-          ),
+
           // Divider(height: 0, thickness: 1, color: ConstantColors().dividerColor),
           SizedBox(
             height: 10,

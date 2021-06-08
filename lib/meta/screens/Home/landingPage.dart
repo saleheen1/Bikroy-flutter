@@ -1,15 +1,10 @@
-import 'package:bikroy/app/constants/Constantcolors.dart';
 import 'package:bikroy/app/widgets/bottomNav.dart';
-import 'package:bikroy/meta/screens/Categories/categoriesPage.dart';
+import 'package:bikroy/meta/screens/Directories/BusinessDirectoriesPage.dart';
 import 'package:bikroy/meta/screens/Home/homeTab.dart';
-import 'package:bikroy/meta/screens/Jobs_&_Post/jobCategoryPage.dart';
 import 'package:bikroy/meta/screens/Posts/addPost.dart';
 import 'package:bikroy/meta/screens/Tabs/drawerPage.dart';
-import 'package:bikroy/meta/screens/Tabs/postAd.dart';
-import 'package:bikroy/meta/screens/Tabs/postPage.dart';
 import 'package:bikroy/meta/screens/Tabs/searchTab.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class LandingPage extends StatefulWidget {
   const LandingPage({Key? key}) : super(key: key);
@@ -32,7 +27,7 @@ class _HomePageState extends State<LandingPage> {
     HomeTab(),
     SearchTab(),
     AddPost(),
-    JobCategoryPage(),
+    BusinessDirectoriesPage(),
     DrawerPage()
   ];
   @override
@@ -53,9 +48,7 @@ class _HomePageState extends State<LandingPage> {
         //   elevation: 0,
         // ),
         body: SingleChildScrollView(
-          child: SafeArea(
-            child: _children[_currentIndex],
-          ),
+          child: _children[_currentIndex],
         ),
         bottomNavigationBar: BottomNav(
           currentIndex: _currentIndex,

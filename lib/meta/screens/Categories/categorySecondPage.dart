@@ -1,7 +1,4 @@
-import 'package:bikroy/app/constants/Constantcolors.dart';
-import 'package:bikroy/app/widgets/actionBar.dart';
 import 'package:bikroy/app/widgets/categoryList.dart';
-import 'package:bikroy/meta/screens/Home/homeTab.dart';
 import 'package:bikroy/meta/screens/Posts/allPosts.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';

@@ -1,5 +1,6 @@
 import 'package:bikroy/app/constants/Constantcolors.dart';
 import 'package:bikroy/app/constants/ConstantsStyle.dart';
+import 'package:bikroy/core/services/helper.dart';
 import 'package:flutter/material.dart';
 
 class PostDetailsPage extends StatefulWidget {
@@ -59,7 +60,8 @@ class _PostDetailsPageState extends State<PostDetailsPage>
               )
             ],
           ),
-        )
+        ),
+        Positioned(top: 35, left: 25, child: Helper().backButton(context)),
       ],
     );
   }

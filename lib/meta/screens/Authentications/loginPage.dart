@@ -3,7 +3,7 @@ import 'package:bikroy/app/constants/ConstantsStyle.dart';
 import 'package:bikroy/app/widgets/customButton.dart';
 import 'package:bikroy/app/widgets/customInput.dart';
 import 'package:bikroy/meta/screens/Authentications/signUpPage.dart';
-import 'package:bikroy/meta/screens/Home/homePage.dart';
+import 'package:bikroy/meta/screens/Home/landingPage.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 
@@ -103,7 +103,7 @@ class _LoginPageState extends State<LoginPage>
                       Navigator.push(
                           context,
                           PageTransition(
-                              child: HomePage(),
+                              child: LandingPage(),
                               type: PageTransitionType.rightToLeft));
                     },
                   ),

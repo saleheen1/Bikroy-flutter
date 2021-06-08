@@ -1,4 +1,5 @@
 import 'package:bikroy/app/constants/Constantcolors.dart';
+import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 
 class BottomNav extends StatelessWidget {
@@ -28,6 +29,13 @@ class BottomNav extends StatelessWidget {
           title: Text('Home'),
         ),
         new BottomNavigationBarItem(
+          icon: Icon(
+            Icons.search,
+            size: 29,
+          ),
+          title: Text('Search'),
+        ),
+        new BottomNavigationBarItem(
             icon: Icon(
               Icons.add_circle_outline_sharp,
               size: 29,
@@ -35,10 +43,10 @@ class BottomNav extends StatelessWidget {
             title: Text('Post')),
         new BottomNavigationBarItem(
           icon: Icon(
-            Icons.search,
+            Icons.work_outline,
             size: 29,
           ),
-          title: Text('Search'),
+          title: Text('Home'),
         ),
         new BottomNavigationBarItem(
             icon: Icon(

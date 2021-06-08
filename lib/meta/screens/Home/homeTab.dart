@@ -2,9 +2,12 @@ import 'package:bikroy/app/constants/Constantcolors.dart';
 import 'package:bikroy/app/constants/ConstantsStyle.dart';
 import 'package:bikroy/app/widgets/actionBar.dart';
 import 'package:bikroy/app/widgets/homePageSlider.dart';
+import 'package:bikroy/meta/screens/Categories/categoriesPage.dart';
 import 'package:bikroy/meta/screens/Posts/allPosts.dart';
 import 'package:bikroy/meta/screens/singleProduct.dart';
+import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:responsive_grid/responsive_grid.dart';
 
 class HomeTab extends StatelessWidget {
@@ -14,6 +17,40 @@ class HomeTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        // Container(
+        //   height: 100,
+        //   width: double.infinity,
+        //   color: ConstantColors().primaryColor,
+        // ),
+        // Row(
+        //   children: [
+        //     Expanded(
+        //       child: SizedBox(
+        //         height: 70,
+        //         child: ListView.builder(
+        //           shrinkWrap: true,
+        //           scrollDirection: Axis.horizontal,
+        //           itemCount: 4,
+        //           itemBuilder: (context, index) {
+        //             return Container(
+        //               alignment: Alignment.center,
+        //               decoration:
+        //                   BoxDecoration(border: Border.all(color: Colors.grey)),
+        //               child: Padding(
+        //                 padding: const EdgeInsets.symmetric(
+        //                     horizontal: 15, vertical: 5),
+        //                 child: Text(
+        //                   "Jobs in Bangladesh",
+        //                   style: ConstantsStyle().paraGraphStyle,
+        //                 ),
+        //               ),
+        //             );
+        //           },
+        //         ),
+        //       ),
+        //     ),
+        //   ],
+        // ),
         SizedBox(
           height: 10,
         ),
@@ -63,23 +100,35 @@ class HomeTab extends StatelessWidget {
               child: Material(
                 color: Colors.transparent,
                 child: InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => CategoriesPage()));
+                    // Navigator.push(
+                    //     context,
+                    //     PageTransition(
+                    //         child: CategoriesPage(),
+                    //         type: PageTransitionType.rightToLeft));
+                  },
                   child: Container(
                     padding: const EdgeInsets.all(20.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Icon(
-                          Icons.tag,
+                          EvaIcons.star,
                           color: ConstantColors().primaryColor,
                           size: 23,
                         ),
                         SizedBox(
                           width: 7,
                         ),
-                        Text(
-                          "Category",
-                          style: ConstantsStyle().paraGraphStyle,
+                        Flexible(
+                          child: Text(
+                            "Category",
+                            style: ConstantsStyle().paraGraphStyle,
+                          ),
                         ),
                       ],
                     ),

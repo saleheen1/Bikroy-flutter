@@ -10,16 +10,21 @@ class CategoriesPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CategoryList(
-      appBarTitle: "Categories",
-      categoryName: "Mobile",
-      whenPressed: () {
-        Navigator.push(
-            context,
-            PageTransition(
-                child: CategorySecondPage(),
-                type: PageTransitionType.rightToLeft));
-      },
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: SafeArea(
+        child: CategoryList(
+          appBarTitle: "Categories",
+          categoryName: "Mobile",
+          whenPressed: () {
+            Navigator.push(
+                context,
+                PageTransition(
+                    child: CategorySecondPage(),
+                    type: PageTransitionType.rightToLeft));
+          },
+        ),
+      ),
     );
   }
 }

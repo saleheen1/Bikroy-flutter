@@ -1,5 +1,6 @@
+import 'package:bikroy/app/constants/Constantcolors.dart';
 import 'package:bikroy/meta/screens/Authentications/loginPage.dart';
-import 'package:bikroy/meta/screens/Home/homePage.dart';
+import 'package:bikroy/meta/screens/Home/landingPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
@@ -16,7 +17,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(fontFamily: 'poppins'),
+      theme: ThemeData(
+          fontFamily: 'poppins', accentColor: ConstantColors().primaryColor),
       home: LoginPage(),
     );
   }

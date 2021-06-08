@@ -3,7 +3,7 @@ import 'package:bikroy/app/constants/ConstantsStyle.dart';
 import 'package:bikroy/app/widgets/customButton.dart';
 import 'package:bikroy/app/widgets/customInput.dart';
 import 'package:bikroy/meta/screens/Authentications/loginPage.dart';
-import 'package:bikroy/meta/screens/Home/homePage.dart';
+import 'package:bikroy/meta/screens/Home/landingPage.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
@@ -215,7 +215,7 @@ class _SignUpPageState extends State<SignUpPage>
                       Navigator.push(
                           context,
                           PageTransition(
-                              child: HomePage(),
+                              child: LandingPage(),
                               type: PageTransitionType.rightToLeft));
                     },
                   ),
@@ -286,7 +286,7 @@ class _SignUpPageState extends State<SignUpPage>
                       Navigator.push(
                           context,
                           PageTransition(
-                              child: HomePage(),
+                              child: LandingPage(),
                               type: PageTransitionType.rightToLeft));
                     },
                   ),

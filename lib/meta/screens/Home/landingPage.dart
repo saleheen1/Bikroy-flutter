@@ -2,21 +2,23 @@ import 'package:bikroy/app/constants/Constantcolors.dart';
 import 'package:bikroy/app/widgets/bottomNav.dart';
 import 'package:bikroy/meta/screens/Categories/categoriesPage.dart';
 import 'package:bikroy/meta/screens/Home/homeTab.dart';
+import 'package:bikroy/meta/screens/Jobs_&_Post/jobCategoryPage.dart';
 import 'package:bikroy/meta/screens/Posts/addPost.dart';
+import 'package:bikroy/meta/screens/Tabs/drawerPage.dart';
 import 'package:bikroy/meta/screens/Tabs/postAd.dart';
 import 'package:bikroy/meta/screens/Tabs/postPage.dart';
 import 'package:bikroy/meta/screens/Tabs/searchTab.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+class LandingPage extends StatefulWidget {
+  const LandingPage({Key? key}) : super(key: key);
 
   @override
   _HomePageState createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends State<LandingPage> {
   GlobalKey bottomNavigationKey = GlobalKey();
   void onTabTapped(int index) {
     setState(() {
@@ -28,9 +30,10 @@ class _HomePageState extends State<HomePage> {
   //Bottom nav pages
   final List<Widget> _children = [
     HomeTab(),
-    AddPost(),
     SearchTab(),
-    CategoriesPage()
+    AddPost(),
+    JobCategoryPage(),
+    DrawerPage()
   ];
   @override
   Widget build(BuildContext context) {

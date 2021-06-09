@@ -12,7 +12,7 @@ class CategorySecondPage extends StatelessWidget {
       backgroundColor: Colors.white,
       body: SafeArea(
           child: CategoryList(
-        appBarTitle: "Electronics",
+        appBarTitle: "Auto Vehicles",
         whenPressed: () {
           Navigator.push(
               context,

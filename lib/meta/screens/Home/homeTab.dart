@@ -126,7 +126,7 @@ class HomeTab extends StatelessWidget {
                         ),
                         Flexible(
                           child: Text(
-                            "Category",
+                            "Directory",
                             style: ConstantsStyle().paraGraphStyle,
                           ),
                         ),
@@ -168,8 +168,11 @@ class HomeTab extends StatelessWidget {
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(12),
                             child: Image.network(
-                                "https://cdn.pixabay.com/photo/2016/02/02/14/42/bank-1175430__340.png",
+                                "https://images.unsplash.com/photo-1556228720-195a672e8a03?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE5fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60",
                                 fit: BoxFit.cover),
+                            // child: Image.network(
+                            //     "https://cdn.pixabay.com/photo/2016/02/02/14/42/bank-1175430__340.png",
+                            //     fit: BoxFit.cover),
                           ),
                         ),
                       ),

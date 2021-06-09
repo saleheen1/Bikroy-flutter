@@ -61,7 +61,9 @@ class _PostDetailsPageState extends State<PostDetailsPage>
             ],
           ),
         ),
-        Positioned(top: 35, left: 25, child: Helper().backButton(context)),
+
+        //Back button
+        Positioned(top: 35, left: 10, child: Helper().backButton(context)),
       ],
     );
   }

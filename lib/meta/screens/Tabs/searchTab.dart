@@ -1,5 +1,10 @@
 import 'package:bikroy/app/constants/Constantcolors.dart';
+import 'package:bikroy/app/constants/ConstantsStyle.dart';
 import 'package:bikroy/app/widgets/customInput.dart';
+import 'package:bikroy/core/services/helper.dart';
+import 'package:bikroy/meta/screens/Categories/categoriesPage.dart';
+import 'package:bikroy/meta/screens/Directories/2ndBusinessDirectoriesPage.dart';
+import 'package:bikroy/meta/screens/Posts/allPosts.dart';
 import 'package:flutter/material.dart';
 
 class SearchTab extends StatefulWidget {
@@ -142,46 +147,32 @@ class _SearchTabState extends State<SearchTab> {
           ),
           Column(
             children: [
-              Container(
-                child: GridView.count(
-                    padding: EdgeInsets.zero,
-                    scrollDirection: Axis.vertical,
-                    mainAxisSpacing: 15,
-                    crossAxisSpacing: 15,
-                    physics: NeverScrollableScrollPhysics(),
-                    childAspectRatio: 3 / 2,
-                    crossAxisCount: 2,
-                    shrinkWrap: true,
-                    children: List.generate(4, (index) {
-                      return Material(
-                        borderRadius: BorderRadius.circular(10),
-                        color: getColor(index),
-                        child: InkWell(
-                          onTap: () {},
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(
-                                Icons.work_outline,
-                                color: Colors.white,
-                                size: 29,
-                              ),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              Text(
-                                getText(index),
-                                style: TextStyle(
-                                    fontSize: 16,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w600),
-                              ),
-                            ],
-                          ),
-                        ),
-                      );
-                    })),
-              ),
+              Helper().buySellCategory(() {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => SecondBusinessDirectoriesPage()));
+              }),
+              // Container(
+              //   decoration: BoxDecoration(
+              //       borderRadius: BorderRadius.circular(5),
+              //       color: ConstantColors().primaryColor
+              //       // color: Helper().getColor(3),
+              //       ),
+              //   width: double.infinity,
+              //   alignment: Alignment.center,
+              //   height: 40,
+              //   child: Text(
+              //     "Jobs",
+              //     style: TextStyle(color: Colors.white),
+              //   ),
+              // ),
+              // Helper().jobTypes(() {
+              //   Navigator.push(
+              //       context,
+              //       MaterialPageRoute(
+              //           builder: (context) => SecondBusinessDirectoriesPage()));
+              // }),
             ],
           ),
         ],

@@ -2,6 +2,7 @@ import 'package:bikroy/app/constants/Constantcolors.dart';
 import 'package:bikroy/app/widgets/actionBar.dart';
 import 'package:bikroy/app/widgets/categoryList.dart';
 import 'package:bikroy/meta/screens/Categories/categorySecondPage.dart';
+import 'package:bikroy/meta/screens/Posts/allPosts.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 
@@ -14,14 +15,18 @@ class CategoriesPage extends StatelessWidget {
       backgroundColor: Colors.white,
       body: SafeArea(
         child: CategoryList(
-          appBarTitle: "Categories",
-          categoryName: "Mobile",
+          appBarTitle: "Directory",
+          categoryName: "Agriculture Products",
           whenPressed: () {
             Navigator.push(
                 context,
                 PageTransition(
-                    child: CategorySecondPage(),
-                    type: PageTransitionType.rightToLeft));
+                    child: AllPosts(), type: PageTransitionType.rightToLeft));
+            // Navigator.push(
+            //     context,
+            //     PageTransition(
+            //         child: CategorySecondPage(),
+            //         type: PageTransitionType.rightToLeft));
           },
         ),
       ),

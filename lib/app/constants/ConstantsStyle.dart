@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class ConstantsStyle {
   final regularHeading = TextStyle(
-      fontSize: 17,
+      fontSize: 16,
       fontWeight: FontWeight.w600,
       color: ConstantColors().headingColor);
 
@@ -13,6 +13,7 @@ class ConstantsStyle {
       color: ConstantColors().primaryColor);
 
   final paraGraphStyle = TextStyle(
+    height: 1.7,
     fontSize: 14,
     color: ConstantColors().greyPrimary,
   );

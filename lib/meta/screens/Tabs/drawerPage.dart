@@ -1,6 +1,8 @@
 import 'package:bikroy/app/constants/Constantcolors.dart';
 import 'package:bikroy/app/constants/ConstantsStyle.dart';
 import 'package:bikroy/core/services/helper.dart';
+import 'package:bikroy/meta/screens/Extras/aboutUs.dart';
+import 'package:bikroy/meta/screens/Profile/userProfile.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -66,32 +68,38 @@ class DrawerPage extends StatelessWidget {
                 //     ),
                 //   ),
                 // ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 18, bottom: 10),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            "S.M. Saleheen",
-                            style: ConstantsStyle().regularHeading,
-                          ),
-                          Icon(
-                            Icons.settings,
-                            color: ConstantColors().greyPrimary,
-                          )
-                        ],
-                      ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Text(
-                        "smsaleheen3@gmail.com",
-                        style: ConstantsStyle().paraGraphStyle,
-                      ),
-                    ],
+                InkWell(
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => UserProfile()));
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 18, bottom: 10),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              "S.M. Saleheen",
+                              style: ConstantsStyle().regularHeading,
+                            ),
+                            Icon(
+                              Icons.settings,
+                              color: ConstantColors().greyPrimary,
+                            )
+                          ],
+                        ),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        Text(
+                          "smsaleheen3@gmail.com",
+                          style: ConstantsStyle().paraGraphStyle,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
                 Divider(
@@ -99,31 +107,46 @@ class DrawerPage extends StatelessWidget {
                 ),
                 ListTile(
                   minLeadingWidth: 0,
-                  leading: Icon(Icons.home),
+                  leading: Icon(
+                    Icons.home,
+                    color: Helper().getColor(0),
+                  ),
                   title: Text(
                     "My Ads",
                     style: TextStyle(
-                        fontSize: 15, color: ConstantColors().greyPrimary),
+                        fontWeight: FontWeight.bold,
+                        fontSize: 14,
+                        color: ConstantColors().greyPrimary),
                   ),
                   onTap: () {},
                 ),
                 ListTile(
                   minLeadingWidth: 0,
-                  leading: Icon(Icons.settings),
+                  leading: Icon(
+                    Icons.settings,
+                    color: Helper().getColor(1),
+                  ),
                   title: Text(
                     "Pending Ads",
                     style: TextStyle(
-                        fontSize: 15, color: ConstantColors().greyPrimary),
+                        fontWeight: FontWeight.bold,
+                        fontSize: 14,
+                        color: ConstantColors().greyPrimary),
                   ),
                   onTap: () {},
                 ),
                 ListTile(
                   minLeadingWidth: 0,
-                  leading: Icon(Icons.contacts),
+                  leading: Icon(
+                    Icons.contacts,
+                    color: Helper().getColor(3),
+                  ),
                   title: Text(
                     "View Resume",
                     style: TextStyle(
-                        fontSize: 15, color: ConstantColors().greyPrimary),
+                        fontWeight: FontWeight.bold,
+                        fontSize: 14,
+                        color: ConstantColors().greyPrimary),
                   ),
                   onTap: () {},
                 ),
@@ -139,13 +162,18 @@ class DrawerPage extends StatelessWidget {
                 minLeadingWidth: 0,
                 leading: Icon(
                   Helper().getIcon(i),
+                  color: Helper().getColor(i),
                 ),
                 title: Text(
                   getText(i),
                   style: TextStyle(
-                      fontSize: 15, color: ConstantColors().greyPrimary),
+                      fontWeight: FontWeight.bold,
+                      fontSize: 14,
+                      color: ConstantColors().greyPrimary),
                 ),
-                onTap: () {},
+                onTap: () {
+                  Helper().drawerLinks(context, i);
+                },
               ),
           ],
         ),

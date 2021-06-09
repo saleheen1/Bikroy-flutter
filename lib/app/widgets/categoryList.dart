@@ -1,5 +1,6 @@
 import 'package:bikroy/app/constants/Constantcolors.dart';
 import 'package:bikroy/app/widgets/actionBar.dart';
+import 'package:bikroy/core/services/helper.dart';
 import 'package:flutter/material.dart';
 
 class CategoryList extends StatelessWidget {
@@ -46,19 +47,33 @@ class CategoryList extends StatelessWidget {
                     child: Row(
                       children: [
                         Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Icon(
-                              Icons.handyman_rounded,
-                              color: ConstantColors().primaryColor,
-                            ),
+                            Icon(Helper().getIcon(index),
+                                color: Helper().getColor(index)),
                             SizedBox(
                               width: 12,
                             ),
-                            Text(
-                              "$categoryName ${index + 1}",
-                              style: TextStyle(
-                                  fontSize: 15,
-                                  color: ConstantColors().greyPrimary),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "$categoryName ${index + 1}",
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold,
+                                      color: ConstantColors().greyPrimary),
+                                ),
+                                SizedBox(
+                                  height: 4,
+                                ),
+                                Text(
+                                  "Agro Products Services, Poultry & Dairy",
+                                  style: TextStyle(
+                                      fontSize: 13,
+                                      color: ConstantColors().greySecondary),
+                                ),
+                              ],
                             ),
                           ],
                         ),

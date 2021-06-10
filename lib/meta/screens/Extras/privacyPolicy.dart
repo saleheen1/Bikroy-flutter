@@ -1,39 +1,35 @@
 import 'package:bikroy/app/constants/Constantcolors.dart';
 import 'package:bikroy/app/constants/ConstantsStyle.dart';
-import 'package:bikroy/core/services/helper.dart';
 import 'package:flutter/material.dart';
 
 import 'extraPageHelper.dart';
 
-class Rules extends StatelessWidget {
-  const Rules({Key? key}) : super(key: key);
+class PrivacyPolicy extends StatelessWidget {
+  const PrivacyPolicy({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
         children: [
-          ExtraPageHelper().headerTitle(context, "Using Rules"),
+          ExtraPageHelper().headerTitle(context, "Privacy Policy"),
           Padding(
             padding: const EdgeInsets.all(25.0),
             child: Column(
               children: [
                 // Text(
-                //   "Using Rules",
+                //   "Privacy Policy",
                 //   style: TextStyle(
                 //       color: ConstantColors().greyPrimary,
                 //       fontSize: 25,
                 //       fontWeight: FontWeight.bold),
                 //   textAlign: TextAlign.center,
                 // ),
-                // SizedBox(
-                //   height: 16,
-                // ),
                 RichText(
                   textAlign: TextAlign.center,
                   text: TextSpan(
                     text:
-                        'Users are responsible for ensuring that advertising content, text, images & graphics uploaded for inclusion on ',
+                        'All together for the site to give a sheltered and valuable administration, it is essential for ',
                     style: TextStyle(
                       height: 1.7,
                       fontFamily: 'poppins',
@@ -49,24 +45,9 @@ class Rules extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      TextSpan(text: 'complies with all related laws.'),
-                      TextSpan(
-                        text: 'Trade Bangla, ',
-                        style: TextStyle(
-                          color: Color(0xff0d47a1),
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      TextSpan(
-                        text: 'Trade Bangla, ',
-                        style: TextStyle(
-                          color: Color(0xff0d47a1),
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
                       TextSpan(
                           text:
-                              'assumes no responsibility for any illegality or any inaccuracy of the Content.'),
+                              'to gather, utilize, and share individual data.'),
                     ],
                   ),
                 ),
@@ -76,11 +57,17 @@ class Rules extends StatelessWidget {
                   height: 20,
                 ),
 
+                Text(
+                  "Accumulation:",
+                  style: ConstantsStyle().regularHeading,
+                ),
+
+                Divider(),
+
                 RichText(
                   textAlign: TextAlign.center,
                   text: TextSpan(
-                    text:
-                        'The user guarantees that his or her Content do not infringe any copyright, intellectual property rights or other rights of any person or entity, and agrees to release ',
+                    text: 'Data posted on ',
                     style: TextStyle(
                       height: 1.7,
                       fontFamily: 'poppins',
@@ -98,7 +85,7 @@ class Rules extends StatelessWidget {
                       ),
                       TextSpan(
                           text:
-                              ' from all obligations, liabilities and claims arising in connection with the use of  the service.'),
+                              'is openly accessible. On the off chance that you furnish us with individual data, you are consenting to the exchange and capacity of that data on our servers. We gather and store the accompanying individual data:Email address, contact data, and (contingent upon the administration utilized) here and there budgetary data PC sign-on information, measurements on online visits, movement to and from Bikroy.com and reaction to promotions Other data, including client\'s IP address and standard web log data.'),
                     ],
                   ),
                 ),

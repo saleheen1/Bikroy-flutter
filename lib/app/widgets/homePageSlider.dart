@@ -32,7 +32,7 @@ class _SliderState extends State<HomePageSlider> {
                 children: [
                   for (var i = 0; i < 3; i++)
                     Image.network(
-                      "https://cdn.shortpixel.ai/client/q_glossy,ret_img,w_1024,h_529/https://www.powproductphotography.com/app/uploads/2020/03/background-color-change-1024x529.jpg",
+                      "https://images.unsplash.com/photo-1596516109370-29001ec8ec36?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTE2fHxwcm9kdWN0fGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
                       fit: BoxFit.cover,
                     ),
                 ],

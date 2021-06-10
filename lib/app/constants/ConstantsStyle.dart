@@ -7,6 +7,11 @@ class ConstantsStyle {
       fontWeight: FontWeight.w600,
       color: ConstantColors().headingColor);
 
+  final productTitleHeading = TextStyle(
+      fontSize: 14,
+      fontWeight: FontWeight.w600,
+      color: ConstantColors().headingColor);
+
   final priceStyle = TextStyle(
       fontSize: 15,
       fontWeight: FontWeight.w600,

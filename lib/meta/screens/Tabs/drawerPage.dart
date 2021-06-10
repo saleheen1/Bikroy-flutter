@@ -2,6 +2,8 @@ import 'package:bikroy/app/constants/Constantcolors.dart';
 import 'package:bikroy/app/constants/ConstantsStyle.dart';
 import 'package:bikroy/core/services/helper.dart';
 import 'package:bikroy/meta/screens/Extras/aboutUs.dart';
+import 'package:bikroy/meta/screens/Posts/allPosts.dart';
+import 'package:bikroy/meta/screens/Profile/resumeView.dart';
 import 'package:bikroy/meta/screens/Profile/userProfile.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -118,7 +120,10 @@ class DrawerPage extends StatelessWidget {
                         fontSize: 14,
                         color: ConstantColors().greyPrimary),
                   ),
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => AllPosts()));
+                  },
                 ),
                 ListTile(
                   minLeadingWidth: 0,
@@ -133,7 +138,10 @@ class DrawerPage extends StatelessWidget {
                         fontSize: 14,
                         color: ConstantColors().greyPrimary),
                   ),
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => AllPosts()));
+                  },
                 ),
                 ListTile(
                   minLeadingWidth: 0,
@@ -148,7 +156,10 @@ class DrawerPage extends StatelessWidget {
                         fontSize: 14,
                         color: ConstantColors().greyPrimary),
                   ),
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => ResumeView()));
+                  },
                 ),
                 Divider(
                   thickness: .8,

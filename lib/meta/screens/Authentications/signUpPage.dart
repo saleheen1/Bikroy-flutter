@@ -80,7 +80,9 @@ class _SignUpPageState extends State<SignUpPage>
 
                   //Sign up text
                   Padding(
-                    padding: const EdgeInsets.only(bottom: 50, top: 50),
+                    padding: const EdgeInsets.only(
+                      bottom: 35,
+                    ),
                     child: Text("Sign up",
                         style: TextStyle(
                             color: ConstantColors().greyPrimary,

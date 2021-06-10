@@ -2,6 +2,9 @@ import 'package:bikroy/app/constants/Constantcolors.dart';
 import 'package:bikroy/meta/screens/Extras/aboutUs.dart';
 import 'package:bikroy/meta/screens/Extras/advertising.dart';
 import 'package:bikroy/meta/screens/Extras/contactUs.dart';
+import 'package:bikroy/meta/screens/Extras/faqPage.dart';
+import 'package:bikroy/meta/screens/Extras/postFreeAd.dart';
+import 'package:bikroy/meta/screens/Extras/privacyPolicy.dart';
 import 'package:bikroy/meta/screens/Extras/rules.dart';
 import 'package:bikroy/meta/screens/Posts/allPosts.dart';
 import 'package:flutter/material.dart';
@@ -311,6 +314,18 @@ class Helper {
           context, MaterialPageRoute(builder: (context) => Advertising()));
     } else if (index == 5) {
       Navigator.push(context, MaterialPageRoute(builder: (context) => Rules()));
+    } else if (index == 6) {
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => PrivacyPolicy()));
+    } else if (index == 7) {
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => PrivacyPolicy()));
+    } else if (index == 8) {
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => PostFreeAd()));
+    } else if (index == 9) {
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => FaqPage()));
     } else {
       Navigator.push(
           context, MaterialPageRoute(builder: (context) => AllPosts()));

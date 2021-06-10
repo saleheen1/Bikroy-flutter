@@ -184,7 +184,7 @@ class _UserProfileState extends State<UserProfile>
                         height: 50,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(6),
-                            color: Colors.yellow[800]),
+                            color: Color(0xff2A6C90)),
                         child: Text(
                           "Update Password",
                           style: TextStyle(color: Colors.white),

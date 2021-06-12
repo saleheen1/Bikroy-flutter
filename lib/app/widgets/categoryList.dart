@@ -18,7 +18,7 @@ class CategoryList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(25.0),
+      padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 20),
       child: Column(
         children: [
           ActionBar(
@@ -43,7 +43,7 @@ class CategoryList extends StatelessWidget {
                         border: Border(
                             bottom: BorderSide(
                                 color: ConstantColors().dividerColor))),
-                    padding: EdgeInsets.symmetric(vertical: 20),
+                    padding: EdgeInsets.symmetric(vertical: 17),
                     child: Row(
                       children: [
                         Row(

@@ -11,7 +11,12 @@ class BusinessDirectoriesPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Helper().heroArea("Business Directories", false, Colors.white, context),
+        Helper()
+            .whiteHeroArea("Business Directories", false, Colors.grey, context),
+        Divider(
+          thickness: .7,
+          height: 0,
+        ),
         Helper().businessDirectoryList(() {
           Navigator.push(context,
               MaterialPageRoute(builder: (context) => ServicesSecondPage()));

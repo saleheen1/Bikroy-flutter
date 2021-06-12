@@ -133,39 +133,97 @@ class Helper {
 
   Widget heroArea(
       String title, bool hasBackArrow, Color arrowColor, BuildContext context) {
-    return Row(
-      children: [
-        if (hasBackArrow)
-          InkWell(
-            onTap: () {
-              Navigator.pop(context);
-            },
+    return Container(
+      padding: EdgeInsets.only(bottom: 17, left: 20, right: 20),
+      alignment: Alignment.bottomCenter,
+      // color: Color(0xff00C7FF),
+      color: ConstantColors().primaryColor,
+      height: 100,
+      width: double.infinity,
+      child: Row(
+        children: [
+          if (hasBackArrow)
+            Container(
+              width: 35,
+              child: InkWell(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: Container(
+                    margin: EdgeInsets.only(right: 17),
+                    alignment: Alignment.center,
+                    height: 30,
+                    width: 30,
+                    // color: Constants.kPrimary,
+                    child: Icon(
+                      Icons.arrow_back,
+                      color: arrowColor,
+                      size: 25,
+                    )),
+              ),
+            ),
+          Expanded(
             child: Container(
-                margin: EdgeInsets.only(right: 17),
-                alignment: Alignment.center,
-                height: 30,
-                width: 30,
-                // color: Constants.kPrimary,
-                child: Icon(
-                  Icons.arrow_back,
-                  color: arrowColor,
-                  size: 25,
-                )),
+              margin:
+                  hasBackArrow ? EdgeInsets.only(left: 15) : EdgeInsets.zero,
+              child: Text(title,
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 23,
+                      fontWeight: FontWeight.bold),
+                  textAlign: hasBackArrow ? TextAlign.left : TextAlign.center),
+            ),
           ),
-        Container(
-          padding: EdgeInsets.only(bottom: 17, left: 20, right: 20),
-          alignment: Alignment.bottomCenter,
-          // color: Color(0xff00C7FF),
-          color: ConstantColors().primaryColor,
-          height: 100,
-          width: double.infinity,
-          child: Text(
-            title,
-            style: TextStyle(
-                color: Colors.white, fontSize: 23, fontWeight: FontWeight.bold),
+        ],
+      ),
+    );
+  }
+
+  Widget whiteHeroArea(
+      String title, bool hasBackArrow, Color arrowColor, BuildContext context) {
+    return Container(
+      padding: EdgeInsets.only(bottom: 17, left: 20, right: 20),
+      alignment: Alignment.bottomCenter,
+      // color: Color(0xff00C7FF),
+      // color: ConstantColors().primaryColor,
+      height: 100,
+      width: double.infinity,
+      child: Row(
+        children: [
+          if (hasBackArrow)
+            Container(
+              width: 35,
+              child: InkWell(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: Container(
+                    margin: EdgeInsets.only(right: 17),
+                    alignment: Alignment.center,
+                    height: 30,
+                    width: 30,
+                    // color: Constants.kPrimary,
+                    child: Icon(
+                      Icons.arrow_back,
+                      color: arrowColor,
+                      size: 25,
+                    )),
+              ),
+            ),
+          Expanded(
+            child: Container(
+              margin:
+                  hasBackArrow ? EdgeInsets.only(left: 15) : EdgeInsets.zero,
+              child: Text(title,
+                  style: TextStyle(
+                      color: ConstantColors().greyPrimary,
+                      fontSize: 23,
+                      fontWeight: FontWeight.bold),
+                  textAlign: hasBackArrow ? TextAlign.left : TextAlign.center),
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 

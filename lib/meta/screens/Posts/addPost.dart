@@ -225,31 +225,38 @@ class _AddPostState extends State<AddPost> with SingleTickerProviderStateMixin {
                   PostHelper().customSizedBox(),
 
                   //price
-                  CustomInput(
-                    hintText: "Price",
-                    isNumberField: true,
-                    onChanged: (value) {},
-                    onSubmitted: (value) {
-                      focusNode.nextFocus();
-                    },
-                    textInputAction: TextInputAction.next,
-                  ),
-
-                  CheckboxListTile(
-                    contentPadding: EdgeInsets.all(0),
-
-                    title: Text(
-                      "Negotiable",
-                      style: ConstantsStyle().paraGraphStyle,
-                    ),
-                    value: checkedValue,
-                    onChanged: (newValue) {
-                      setState(() {
-                        checkedValue = !checkedValue;
-                      });
-                    },
-                    controlAffinity: ListTileControlAffinity
-                        .leading, //  <-- leading Checkbox
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Expanded(
+                        child: CustomInput(
+                          hintText: "Price",
+                          isNumberField: true,
+                          onChanged: (value) {},
+                          onSubmitted: (value) {
+                            focusNode.nextFocus();
+                          },
+                          textInputAction: TextInputAction.next,
+                        ),
+                      ),
+                      Expanded(
+                        child: Row(
+                          children: [
+                            Checkbox(
+                                value: checkedValue,
+                                onChanged: (newValue) {
+                                  setState(() {
+                                    checkedValue = !checkedValue;
+                                  });
+                                }),
+                            Text(
+                              "Negotiable",
+                              style: ConstantsStyle().paraGraphStyle,
+                            )
+                          ],
+                        ),
+                      )
+                    ],
                   ),
 
                   PostHelper().customSizedBox(),

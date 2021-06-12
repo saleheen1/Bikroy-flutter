@@ -30,7 +30,7 @@ class ActionBar extends StatelessWidget {
               child: Container(
                   margin: EdgeInsets.only(right: 17),
                   alignment: Alignment.center,
-                  height: 30,
+                  height: 40,
                   width: 30,
                   // color: Constants.kPrimary,
                   child: Icon(

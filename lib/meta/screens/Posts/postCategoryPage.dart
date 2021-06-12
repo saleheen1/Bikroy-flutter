@@ -15,7 +15,11 @@ class _PostCategoryPageState extends State<PostCategoryPage> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Helper().heroArea("Select a category", false, Colors.white, context),
+        Helper().whiteHeroArea("Post an Ad", false, Colors.grey, context),
+        Divider(
+          thickness: .7,
+          height: 0,
+        ),
         Helper().buySellCategory(() {
           Navigator.push(context,
               MaterialPageRoute(builder: (context) => PostSubCategory()));

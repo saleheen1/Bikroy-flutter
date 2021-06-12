@@ -4,6 +4,7 @@ import 'package:bikroy/app/widgets/actionBar.dart';
 import 'package:bikroy/core/services/helper.dart';
 import 'package:bikroy/meta/screens/Posts/postDetails.dart';
 import 'package:bikroy/meta/screens/Posts/postDetailsPage.dart';
+import 'package:bikroy/meta/screens/Search/searchPageHelper.dart';
 import 'package:bikroy/meta/screens/singleProduct.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
@@ -18,11 +19,22 @@ class AllPosts extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Helper().heroArea("Auto vehicles"),
+            Helper().heroArea("Auto vehicles", true, Colors.white, context),
             Padding(
-              padding: const EdgeInsets.all(25.0),
+              padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 20),
               child: Column(
                 children: [
+                  SearchHelper().locationFilter(),
+                  SizedBox(
+                    height: 18,
+                  ),
+                  Divider(
+                    thickness: .6,
+                    height: 0,
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
                   for (var i = 0; i < 7; i++)
                     InkWell(
                       onTap: () {

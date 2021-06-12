@@ -66,7 +66,7 @@ class _AddPostState extends State<AddPost> with SingleTickerProviderStateMixin {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Helper().heroArea("Post an Ad"),
+            Helper().heroArea("Post an Ad", true, Colors.white, context),
             Padding(
               padding: const EdgeInsets.all(25.0),
               child: Column(

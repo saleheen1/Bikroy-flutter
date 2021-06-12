@@ -13,7 +13,7 @@ class ResumeView extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Helper().heroArea("Resume"),
+            Helper().heroArea("Resume", false, Colors.white, context),
             Padding(
               padding: const EdgeInsets.all(25.0),
               child: Column(

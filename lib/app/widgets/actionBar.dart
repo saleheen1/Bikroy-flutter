@@ -12,7 +12,7 @@ class ActionBar extends StatelessWidget {
     required this.title,
     required this.hasBackArrow,
     this.arrowColor = Colors.grey,
-    this.bgColor = Colors.white,
+    this.bgColor = Colors.transparent,
   }) : super(key: key);
 
   @override

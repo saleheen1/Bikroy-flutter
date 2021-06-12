@@ -5,7 +5,7 @@ import 'package:bikroy/meta/screens/Home/sliverPage.dart';
 import 'package:bikroy/meta/screens/Posts/addPost.dart';
 import 'package:bikroy/meta/screens/Posts/postCategoryPage.dart';
 import 'package:bikroy/meta/screens/Tabs/drawerPage.dart';
-import 'package:bikroy/meta/screens/Tabs/searchTab.dart';
+import 'package:bikroy/meta/screens/Search/searchTab.dart';
 import 'package:flutter/material.dart';
 
 class LandingPage extends StatefulWidget {

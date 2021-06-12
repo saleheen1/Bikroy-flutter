@@ -12,7 +12,7 @@ class SecondBusinessDirectoriesPage extends StatelessWidget {
       backgroundColor: Colors.white,
       body: Column(
         children: [
-          Helper().heroArea("Cars & Electronics"),
+          Helper().heroArea("Cars & Electronics", true, Colors.white, context),
           Helper().businessDirectoryList(() {
             Navigator.push(
                 context, MaterialPageRoute(builder: (context) => AllPosts()));

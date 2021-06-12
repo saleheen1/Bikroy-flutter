@@ -10,7 +10,7 @@ class ServicesSecondPage extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: CategoryList(
-          appBarTitle: "Directory",
+          appBarTitle: "Electronics",
           categoryName: "Cars & Electronics",
           whenPressed: () {
             Navigator.push(

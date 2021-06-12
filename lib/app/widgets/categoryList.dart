@@ -21,10 +21,10 @@ class CategoryList extends StatelessWidget {
       padding: const EdgeInsets.all(25.0),
       child: Column(
         children: [
-          // ActionBar(
-          //   title: "$appBarTitle",
-          //   hasBackArrow: false,
-          // ),
+          ActionBar(
+            title: "$appBarTitle",
+            hasBackArrow: true,
+          ),
           ListView.builder(
             padding: EdgeInsets.all(0),
             itemCount: 7,

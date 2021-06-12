@@ -5,6 +5,7 @@ import 'package:bikroy/core/services/helper.dart';
 import 'package:bikroy/meta/screens/Categories/categoriesPage.dart';
 import 'package:bikroy/meta/screens/Directories/2ndBusinessDirectoriesPage.dart';
 import 'package:bikroy/meta/screens/Posts/allPosts.dart';
+import 'package:bikroy/meta/screens/Search/searchPageHelper.dart';
 import 'package:bikroy/meta/screens/Search/servicesSecondPage.dart';
 import 'package:flutter/material.dart';
 
@@ -85,54 +86,9 @@ class _SearchTabState extends State<SearchTab> {
             height: 50,
           ),
           //location row
-          Row(
-            children: [
-              Material(
-                color: Colors.transparent,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 17),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Icon(
-                        Icons.location_on,
-                        size: 19,
-                        color: ConstantColors().greyPrimary,
-                      ),
-                      SizedBox(
-                        width: 7,
-                      ),
-                      Text("Dhaka",
-                          style: TextStyle(
-                              fontSize: 15,
-                              // fontWeight: FontWeight.w600,
-                              color: ConstantColors().greyPrimary))
-                    ],
-                  ),
-                ),
-              ),
-              Expanded(
-                child: InkWell(
-                  splashColor: Colors.transparent,
-                  // hoverColor: Colors.transparent,
-                  highlightColor: Colors.transparent,
-                  onTap: () {},
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 20),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Text("Change location",
-                            style: TextStyle(
-                                fontSize: 15,
-                                fontWeight: FontWeight.w600,
-                                color: ConstantColors().primaryColor))
-                      ],
-                    ),
-                  ),
-                ),
-              )
-            ],
+          SearchHelper().locationFilter(),
+          SizedBox(
+            height: 25,
           ),
           CustomInput(
               hintText: "Search",
@@ -144,11 +100,12 @@ class _SearchTabState extends State<SearchTab> {
 
           // Divider(height: 0, thickness: 1, color: ConstantColors().dividerColor),
           SizedBox(
-            height: 10,
+            height: 4,
           ),
           Column(
             children: [
               Helper().buySellCategory(() {
+                // SearchHelper().modal(context);
                 Navigator.push(
                     context,
                     MaterialPageRoute(

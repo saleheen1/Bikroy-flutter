@@ -5,6 +5,7 @@ import 'package:bikroy/core/services/helper.dart';
 import 'package:bikroy/meta/screens/Categories/categoriesPage.dart';
 import 'package:bikroy/meta/screens/Directories/2ndBusinessDirectoriesPage.dart';
 import 'package:bikroy/meta/screens/Posts/allPosts.dart';
+import 'package:bikroy/meta/screens/Search/servicesSecondPage.dart';
 import 'package:flutter/material.dart';
 
 class SearchTab extends StatefulWidget {
@@ -151,28 +152,8 @@ class _SearchTabState extends State<SearchTab> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => SecondBusinessDirectoriesPage()));
+                        builder: (context) => ServicesSecondPage()));
               }),
-              // Container(
-              //   decoration: BoxDecoration(
-              //       borderRadius: BorderRadius.circular(5),
-              //       color: ConstantColors().primaryColor
-              //       // color: Helper().getColor(3),
-              //       ),
-              //   width: double.infinity,
-              //   alignment: Alignment.center,
-              //   height: 40,
-              //   child: Text(
-              //     "Jobs",
-              //     style: TextStyle(color: Colors.white),
-              //   ),
-              // ),
-              // Helper().jobTypes(() {
-              //   Navigator.push(
-              //       context,
-              //       MaterialPageRoute(
-              //           builder: (context) => SecondBusinessDirectoriesPage()));
-              // }),
             ],
           ),
         ],

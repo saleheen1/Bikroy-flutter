@@ -1,7 +1,9 @@
 import 'package:bikroy/app/widgets/bottomNav.dart';
 import 'package:bikroy/meta/screens/Directories/BusinessDirectoriesPage.dart';
 import 'package:bikroy/meta/screens/Home/homeTab.dart';
+import 'package:bikroy/meta/screens/Home/sliverPage.dart';
 import 'package:bikroy/meta/screens/Posts/addPost.dart';
+import 'package:bikroy/meta/screens/Posts/postCategoryPage.dart';
 import 'package:bikroy/meta/screens/Tabs/drawerPage.dart';
 import 'package:bikroy/meta/screens/Tabs/searchTab.dart';
 import 'package:flutter/material.dart';
@@ -26,7 +28,7 @@ class _HomePageState extends State<LandingPage> {
   final List<Widget> _children = [
     HomeTab(),
     SearchTab(),
-    AddPost(),
+    PostCategoryPage(),
     BusinessDirectoriesPage(),
     DrawerPage()
   ];

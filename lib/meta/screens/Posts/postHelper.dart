@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:bikroy/app/constants/Constantcolors.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -24,5 +25,29 @@ class PostHelper {
     //     : print("image upload error");
 
     // notifyListeners();
+  }
+
+  Widget chooseImageBtn(BuildContext context) {
+    return InkWell(
+      onTap: () {
+        PostHelper().pickImage(context, ImageSource.gallery);
+      },
+      child: Container(
+          decoration: BoxDecoration(
+              color: ConstantColors().primaryColor,
+              borderRadius: BorderRadius.circular(5)),
+          padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+          child: Text(
+            "Choose Images",
+            style: TextStyle(color: Colors.white),
+          )),
+    );
+  }
+
+  //Sizedbox
+  Widget customSizedBox() {
+    return SizedBox(
+      height: 17,
+    );
   }
 }

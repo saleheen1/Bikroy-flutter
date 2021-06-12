@@ -21,10 +21,10 @@ class CategoryList extends StatelessWidget {
       padding: const EdgeInsets.all(25.0),
       child: Column(
         children: [
-          ActionBar(
-            title: "$appBarTitle",
-            hasBackArrow: false,
-          ),
+          // ActionBar(
+          //   title: "$appBarTitle",
+          //   hasBackArrow: false,
+          // ),
           ListView.builder(
             padding: EdgeInsets.all(0),
             itemCount: 7,
@@ -49,8 +49,8 @@ class CategoryList extends StatelessWidget {
                         Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Icon(Helper().getIcon(index),
-                                color: Helper().getColor(index)),
+                            // Icon(Helper().getIcon(index),
+                            //     color: Helper().getColor(index)),
                             SizedBox(
                               width: 12,
                             ),
@@ -67,12 +67,12 @@ class CategoryList extends StatelessWidget {
                                 SizedBox(
                                   height: 4,
                                 ),
-                                Text(
-                                  "Agro Products Services, Poultry & Dairy",
-                                  style: TextStyle(
-                                      fontSize: 13,
-                                      color: ConstantColors().greySecondary),
-                                ),
+                                // Text(
+                                //   "Agro Products Services, Poultry & Dairy",
+                                //   style: TextStyle(
+                                //       fontSize: 13,
+                                //       color: ConstantColors().greySecondary),
+                                // ),
                               ],
                             ),
                           ],

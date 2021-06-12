@@ -1,4 +1,5 @@
 import 'package:bikroy/app/constants/Constantcolors.dart';
+import 'package:bikroy/app/constants/ConstantsStyle.dart';
 import 'package:bikroy/app/widgets/customInput.dart';
 import 'package:bikroy/core/services/helper.dart';
 import 'package:bikroy/meta/screens/Posts/postHelper.dart';
@@ -17,6 +18,12 @@ class _AddPostState extends State<AddPost> with SingleTickerProviderStateMixin {
 
   AnimationController? _controller;
   Animation? _animation;
+  bool checkedValue = false;
+
+  String dropdownValue = 'Select City';
+  String areaDropdownValue = 'Select Area';
+  String brandDropdownValue = 'Select Brand';
+  String fuelDropdownValue = 'Fuel type';
 
   @override
   void initState() {
@@ -37,6 +44,14 @@ class _AddPostState extends State<AddPost> with SingleTickerProviderStateMixin {
     });
   }
 
+  int _radioValue = 0;
+
+  void setSelectedRadio(int? val) {
+    setState(() {
+      _radioValue = val!;
+    });
+  }
+
   @override
   void dispose() {
     focusNode.dispose();
@@ -47,73 +62,374 @@ class _AddPostState extends State<AddPost> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Helper().heroArea("Post an Ad"),
-        Padding(
-          padding: const EdgeInsets.all(25.0),
-          child: Column(
-            children: [
-              CustomInput(
-                hintText: "Title",
-                onChanged: (value) {},
-                onSubmitted: (value) {
-                  focusNode.nextFocus();
-                },
-                textInputAction: TextInputAction.next,
-              ),
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Helper().heroArea("Post an Ad"),
+            Padding(
+              padding: const EdgeInsets.all(25.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    padding: EdgeInsets.symmetric(horizontal: 13),
+                    decoration: BoxDecoration(
+                      color: Color(0xfff2f2f2),
+                      // border: Border.all(color: ConstantColors().greySecondary),
+                      borderRadius: BorderRadius.circular(6),
+                    ),
+                    child: DropdownButtonHideUnderline(
+                      child: DropdownButton<String>(
+                        isExpanded: true,
+                        value: dropdownValue,
+                        icon: const Icon(Icons.keyboard_arrow_down_rounded,
+                            color: Color(0xff646464)),
+                        iconSize: 26,
+                        elevation: 16,
+                        style: const TextStyle(color: Color(0xff646464)),
+                        // underline: Container(
+                        //     height: 1, color: Color(0xffC6C6C6)),
+                        onChanged: (String? newValue) {
+                          setState(() {
+                            dropdownValue = newValue!;
+                          });
+                        },
+                        items: <String>[
+                          'Select City',
+                          'Personal Account',
+                          'Business Account',
+                          'E-shop',
+                        ].map<DropdownMenuItem<String>>((String value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(
+                              value,
+                              style: TextStyle(
+                                  color: ConstantColors().primaryColor),
+                            ),
+                          );
+                        }).toList(),
+                      ),
+                    ),
+                  ),
+                  PostHelper().customSizedBox(),
+                  Container(
+                    padding: EdgeInsets.symmetric(horizontal: 13),
+                    decoration: BoxDecoration(
+                      color: Color(0xfff2f2f2),
+                      // border: Border.all(color: ConstantColors().greySecondary),
+                      borderRadius: BorderRadius.circular(6),
+                    ),
+                    child: DropdownButtonHideUnderline(
+                      child: DropdownButton<String>(
+                        isExpanded: true,
+                        value: areaDropdownValue,
+                        icon: const Icon(Icons.keyboard_arrow_down_rounded,
+                            color: Color(0xff646464)),
+                        iconSize: 26,
+                        elevation: 16,
+                        style: const TextStyle(color: Color(0xff646464)),
+                        // underline: Container(
+                        //     height: 1, color: Color(0xffC6C6C6)),
+                        onChanged: (String? newValue) {
+                          setState(() {
+                            areaDropdownValue = newValue!;
+                          });
+                        },
+                        items: <String>[
+                          'Select Area',
+                          'Personal Account',
+                          'Business Account',
+                          'E-shop',
+                        ].map<DropdownMenuItem<String>>((String value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(
+                              value,
+                              style: TextStyle(
+                                  color: ConstantColors().primaryColor),
+                            ),
+                          );
+                        }).toList(),
+                      ),
+                    ),
+                  ),
 
-              //Post description
-              Container(
-                margin: EdgeInsets.only(bottom: 19),
-                decoration: BoxDecoration(
-                    color: Color(0xfff2f2f2),
-                    borderRadius: BorderRadius.circular(6)),
-                child: TextField(
-                  style: TextStyle(fontSize: 14),
-                  maxLines: 8,
-                  decoration: InputDecoration(
-                      border: InputBorder.none,
-                      hintText: "Description",
-                      contentPadding:
-                          EdgeInsets.symmetric(horizontal: 13, vertical: 13)),
-                ),
-              ),
+                  PostHelper().customSizedBox(),
+                  CustomInput(
+                    hintText: "Specific address",
+                    onChanged: (value) {},
+                    onSubmitted: (value) {
+                      focusNode.nextFocus();
+                    },
+                    textInputAction: TextInputAction.next,
+                  ),
+//Buy or sell radio button
+                  Row(
+                    children: [
+                      Radio(
+                          value: 0,
+                          groupValue: _radioValue,
+                          activeColor: Colors.green,
+                          onChanged: setSelectedRadio),
+                      Text('I Want to Sell'),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Radio(
+                          value: 1,
+                          groupValue: _radioValue,
+                          activeColor: Colors.green,
+                          onChanged: setSelectedRadio),
+                      Text('I Want to Buy'),
+                    ],
+                  ),
+                  PostHelper().customSizedBox(),
+                  CustomInput(
+                    hintText: "Title",
+                    onChanged: (value) {},
+                    onSubmitted: (value) {
+                      focusNode.nextFocus();
+                    },
+                    textInputAction: TextInputAction.next,
+                  ),
 
-              //Pick image
-              InkWell(
-                onTap: () {
-                  PostHelper().pickImage(context, ImageSource.gallery);
-                },
-                child: Column(
-                  children: [
-                    Container(
+                  //Pick image
+                  PostHelper().chooseImageBtn(context),
+
+                  PostHelper().customSizedBox(),
+                  //Used or new radio button
+                  Row(
+                    children: [
+                      Radio(
+                          value: 0,
+                          groupValue: _radioValue,
+                          activeColor: Colors.green,
+                          onChanged: setSelectedRadio),
+                      Text('Used'),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Radio(
+                          value: 1,
+                          groupValue: _radioValue,
+                          activeColor: Colors.green,
+                          onChanged: setSelectedRadio),
+                      Text('New'),
+                    ],
+                  ),
+
+                  PostHelper().customSizedBox(),
+
+                  //price
+                  CustomInput(
+                    hintText: "Price",
+                    isNumberField: true,
+                    onChanged: (value) {},
+                    onSubmitted: (value) {
+                      focusNode.nextFocus();
+                    },
+                    textInputAction: TextInputAction.next,
+                  ),
+
+                  CheckboxListTile(
+                    contentPadding: EdgeInsets.all(0),
+
+                    title: Text(
+                      "Negotiable",
+                      style: ConstantsStyle().paraGraphStyle,
+                    ),
+                    value: checkedValue,
+                    onChanged: (newValue) {
+                      setState(() {
+                        checkedValue = !checkedValue;
+                      });
+                    },
+                    controlAffinity: ListTileControlAffinity
+                        .leading, //  <-- leading Checkbox
+                  ),
+
+                  PostHelper().customSizedBox(),
+
+                  //Select brand dropdown
+
+                  Container(
+                    padding: EdgeInsets.symmetric(horizontal: 13),
+                    decoration: BoxDecoration(
+                      color: Color(0xfff2f2f2),
+                      // border: Border.all(color: ConstantColors().greySecondary),
+                      borderRadius: BorderRadius.circular(6),
+                    ),
+                    child: DropdownButtonHideUnderline(
+                      child: DropdownButton<String>(
+                        isExpanded: true,
+                        value: brandDropdownValue,
+                        icon: const Icon(Icons.keyboard_arrow_down_rounded,
+                            color: Color(0xff646464)),
+                        iconSize: 26,
+                        elevation: 16,
+                        style: const TextStyle(color: Color(0xff646464)),
+                        // underline: Container(
+                        //     height: 1, color: Color(0xffC6C6C6)),
+                        onChanged: (String? newValue) {
+                          setState(() {
+                            brandDropdownValue = newValue!;
+                          });
+                        },
+                        items: <String>[
+                          'Select Brand',
+                          'Samsung',
+                          'Sony',
+                          'Audi',
+                        ].map<DropdownMenuItem<String>>((String value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(
+                              value,
+                              style: TextStyle(
+                                  color: ConstantColors().primaryColor),
+                            ),
+                          );
+                        }).toList(),
+                      ),
+                    ),
+                  ),
+
+                  PostHelper().customSizedBox(),
+
+                  //Select Fuel type
+                  Container(
+                    padding: EdgeInsets.symmetric(horizontal: 13),
+                    decoration: BoxDecoration(
+                      color: Color(0xfff2f2f2),
+                      // border: Border.all(color: ConstantColors().greySecondary),
+                      borderRadius: BorderRadius.circular(6),
+                    ),
+                    child: DropdownButtonHideUnderline(
+                      child: DropdownButton<String>(
+                        isExpanded: true,
+                        value: fuelDropdownValue,
+                        icon: const Icon(Icons.keyboard_arrow_down_rounded,
+                            color: Color(0xff646464)),
+                        iconSize: 26,
+                        elevation: 16,
+                        style: const TextStyle(color: Color(0xff646464)),
+                        // underline: Container(
+                        //     height: 1, color: Color(0xffC6C6C6)),
+                        onChanged: (String? newValue) {
+                          setState(() {
+                            fuelDropdownValue = newValue!;
+                          });
+                        },
+                        items: <String>[
+                          'Fuel type',
+                          'Samsung',
+                          'Sony',
+                          'Audi',
+                        ].map<DropdownMenuItem<String>>((String value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(
+                              value,
+                              style: TextStyle(
+                                  color: ConstantColors().primaryColor),
+                            ),
+                          );
+                        }).toList(),
+                      ),
+                    ),
+                  ),
+
+                  PostHelper().customSizedBox(),
+
+                  //model name
+                  CustomInput(
+                    hintText: "Model Name & Year",
+                    onChanged: (value) {},
+                    onSubmitted: (value) {
+                      focusNode.nextFocus();
+                    },
+                    textInputAction: TextInputAction.next,
+                  ),
+
+                  //Milege
+                  CustomInput(
+                    hintText: "Milege (Km)",
+                    isNumberField: true,
+                    onChanged: (value) {},
+                    onSubmitted: (value) {
+                      focusNode.nextFocus();
+                    },
+                    textInputAction: TextInputAction.next,
+                  ),
+
+                  //Engine Capacity
+                  CustomInput(
+                    hintText: "Engine Capacity (Cc)",
+                    isNumberField: true,
+                    onChanged: (value) {},
+                    onSubmitted: (value) {
+                      focusNode.nextFocus();
+                    },
+                    textInputAction: TextInputAction.next,
+                  ),
+
+                  //Tags
+                  CustomInput(
+                    hintText: "Tag separated by comma (,)",
+                    isNumberField: true,
+                    onChanged: (value) {},
+                    onSubmitted: (value) {
+                      focusNode.nextFocus();
+                    },
+                    textInputAction: TextInputAction.next,
+                  ),
+
+                  //Post description
+                  Container(
+                    margin: EdgeInsets.only(
+                      bottom: 20,
+                    ),
+                    decoration: BoxDecoration(
+                        color: Color(0xfff2f2f2),
+                        borderRadius: BorderRadius.circular(6)),
+                    child: TextField(
+                      style: TextStyle(fontSize: 14),
+                      maxLines: 8,
+                      decoration: InputDecoration(
+                          border: InputBorder.none,
+                          hintText: "Description",
+                          contentPadding: EdgeInsets.symmetric(
+                              horizontal: 13, vertical: 13)),
+                    ),
+                  ),
+
+                  //Submit button
+
+                  InkWell(
+                    onTap: () {},
+                    child: Container(
                         decoration: BoxDecoration(
                             color: ConstantColors().primaryColor,
                             borderRadius: BorderRadius.circular(5)),
                         padding:
                             EdgeInsets.symmetric(horizontal: 15, vertical: 10),
                         child: Text(
-                          "Choose Image",
+                          "Submit",
                           style: TextStyle(color: Colors.white),
                         )),
+                  ),
 
-                    //show picked image
-                    // Container(
-                    //     height: 80,
-                    //     width: 80,
-                    //     decoration: new BoxDecoration(
-                    //         image: DecorationImage(
-                    //       image: FileImage(PostHelper().pickedImage),
-                    //       fit: BoxFit.cover,
-                    //     )))
-                  ],
-                ),
+                  PostHelper().customSizedBox()
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
-      ],
+      ),
     );
   }
 }

@@ -20,7 +20,7 @@ class _SliderState extends State<HomePageSlider> {
       child: Stack(
         children: [
           Container(
-              height: 210,
+              height: 240,
               width: double.infinity,
               // height: 200,
               child: PageView(
@@ -32,9 +32,13 @@ class _SliderState extends State<HomePageSlider> {
                 children: [
                   for (var i = 0; i < 3; i++)
                     Image.network(
-                      "https://images.unsplash.com/photo-1596516109370-29001ec8ec36?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTE2fHxwcm9kdWN0fGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+                      "https://images.unsplash.com/photo-1562273138-f46be4ebdf33?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDIwfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60",
                       fit: BoxFit.cover,
                     ),
+                  // Image.network(
+                  //   "https://images.unsplash.com/photo-1532413992378-f169ac26fff0?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nzd8fHByb2R1Y3R8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+                  //   fit: BoxFit.cover,
+                  // ),
                 ],
               )),
 

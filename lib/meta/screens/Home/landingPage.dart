@@ -1,3 +1,4 @@
+import 'package:bikroy/app/constants/Constantcolors.dart';
 import 'package:bikroy/app/widgets/bottomNav.dart';
 import 'package:bikroy/meta/screens/Directories/BusinessDirectoriesPage.dart';
 import 'package:bikroy/meta/screens/Home/homeTab.dart';
@@ -37,13 +38,11 @@ class _HomePageState extends State<LandingPage> {
     return Scaffold(
         backgroundColor: Colors.white,
         // appBar: AppBar(
+        //   foregroundColor: Colors.green,
         //   title: Row(
         //     mainAxisAlignment: MainAxisAlignment.center,
         //     children: [
-        //       Text("bikroy",
-        //           style: TextStyle(
-        //               color: ConstantColors().primaryColor,
-        //               fontWeight: FontWeight.bold)),
+        //       Text("bikroy", style: TextStyle(fontWeight: FontWeight.bold)),
         //     ],
         //   ),
         //   backgroundColor: Colors.white,

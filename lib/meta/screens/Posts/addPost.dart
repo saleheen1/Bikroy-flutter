@@ -416,18 +416,23 @@ class _AddPostState extends State<AddPost> with SingleTickerProviderStateMixin {
 
                   //Submit button
 
-                  InkWell(
-                    onTap: () {},
-                    child: Container(
-                        decoration: BoxDecoration(
-                            color: ConstantColors().primaryColor,
-                            borderRadius: BorderRadius.circular(5)),
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-                        child: Text(
-                          "Submit",
-                          style: TextStyle(color: Colors.white),
-                        )),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      InkWell(
+                        onTap: () {},
+                        child: Container(
+                            decoration: BoxDecoration(
+                                color: ConstantColors().primaryColor,
+                                borderRadius: BorderRadius.circular(5)),
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 15, vertical: 10),
+                            child: Text(
+                              "Submit",
+                              style: TextStyle(color: Colors.white),
+                            )),
+                      ),
+                    ],
                   ),
 
                   PostHelper().customSizedBox()

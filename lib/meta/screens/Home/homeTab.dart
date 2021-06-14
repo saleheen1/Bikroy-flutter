@@ -4,13 +4,8 @@ import 'package:bikroy/app/widgets/actionBar.dart';
 import 'package:bikroy/app/widgets/homePageSlider.dart';
 import 'package:bikroy/meta/screens/Categories/categoriesPage.dart';
 import 'package:bikroy/meta/screens/Home/homeHelper.dart';
-import 'package:bikroy/meta/screens/Home/sliverPage.dart';
-import 'package:bikroy/meta/screens/Posts/allPosts.dart';
 import 'package:bikroy/meta/screens/singleProduct.dart';
-import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
-import 'package:page_transition/page_transition.dart';
-import 'package:responsive_grid/responsive_grid.dart';
 
 class HomeTab extends StatelessWidget {
   const HomeTab({Key? key}) : super(key: key);
@@ -22,8 +17,7 @@ class HomeTab extends StatelessWidget {
         SizedBox(
           height: 45,
         ),
-
-        // ActionBar(title: "TradeBangla", hasBackArrow: false, showCart: false),
+        // ActionBar(title: "TradeBangla", hasBackArrow: false,),
         Container(
           height: 1,
           width: double.infinity,

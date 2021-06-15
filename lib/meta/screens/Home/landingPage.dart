@@ -28,6 +28,7 @@ class _HomePageState extends State<LandingPage> {
   //Bottom nav pages
   final List<Widget> _children = [
     HomeTab(),
+    // SliverPage(),
     SearchTab(),
     PostCategoryPage(),
     BusinessDirectoriesPage(),
@@ -48,9 +49,7 @@ class _HomePageState extends State<LandingPage> {
         //   backgroundColor: Colors.white,
         //   elevation: 0,
         // ),
-        body: SingleChildScrollView(
-          child: _children[_currentIndex],
-        ),
+        body: _children[_currentIndex],
         bottomNavigationBar: BottomNav(
           currentIndex: _currentIndex,
           onTabTapped: onTabTapped,

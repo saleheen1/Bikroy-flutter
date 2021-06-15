@@ -1,7 +1,6 @@
 import 'package:bikroy/app/constants/Constantcolors.dart';
 import 'package:bikroy/app/constants/ConstantsStyle.dart';
-import 'package:bikroy/core/services/helper.dart';
-import 'package:bikroy/meta/screens/Extras/aboutUs.dart';
+import 'package:bikroy/core/Services/helper.dart';
 import 'package:bikroy/meta/screens/Posts/allPosts.dart';
 import 'package:bikroy/meta/screens/Profile/resumeView.dart';
 import 'package:bikroy/meta/screens/Profile/userProfile.dart';

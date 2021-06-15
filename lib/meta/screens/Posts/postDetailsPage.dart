@@ -1,6 +1,6 @@
 import 'package:bikroy/app/constants/Constantcolors.dart';
 import 'package:bikroy/app/constants/ConstantsStyle.dart';
-import 'package:bikroy/core/services/helper.dart';
+import 'package:bikroy/core/Services/helper.dart';
 import 'package:flutter/material.dart';
 
 class PostDetailsPage extends StatefulWidget {

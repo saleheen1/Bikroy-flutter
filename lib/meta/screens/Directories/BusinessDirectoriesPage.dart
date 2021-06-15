@@ -1,7 +1,6 @@
+import 'package:bikroy/core/Services/helper.dart';
 import 'package:bikroy/meta/screens/Search/servicesSecondPage.dart';
 import 'package:flutter/material.dart';
-
-import '../../../core/services/helper.dart';
 
 class BusinessDirectoriesPage extends StatelessWidget {
   const BusinessDirectoriesPage({Key? key}) : super(key: key);

@@ -138,7 +138,7 @@ class Helper {
       alignment: Alignment.bottomCenter,
       // color: Color(0xff00C7FF),
       color: ConstantColors().primaryColor,
-      height: 100,
+      height: 90,
       width: double.infinity,
       child: Row(
         children: [

@@ -1,10 +1,5 @@
-import 'package:bikroy/app/constants/Constantcolors.dart';
-import 'package:bikroy/app/constants/ConstantsStyle.dart';
 import 'package:bikroy/app/widgets/customInput.dart';
-import 'package:bikroy/core/services/helper.dart';
-import 'package:bikroy/meta/screens/Categories/categoriesPage.dart';
-import 'package:bikroy/meta/screens/Directories/2ndBusinessDirectoriesPage.dart';
-import 'package:bikroy/meta/screens/Posts/allPosts.dart';
+import 'package:bikroy/core/Services/helper.dart';
 import 'package:bikroy/meta/screens/Search/searchPageHelper.dart';
 import 'package:bikroy/meta/screens/Search/servicesSecondPage.dart';
 import 'package:flutter/material.dart';

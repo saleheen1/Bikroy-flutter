@@ -1,6 +1,5 @@
 import 'package:bikroy/app/constants/Constantcolors.dart';
-import 'package:bikroy/app/widgets/actionBar.dart';
-import 'package:bikroy/core/services/helper.dart';
+import 'package:bikroy/core/Services/helper.dart';
 import 'package:flutter/material.dart';
 
 class CategoryList extends StatelessWidget {
@@ -17,15 +16,12 @@ class CategoryList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 20),
-      child: Column(
-        children: [
-          ActionBar(
-            title: "$appBarTitle",
-            hasBackArrow: true,
-          ),
-          ListView.builder(
+    return Column(
+      children: [
+        Helper().heroArea("Categories", true, Colors.white, context),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 6),
+          child: ListView.builder(
             padding: EdgeInsets.all(0),
             itemCount: 7,
             physics: NeverScrollableScrollPhysics(),
@@ -95,9 +91,9 @@ class CategoryList extends StatelessWidget {
                 ),
               );
             },
-          )
-        ],
-      ),
+          ),
+        ),
+      ],
     );
   }
 }

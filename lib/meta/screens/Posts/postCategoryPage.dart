@@ -1,6 +1,5 @@
-import 'package:bikroy/core/services/helper.dart';
+import 'package:bikroy/core/Services/helper.dart';
 import 'package:bikroy/meta/screens/Posts/postSubCategory.dart';
-import 'package:bikroy/meta/screens/Search/servicesSecondPage.dart';
 import 'package:flutter/material.dart';
 
 class PostCategoryPage extends StatefulWidget {

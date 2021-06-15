@@ -1,10 +1,9 @@
 import 'package:bikroy/app/constants/Constantcolors.dart';
 import 'package:bikroy/app/constants/ConstantsStyle.dart';
 import 'package:bikroy/app/widgets/customInput.dart';
-import 'package:bikroy/core/services/helper.dart';
+import 'package:bikroy/core/Services/helper.dart';
 import 'package:bikroy/meta/screens/Posts/postHelper.dart';
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
 
 class AddPost extends StatefulWidget {
   const AddPost({Key? key}) : super(key: key);

@@ -8,15 +8,13 @@ class PostSubCategory extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: CategoryList(
-          appBarTitle: "Auto Vehicles",
-          whenPressed: () {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => AddPost()));
-          },
-          categoryName: "Electronics",
-        ),
+      body: CategoryList(
+        appBarTitle: "Auto Vehicles",
+        whenPressed: () {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => AddPost()));
+        },
+        categoryName: "Electronics",
       ),
     );
   }

@@ -59,6 +59,7 @@ class _AddPostState extends State<AddPost> with SingleTickerProviderStateMixin {
     super.dispose();
   }
 
+//add posts input fields page //active
   @override
   Widget build(BuildContext context) {
     return Scaffold(

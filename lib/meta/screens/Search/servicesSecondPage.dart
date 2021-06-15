@@ -8,20 +8,18 @@ class ServicesSecondPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: CategoryList(
-          appBarTitle: "Electronics",
-          categoryName: "Cars & Electronics",
-          whenPressed: () {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => AllPosts()));
-            // Navigator.push(
-            //     context,
-            //     PageTransition(
-            //         child: CategorySecondPage(),
-            //         type: PageTransitionType.rightToLeft));
-          },
-        ),
+      body: CategoryList(
+        appBarTitle: "Electronics",
+        categoryName: "Cars & Electronics",
+        whenPressed: () {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => AllPosts()));
+          // Navigator.push(
+          //     context,
+          //     PageTransition(
+          //         child: CategorySecondPage(),
+          //         type: PageTransitionType.rightToLeft));
+        },
       ),
     );
   }

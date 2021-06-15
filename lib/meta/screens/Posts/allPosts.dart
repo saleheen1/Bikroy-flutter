@@ -4,7 +4,8 @@ import 'package:bikroy/core/Services/helper.dart';
 import 'package:bikroy/meta/screens/Posts/postDetailsPage.dart';
 import 'package:bikroy/meta/screens/Search/searchPageHelper.dart';
 import 'package:flutter/material.dart';
-import 'package:page_transition/page_transition.dart';
+
+//showing all post //active
 
 class AllPosts extends StatelessWidget {
   const AllPosts({Key? key}) : super(key: key);
@@ -39,9 +40,13 @@ class AllPosts extends StatelessWidget {
                         onTap: () {
                           Navigator.push(
                               context,
-                              PageTransition(
-                                  child: PostDetailsPage(),
-                                  type: PageTransitionType.rightToLeft));
+                              MaterialPageRoute(
+                                  builder: (context) => PostDetailsPage()));
+                          // Navigator.push(
+                          //     context,
+                          //     PageTransition(
+                          //         child: PostDetailsPage(),
+                          //         type: PageTransitionType.rightToLeft));
                         },
                         child: Container(
                           margin: EdgeInsets.only(bottom: 28),

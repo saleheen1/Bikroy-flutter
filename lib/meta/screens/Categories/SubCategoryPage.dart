@@ -13,7 +13,7 @@ class SubCategoryPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final categoryId = ModalRoute.of(context)!.settings.arguments;
+    var categoryId = ModalRoute.of(context)!.settings.arguments;
 
     return Scaffold(
       backgroundColor: Colors.white,

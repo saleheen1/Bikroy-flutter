@@ -2,10 +2,12 @@ import 'package:bikroy/app/constants/Constantcolors.dart';
 import 'package:bikroy/app/constants/ConstantsStyle.dart';
 import 'package:bikroy/app/widgets/customButton.dart';
 import 'package:bikroy/app/widgets/customInput.dart';
+import 'package:bikroy/core/Models/categoryModel.dart';
 import 'package:bikroy/meta/screens/Authentications/signUpPage.dart';
 import 'package:bikroy/meta/screens/Home/landingPage.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:provider/provider.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -50,8 +52,6 @@ class _LoginPageState extends State<LoginPage>
 
   @override
   Widget build(BuildContext context) {
-    // var screenWidth = MediaQuery.of(context).size.width;
-
     return Scaffold(
       body: GestureDetector(
         onTap: () => FocusManager.instance.primaryFocus?.unfocus(),

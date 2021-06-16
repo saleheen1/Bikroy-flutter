@@ -1,4 +1,7 @@
 import 'package:bikroy/app/constants/Constantcolors.dart';
+import 'package:bikroy/core/Controllers/categoryController.dart';
+import 'package:bikroy/core/Models/categoryModel.dart';
+import 'package:bikroy/core/Services/categoryService.dart';
 import 'package:bikroy/meta/screens/Authentications/loginPage.dart';
 import 'package:bikroy/meta/screens/Home/landingPage.dart';
 import 'package:flutter/material.dart';
@@ -24,10 +27,15 @@ class MyApp extends StatelessWidget {
   }
 }
 
-// return MultiProvider(
-//         child: MaterialApp(
-//           debugShowCheckedModeBanner: false,
-//           theme: ThemeData(fontFamily: 'poppins'),
-//           home: HomePage(),
-//         ),
-//         providers: [ChangeNotifierProvider(create: (_) => NavHelper())]);
+    // return MultiProvider(
+    //   providers: [
+    //     FutureProvider(
+    //         create: (_) => CategoryService().fetchCategory(), initialData: null)
+    //   ],
+    //   child: MaterialApp(
+    //     debugShowCheckedModeBanner: false,
+    //     theme: ThemeData(
+    //         fontFamily: 'poppins', accentColor: ConstantColors().primaryColor),
+    //     home: LoginPage(),
+    //   ),
+    // );

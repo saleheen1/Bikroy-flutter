@@ -1,38 +1,37 @@
 import 'package:bikroy/app/constants/Constantcolors.dart';
 import 'package:bikroy/app/widgets/categoryList.dart';
-import 'package:bikroy/core/Controllers/categoryController.dart';
 import 'package:bikroy/core/Controllers/sub_category_Controller.dart';
-import 'package:bikroy/core/Models/categoryModel.dart';
-import 'package:bikroy/core/Services/categoryService.dart';
+import 'package:bikroy/core/Models/subCategoryModel.dart';
 import 'package:bikroy/core/Services/helper.dart';
 import 'package:bikroy/core/Services/sub_category_Services.dart';
-import 'package:bikroy/meta/screens/Categories/SubCategoryPage.dart';
 import 'package:bikroy/meta/screens/Posts/allPosts.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:page_transition/page_transition.dart';
 
-class CategoriesPage extends StatelessWidget {
-  const CategoriesPage({Key? key}) : super(key: key);
+class SubCategoryPage extends StatelessWidget {
+  const SubCategoryPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    // var category = Provider.of<CategoryModel>(context);
+    final categoryId = ModalRoute.of(context)!.settings.arguments;
 
     return Scaffold(
-        backgroundColor: Colors.white,
-        body: Column(
+      backgroundColor: Colors.white,
+      body: SingleChildScrollView(
+        child: Column(
           children: [
-            Helper().heroArea("Categories", true, Colors.white, context),
-            FutureBuilder<CategoryModel>(
-                future: CategoryController().getCategoryData(),
+            Helper().heroArea("Sub Category", true, Colors.white, context),
+            FutureBuilder<SubCategoryModel>(
+                future: SubCategoryServices().fetchCategory(categoryId),
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
+                    print(snapshot.data);
                     return Padding(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 25, vertical: 6),
                       child: ListView.builder(
                         padding: EdgeInsets.all(0),
-                        itemCount: snapshot.data!.data.data.length,
+                        itemCount: snapshot.data!.allData.data.length,
                         physics: NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
                         scrollDirection: Axis.vertical,
@@ -43,16 +42,11 @@ class CategoriesPage extends StatelessWidget {
                             color: Colors.transparent,
                             child: InkWell(
                               onTap: () {
-                                // SubCategoryServices().setCategoryId(
-                                //     snapshot.data!.data.data[index].id);
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => SubCategoryPage(),
-                                        settings: RouteSettings(
-                                          arguments: snapshot
-                                              .data!.data.data[index].id,
-                                        )));
+                                        builder: (context) =>
+                                            SubCategoryPage()));
                               },
                               child: Container(
                                 decoration: BoxDecoration(
@@ -77,8 +71,8 @@ class CategoriesPage extends StatelessWidget {
                                               CrossAxisAlignment.start,
                                           children: [
                                             Text(
-                                              snapshot
-                                                  .data!.data.data[index].name,
+                                              snapshot.data!.allData.data[index]
+                                                  .subCategoryName,
                                               style: TextStyle(
                                                   fontSize: 15,
                                                   fontWeight: FontWeight.bold,
@@ -126,20 +120,8 @@ class CategoriesPage extends StatelessWidget {
                   }
                 }),
           ],
-        )
-
-        // body: CategoryList(
-        //   appBarTitle: "Categories",
-        //   categoryName: "Agriculture Products",
-        //   whenPressed: () {
-        //     Navigator.push(
-        //         context, MaterialPageRoute(builder: (context) => AllPosts()));
-        //     // Navigator.push(
-        //     //     context,
-        //     //     PageTransition(
-        //     //         child: AllPosts(), type: PageTransitionType.rightToLeft));
-        //   },
-        // ),
-        );
+        ),
+      ),
+    );
   }
 }

@@ -2,8 +2,21 @@ import 'package:bikroy/app/constants/Constantcolors.dart';
 import 'package:bikroy/app/constants/ConstantsStyle.dart';
 import 'package:flutter/material.dart';
 
-class SingleProduct extends StatelessWidget {
-  const SingleProduct({Key? key}) : super(key: key);
+class SingleAd extends StatelessWidget {
+  const SingleAd(
+      {Key? key,
+      required this.description,
+      required this.title,
+      required this.areaName,
+      required this.price,
+      required this.postedBy})
+      : super(key: key);
+
+  final String description;
+  final String title;
+  final String areaName;
+  final int price;
+  final String postedBy;
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +46,7 @@ class SingleProduct extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Huawei Nova 3",
+                    title,
                     style: TextStyle(
                         fontSize: 25,
                         color: ConstantColors().headingColor,
@@ -44,7 +57,7 @@ class SingleProduct extends StatelessWidget {
                   ),
                   //price
                   Text(
-                    "5999 Tk",
+                    "$price Tk",
                     style: TextStyle(
                         fontSize: 22,
                         color: ConstantColors().primaryColor,
@@ -85,7 +98,7 @@ class SingleProduct extends StatelessWidget {
                             width: 9,
                           ),
                           Text(
-                            "Mirpur, Dhaka",
+                            areaName,
                             style: ConstantsStyle().paraGraphStyle,
                           ),
                         ],
@@ -109,7 +122,7 @@ class SingleProduct extends StatelessWidget {
                             width: 9,
                           ),
                           Text(
-                            "Saleheen",
+                            postedBy,
                             style: ConstantsStyle().paraGraphStyle,
                           ),
                         ],
@@ -160,7 +173,7 @@ class SingleProduct extends StatelessWidget {
                   Text("Description", style: ConstantsStyle().regularHeading),
                   SizedBox(height: 10),
                   Text(
-                    "Fully function and running device. No problem at all. Price is negotiable. No scratch or dent. Super amoled display.",
+                    description,
                     style: ConstantsStyle().paraGraphStyle,
                   )
                 ],

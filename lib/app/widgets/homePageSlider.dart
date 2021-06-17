@@ -14,8 +14,8 @@ class _SliderState extends State<HomePageSlider> {
     // int _selectedSlide = 0;
     return InkWell(
       onTap: () {
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => SingleProduct()));
+        // Navigator.push(
+        //     context, MaterialPageRoute(builder: (context) => SingleProduct()));
       },
       child: Stack(
         children: [

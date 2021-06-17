@@ -1,6 +1,8 @@
 import 'package:bikroy/app/constants/Constantcolors.dart';
 import 'package:bikroy/app/constants/ConstantsStyle.dart';
 import 'package:bikroy/app/widgets/homePageSlider.dart';
+import 'package:bikroy/core/Models/ads_Model.dart';
+import 'package:bikroy/core/Services/adsServices.dart';
 import 'package:bikroy/meta/screens/Categories/categoriesPage.dart';
 import 'package:bikroy/meta/screens/Home/homeHelper.dart';
 import 'package:bikroy/meta/screens/singleProduct.dart';
@@ -143,69 +145,102 @@ class HomeTab extends StatelessWidget {
                         child: HomeHelper().homeCategory()),
                     //category
 
-                    //product grid list
-                    Container(
-                      child: GridView.count(
-                        padding: EdgeInsets.zero,
-                        scrollDirection: Axis.vertical,
-                        mainAxisSpacing: 20,
-                        crossAxisSpacing: 20,
-                        physics: NeverScrollableScrollPhysics(),
-                        crossAxisCount: 2,
-                        shrinkWrap: true,
-                        childAspectRatio: 4 / 6.5,
-                        children: List.generate(6, (index) {
-                          return InkWell(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => SingleProduct()));
-                            },
-                            child: Container(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Container(
-                                    height: 170,
-                                    width: double.infinity,
+                    FutureBuilder<AdsModel>(
+                        future: AdsServices().fetchAds(),
+                        builder: (context, snapshot) {
+                          if (snapshot.hasData) {
+                            return Container(
+                              child: GridView.count(
+                                padding: EdgeInsets.zero,
+                                scrollDirection: Axis.vertical,
+                                mainAxisSpacing: 20,
+                                crossAxisSpacing: 20,
+                                physics: NeverScrollableScrollPhysics(),
+                                crossAxisCount: 2,
+                                shrinkWrap: true,
+                                childAspectRatio: 4 / 6.5,
+                                children: List.generate(6, (index) {
+                                  return InkWell(
+                                    onTap: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) => SingleAd(
+                                                  description: snapshot
+                                                      .data!
+                                                      .adPost!
+                                                      .data![index]
+                                                      .description,
+                                                  title: snapshot.data!.adPost!
+                                                      .data![index].title,
+                                                  areaName: snapshot
+                                                      .data!
+                                                      .adPost!
+                                                      .data![index]
+                                                      .areaName,
+                                                  price: snapshot.data!.adPost!
+                                                      .data![index].price,
+                                                  postedBy: snapshot
+                                                      .data!
+                                                      .adPost!
+                                                      .data![index]
+                                                      .creator)));
+                                    },
                                     child: Container(
-                                      child: ClipRRect(
-                                        borderRadius: BorderRadius.circular(12),
-                                        child: Image.network(
-                                            "https://images.unsplash.com/photo-1556228720-195a672e8a03?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE5fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60",
-                                            fit: BoxFit.cover),
-                                        // child: Image.network(
-                                        //     "https://cdn.pixabay.com/photo/2016/02/02/14/42/bank-1175430__340.png",
-                                        //     fit: BoxFit.cover),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Container(
+                                            height: 170,
+                                            width: double.infinity,
+                                            child: Container(
+                                              child: ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(12),
+                                                child: Image.network(
+                                                    "https://images.unsplash.com/photo-1556228720-195a672e8a03?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE5fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60",
+                                                    fit: BoxFit.cover),
+                                                // child: Image.network(
+                                                //     "https://cdn.pixabay.com/photo/2016/02/02/14/42/bank-1175430__340.png",
+                                                //     fit: BoxFit.cover),
+                                              ),
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            height: 12,
+                                          ),
+                                          Text(
+                                            snapshot.data!.adPost!.data![index]
+                                                .title,
+                                            overflow: TextOverflow.ellipsis,
+                                            style: ConstantsStyle()
+                                                .productTitleHeading,
+                                          ),
+                                          Text(
+                                            "Elephant Road",
+                                            overflow: TextOverflow.ellipsis,
+                                            style:
+                                                ConstantsStyle().paraGraphStyle,
+                                          ),
+                                          SizedBox(
+                                            height: 6,
+                                          ),
+                                          Text(
+                                            "${snapshot.data!.adPost!.data![index].price.toString()} tk",
+                                            style: ConstantsStyle().priceStyle,
+                                          ),
+                                        ],
                                       ),
                                     ),
-                                  ),
-                                  SizedBox(
-                                    height: 12,
-                                  ),
-                                  Text(
-                                    "Samsung Galaxy Tab",
-                                    style: ConstantsStyle().productTitleHeading,
-                                  ),
-                                  Text(
-                                    "Elephant Road",
-                                    style: ConstantsStyle().paraGraphStyle,
-                                  ),
-                                  SizedBox(
-                                    height: 6,
-                                  ),
-                                  Text(
-                                    "Tk 200",
-                                    style: ConstantsStyle().priceStyle,
-                                  ),
-                                ],
+                                  );
+                                }),
                               ),
-                            ),
-                          );
-                        }),
-                      ),
-                    ),
+                            );
+                          } else {
+                            return Center(child: CircularProgressIndicator());
+                          }
+                        })
                   ],
                 ),
               )

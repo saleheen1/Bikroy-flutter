@@ -134,7 +134,7 @@ class Helper {
   Widget heroArea(
       String title, bool hasBackArrow, Color arrowColor, BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(bottom: 17, left: 20, right: 20),
+      padding: EdgeInsets.only(left: 20, right: 20, top: 24),
       alignment: Alignment.bottomCenter,
       // color: Color(0xff00C7FF),
       color: ConstantColors().primaryColor,
@@ -143,29 +143,24 @@ class Helper {
       child: Row(
         children: [
           if (hasBackArrow)
-            Container(
-              width: 35,
-              child: InkWell(
-                onTap: () {
-                  Navigator.pop(context);
-                },
-                child: Container(
-                    margin: EdgeInsets.only(right: 17),
-                    alignment: Alignment.center,
-                    height: 30,
-                    width: 30,
-                    // color: Constants.kPrimary,
-                    child: Icon(
-                      Icons.arrow_back,
-                      color: arrowColor,
-                      size: 25,
-                    )),
-              ),
+            InkWell(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: Container(
+                  padding: EdgeInsets.only(right: 7),
+                  alignment: Alignment.center,
+                  // color: Constants.kPrimary,
+                  child: Icon(
+                    Icons.arrow_back,
+                    color: arrowColor,
+                    size: 25,
+                  )),
             ),
           Expanded(
             child: Container(
               margin:
-                  hasBackArrow ? EdgeInsets.only(left: 15) : EdgeInsets.zero,
+                  hasBackArrow ? EdgeInsets.only(left: 12) : EdgeInsets.zero,
               child: Text(title,
                   style: TextStyle(
                       color: Colors.white,

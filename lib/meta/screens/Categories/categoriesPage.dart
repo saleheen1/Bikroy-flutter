@@ -48,7 +48,10 @@ class CategoriesPage extends StatelessWidget {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => SubCategoryPage(),
+                                        builder: (context) => SubCategoryPage(
+                                              subCategoryName: snapshot
+                                                  .data!.data.data[index].name,
+                                            ),
                                         settings: RouteSettings(
                                           arguments: snapshot
                                               .data!.data.data[index].id,
@@ -60,43 +63,22 @@ class CategoriesPage extends StatelessWidget {
                                         bottom: BorderSide(
                                             color: ConstantColors()
                                                 .dividerColor))),
-                                padding: EdgeInsets.symmetric(vertical: 17),
+                                padding: EdgeInsets.symmetric(vertical: 14),
                                 child: Row(
                                   children: [
-                                    Row(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        // Icon(Helper().getIcon(index),
-                                        //     color: Helper().getColor(index)),
-                                        SizedBox(
-                                          width: 12,
-                                        ),
-                                        Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              snapshot
-                                                  .data!.data.data[index].name,
-                                              style: TextStyle(
-                                                  fontSize: 15,
-                                                  fontWeight: FontWeight.bold,
-                                                  color: ConstantColors()
-                                                      .greyPrimary),
-                                            ),
-                                            SizedBox(
-                                              height: 4,
-                                            ),
-                                            // Text(
-                                            //   "Agro Products Services, Poultry & Dairy",
-                                            //   style: TextStyle(
-                                            //       fontSize: 13,
-                                            //       color: ConstantColors().greySecondary),
-                                            // ),
-                                          ],
-                                        ),
-                                      ],
+                                    SizedBox(
+                                      width: 12,
+                                    ),
+                                    Text(
+                                      snapshot.data!.data.data[index].name,
+                                      style: TextStyle(
+                                          fontSize: 15,
+                                          height: 1.7,
+                                          fontWeight: FontWeight.bold,
+                                          color: ConstantColors().greyPrimary),
+                                    ),
+                                    SizedBox(
+                                      height: 4,
                                     ),
                                     Expanded(
                                       child: Row(

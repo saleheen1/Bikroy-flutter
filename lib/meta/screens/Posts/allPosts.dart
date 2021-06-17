@@ -25,15 +25,9 @@ class AllPosts extends StatelessWidget {
                 child: Column(
                   children: [
                     SearchHelper().locationFilter(),
-                    SizedBox(
-                      height: 18,
-                    ),
                     Divider(
                       thickness: .6,
-                      height: 0,
-                    ),
-                    SizedBox(
-                      height: 20,
+                      height: 35,
                     ),
                     for (var i = 0; i < 7; i++)
                       InkWell(

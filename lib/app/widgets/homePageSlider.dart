@@ -1,4 +1,4 @@
-import 'package:bikroy/meta/screens/singleProduct.dart';
+import 'package:bikroy/meta/screens/Posts/singleProduct.dart';
 import 'package:flutter/material.dart';
 
 class HomePageSlider extends StatefulWidget {

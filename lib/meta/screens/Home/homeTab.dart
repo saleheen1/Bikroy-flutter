@@ -5,7 +5,7 @@ import 'package:bikroy/core/Models/ads_Model.dart';
 import 'package:bikroy/core/Services/adsServices.dart';
 import 'package:bikroy/meta/screens/Categories/categoriesPage.dart';
 import 'package:bikroy/meta/screens/Home/homeHelper.dart';
-import 'package:bikroy/meta/screens/singleProduct.dart';
+import 'package:bikroy/meta/screens/Posts/singleProduct.dart';
 import 'package:flutter/material.dart';
 
 class HomeTab extends StatelessWidget {
@@ -159,7 +159,9 @@ class HomeTab extends StatelessWidget {
                                 crossAxisCount: 2,
                                 shrinkWrap: true,
                                 childAspectRatio: 4 / 6.5,
-                                children: List.generate(6, (index) {
+                                children: List.generate(
+                                    snapshot.data!.adPost!.data!.length,
+                                    (index) {
                                   return InkWell(
                                     onTap: () {
                                       Navigator.push(

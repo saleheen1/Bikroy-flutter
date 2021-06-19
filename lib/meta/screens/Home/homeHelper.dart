@@ -39,7 +39,7 @@ class HomeHelper {
                     child: Container(
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
-                          border: Border.all(color: Colors.grey),
+                          border: Border.all(color: Color(0xffdedede)),
                           borderRadius: BorderRadius.circular(50)),
                       child: Padding(
                         padding: const EdgeInsets.symmetric(

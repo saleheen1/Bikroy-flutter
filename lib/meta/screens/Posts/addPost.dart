@@ -44,10 +44,17 @@ class _AddPostState extends State<AddPost> with SingleTickerProviderStateMixin {
   }
 
   int _radioValue = 0;
+  int _usedOrSell = 0;
 
   void setSelectedRadio(int? val) {
     setState(() {
       _radioValue = val!;
+    });
+  }
+
+  void setUsedOrSellRadio(int? val) {
+    setState(() {
+      _usedOrSell = val!;
     });
   }
 
@@ -205,9 +212,9 @@ class _AddPostState extends State<AddPost> with SingleTickerProviderStateMixin {
                     children: [
                       Radio(
                           value: 0,
-                          groupValue: _radioValue,
+                          groupValue: _usedOrSell,
                           activeColor: Colors.green,
-                          onChanged: setSelectedRadio),
+                          onChanged: setUsedOrSellRadio),
                       Text('Used'),
                     ],
                   ),
@@ -215,9 +222,9 @@ class _AddPostState extends State<AddPost> with SingleTickerProviderStateMixin {
                     children: [
                       Radio(
                           value: 1,
-                          groupValue: _radioValue,
+                          groupValue: _usedOrSell,
                           activeColor: Colors.green,
-                          onChanged: setSelectedRadio),
+                          onChanged: setUsedOrSellRadio),
                       Text('New'),
                     ],
                   ),

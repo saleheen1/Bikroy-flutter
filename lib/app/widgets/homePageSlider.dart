@@ -20,7 +20,7 @@ class _SliderState extends State<HomePageSlider> {
       child: Stack(
         children: [
           Container(
-              height: 240,
+              height: 200,
               width: double.infinity,
               // height: 200,
               child: PageView(

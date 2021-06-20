@@ -63,12 +63,6 @@ class CategoryList extends StatelessWidget {
                                 SizedBox(
                                   height: 4,
                                 ),
-                                // Text(
-                                //   "Agro Products Services, Poultry & Dairy",
-                                //   style: TextStyle(
-                                //       fontSize: 13,
-                                //       color: ConstantColors().greySecondary),
-                                // ),
                               ],
                             ),
                           ],

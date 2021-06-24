@@ -2,6 +2,8 @@ import 'package:bikroy/app/constants/Constantcolors.dart';
 import 'package:bikroy/app/constants/ConstantsStyle.dart';
 import 'package:bikroy/app/widgets/customButton.dart';
 import 'package:bikroy/app/widgets/customInput.dart';
+import 'package:bikroy/core/Controllers/register-controller.dart';
+import 'package:bikroy/core/Services/Register-service.dart';
 import 'package:bikroy/meta/screens/Authentications/loginPage.dart';
 import 'package:bikroy/meta/screens/Home/landingPage.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +19,23 @@ class SignUpPage extends StatefulWidget {
 
 class _SignUpPageState extends State<SignUpPage>
     with SingleTickerProviderStateMixin {
+//variables for storing input datas
+  String _name = "";
+  String _mobile = "";
+  String _password = "";
+  String _confirmPassword = "";
+  String _email = "";
+  String _type = "";
+
+  //account type list
+  var _accountType = [
+    "Select Account Type",
+    "Personal Account",
+    "Business Account",
+    "E-shop",
+  ];
+  int _selectedAccount = 0;
+
   late FocusNode focusNode;
 
   AnimationController? _controller;
@@ -54,8 +73,6 @@ class _SignUpPageState extends State<SignUpPage>
 
   @override
   Widget build(BuildContext context) {
-    // var screenWidth = MediaQuery.of(context).size.width;
-
     return Scaffold(
       // resizeToAvoidBottomInset: false,
       body: GestureDetector(
@@ -67,17 +84,6 @@ class _SignUpPageState extends State<SignUpPage>
               child: Container(
                   child: Column(
                 children: [
-                  // Padding(
-                  //   padding: const EdgeInsets.only(bottom: 70, top: 50),
-                  //   child: Container(
-                  //     height: 35,
-                  //     decoration: BoxDecoration(
-                  //         image: DecorationImage(
-                  //             image: AssetImage('assets/images/logo.png'),
-                  //             fit: BoxFit.fitHeight)),
-                  //   ),
-                  // ),
-
                   //Sign up text
                   Padding(
                     padding: const EdgeInsets.only(
@@ -95,7 +101,9 @@ class _SignUpPageState extends State<SignUpPage>
                       //name organization, eshop name
                       CustomInput(
                         hintText: "Name or Organization",
-                        onChanged: (value) {},
+                        onChanged: (value) {
+                          _name = value;
+                        },
                         onSubmitted: (value) {
                           focusNode.nextFocus();
                         },
@@ -105,7 +113,9 @@ class _SignUpPageState extends State<SignUpPage>
                       CustomInput(
                         isNumberField: true,
                         hintText: "Mobile",
-                        onChanged: (value) {},
+                        onChanged: (value) {
+                          _mobile = value;
+                        },
                         onSubmitted: (value) {
                           focusNode.nextFocus();
                         },
@@ -115,7 +125,9 @@ class _SignUpPageState extends State<SignUpPage>
                       //Email
                       CustomInput(
                         hintText: "Email",
-                        onChanged: (value) {},
+                        onChanged: (value) {
+                          _email = value;
+                        },
                         onSubmitted: (value) {
                           focusNode.nextFocus();
                         },
@@ -125,7 +137,9 @@ class _SignUpPageState extends State<SignUpPage>
                       //password
                       CustomInput(
                         hintText: "Password",
-                        onChanged: (value) {},
+                        onChanged: (value) {
+                          _password = value;
+                        },
                         onSubmitted: (value) {
                           focusNode.nextFocus();
                         },
@@ -136,7 +150,9 @@ class _SignUpPageState extends State<SignUpPage>
                       //Confirm Password
                       CustomInput(
                         hintText: "Confirm Password",
-                        onChanged: (value) {},
+                        onChanged: (value) {
+                          _confirmPassword = value;
+                        },
                         onSubmitted: (value) {
                           focusNode.nextFocus();
                         },
@@ -161,19 +177,15 @@ class _SignUpPageState extends State<SignUpPage>
                         iconSize: 26,
                         elevation: 16,
                         style: const TextStyle(color: Color(0xff646464)),
-                        // underline: Container(
-                        //     height: 1, color: Color(0xffC6C6C6)),
                         onChanged: (String? newValue) {
                           setState(() {
                             dropdownValue = newValue!;
+                            _selectedAccount = _accountType.indexOf(newValue);
+                            print(_selectedAccount);
                           });
                         },
-                        items: <String>[
-                          'Select Account Type',
-                          'Personal Account',
-                          'Business Account',
-                          'E-shop',
-                        ].map<DropdownMenuItem<String>>((String value) {
+                        items: _accountType
+                            .map<DropdownMenuItem<String>>((String value) {
                           return DropdownMenuItem<String>(
                             value: value,
                             child: Text(
@@ -214,11 +226,13 @@ class _SignUpPageState extends State<SignUpPage>
                     color: ConstantColors().primaryColor,
                     outlineBtn: false,
                     onPressed: () {
-                      Navigator.push(
-                          context,
-                          PageTransition(
-                              child: LandingPage(),
-                              type: PageTransitionType.rightToLeft));
+                      RegisterController().submitData(_name, _mobile, _password,
+                          _email, _selectedAccount.toString());
+                      // Navigator.push(
+                      //     context,
+                      //     PageTransition(
+                      //         child: LandingPage(),
+                      //         type: PageTransitionType.rightToLeft));
                     },
                   ),
 
@@ -229,23 +243,6 @@ class _SignUpPageState extends State<SignUpPage>
                       style: ConstantsStyle().regularHeading,
                     ),
                   ),
-
-                  //sign Up with google
-                  // CustomButton(
-                  //   text: "Sign up with Google",
-                  //   color: Color(0xffdb4a39),
-                  //   outlineBtn: false,
-                  //   hasIcon: true,
-                  //   icon: Icons.
-                  //   onPressed: () {
-                  //     Navigator.push(
-                  //         context,
-                  //         PageTransition(
-                  //             child: HomePage(),
-                  //             type: PageTransitionType.rightToLeft));
-                  //   },
-                  // ),
-
                   Material(
                     child: InkWell(
                       onTap: () {},

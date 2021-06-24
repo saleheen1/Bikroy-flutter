@@ -36,11 +36,6 @@ class AllPosts extends StatelessWidget {
                               context,
                               MaterialPageRoute(
                                   builder: (context) => PostDetailsPage()));
-                          // Navigator.push(
-                          //     context,
-                          //     PageTransition(
-                          //         child: PostDetailsPage(),
-                          //         type: PageTransitionType.rightToLeft));
                         },
                         child: Container(
                           margin: EdgeInsets.only(bottom: 28),

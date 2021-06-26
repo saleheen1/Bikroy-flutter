@@ -1,5 +1,7 @@
 import 'package:bikroy/app/constants/Constantcolors.dart';
+import 'package:bikroy/core/Controllers/register-controller.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class CustomButton extends StatelessWidget {
   final String text;
@@ -8,6 +10,7 @@ class CustomButton extends StatelessWidget {
   final bool hasIcon;
   final IconData icon;
   final Color color;
+  final bool isLoading;
 
   const CustomButton({
     Key? key,
@@ -17,6 +20,7 @@ class CustomButton extends StatelessWidget {
     this.hasIcon = false,
     this.icon = Icons.ac_unit,
     required this.color,
+    this.isLoading = false,
   }) : super(key: key);
 
   @override
@@ -60,6 +64,49 @@ class CustomButton extends StatelessWidget {
                                 ? ConstantColors().primaryColor
                                 : Colors.white),
                       ),
+                      // Consumer<RegisterController>(
+                      //     builder: (context, value, child) {
+                      //   return value.isloading == true
+                      //       ? Center(
+                      //           child: SizedBox(
+                      //             height: 36,
+                      //             child: CircularProgressIndicator(
+                      //               color: Colors.white,
+                      //             ),
+                      //           ),
+                      //         )
+                      //       : Text(
+                      //           text,
+                      //           style: TextStyle(
+                      //               color: outlineBtn
+                      //                   ? ConstantColors().primaryColor
+                      //                   : Colors.white),
+                      //         );
+                      // })
+                      // Visibility(
+                      //   visible: context.watch<RegisterController>().isloading
+                      //       ? false
+                      //       : true,
+                      //   child: Text(
+                      //     text,
+                      //     style: TextStyle(
+                      //         color: outlineBtn
+                      //             ? ConstantColors().primaryColor
+                      //             : Colors.white),
+                      //   ),
+                      // ),
+                      // Visibility(
+                      //     visible: context.watch<RegisterController>().isloading
+                      //         ? true
+                      //         : false,
+                      //     child: Center(
+                      //       child: SizedBox(
+                      //         height: 36,
+                      //         child: CircularProgressIndicator(
+                      //           color: Colors.white,
+                      //         ),
+                      //       ),
+                      //     )),
                     ],
                   ),
                 ),

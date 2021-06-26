@@ -34,6 +34,7 @@ class CustomInput extends StatelessWidget {
           keyboardType:
               isNumberField ? TextInputType.number : TextInputType.text,
           focusNode: focusNode,
+
           onChanged: onChanged, //its's like saying onChanged:
           //(value){_userEmail/pass... = value} basically the value is sent to other page or in other words we are writing the function in other page referencing that function here
           onSubmitted: onSubmitted,

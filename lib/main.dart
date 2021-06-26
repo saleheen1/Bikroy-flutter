@@ -1,5 +1,6 @@
 import 'package:bikroy/app/constants/Constantcolors.dart';
 import 'package:bikroy/core/Controllers/categoryController.dart';
+import 'package:bikroy/core/Controllers/register-controller.dart';
 import 'package:bikroy/core/Models/categoryModel.dart';
 import 'package:bikroy/core/Services/categoryService.dart';
 import 'package:bikroy/meta/screens/Authentications/loginPage.dart';
@@ -18,11 +19,14 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-          fontFamily: 'poppins', accentColor: ConstantColors().primaryColor),
-      home: LoginPage(),
+    return MultiProvider(
+      providers: [ChangeNotifierProvider(create: (_) => RegisterController())],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+            fontFamily: 'poppins', accentColor: ConstantColors().primaryColor),
+        home: LoginPage(),
+      ),
     );
   }
 }

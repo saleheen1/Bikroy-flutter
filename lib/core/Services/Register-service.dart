@@ -20,6 +20,7 @@ class RegisterService {
     print("The data isssss: $data");
 
     var jsonData = jsonDecode(data);
-    print(RegisterModel.fromJson(jsonData));
+    var finalData = RegisterModel.fromJson(jsonData);
+    return finalData;
   }
 }

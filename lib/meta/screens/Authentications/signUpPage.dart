@@ -9,6 +9,7 @@ import 'package:bikroy/meta/screens/Home/landingPage.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
+import 'package:provider/provider.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({Key? key}) : super(key: key);
@@ -25,7 +26,6 @@ class _SignUpPageState extends State<SignUpPage>
   String _password = "";
   String _confirmPassword = "";
   String _email = "";
-  String _type = "";
 
   //account type list
   var _accountType = [
@@ -75,8 +75,13 @@ class _SignUpPageState extends State<SignUpPage>
   Widget build(BuildContext context) {
     return Scaffold(
       // resizeToAvoidBottomInset: false,
-      body: GestureDetector(
-        onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+      body: Listener(
+        onPointerDown: (_) {
+          FocusScopeNode currentFocus = FocusScope.of(context);
+          if (!currentFocus.hasPrimaryFocus) {
+            currentFocus.focusedChild?.unfocus();
+          }
+        },
         child: SafeArea(
           child: SingleChildScrollView(
             child: Padding(
@@ -165,7 +170,6 @@ class _SignUpPageState extends State<SignUpPage>
                     padding: EdgeInsets.symmetric(horizontal: 13),
                     decoration: BoxDecoration(
                       color: Color(0xfff2f2f2),
-                      // border: Border.all(color: ConstantColors().greySecondary),
                       borderRadius: BorderRadius.circular(6),
                     ),
                     child: DropdownButtonHideUnderline(
@@ -226,13 +230,16 @@ class _SignUpPageState extends State<SignUpPage>
                     color: ConstantColors().primaryColor,
                     outlineBtn: false,
                     onPressed: () {
-                      RegisterController().submitData(_name, _mobile, _password,
-                          _email, _selectedAccount.toString());
-                      // Navigator.push(
-                      //     context,
-                      //     PageTransition(
-                      //         child: LandingPage(),
-                      //         type: PageTransitionType.rightToLeft));
+                      // context.read<RegisterController>().loadingCircle();
+                      RegisterController().submitData(
+                          _name,
+                          _mobile,
+                          _password,
+                          _confirmPassword,
+                          _email,
+                          _selectedAccount.toString(),
+                          checkedValue,
+                          context);
                     },
                   ),
 

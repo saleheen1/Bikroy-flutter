@@ -1,12 +1,16 @@
 import 'package:bikroy/app/constants/Constantcolors.dart';
 import 'package:bikroy/app/constants/ConstantsStyle.dart';
 import 'package:bikroy/app/widgets/homePageSlider.dart';
+import 'package:bikroy/app/widgets/priceRangeSlider.dart';
 import 'package:bikroy/core/Models/ads_Model.dart';
 import 'package:bikroy/core/Services/adsServices.dart';
+import 'package:bikroy/core/Services/helper.dart';
 import 'package:bikroy/meta/screens/Categories/categoriesPage.dart';
 import 'package:bikroy/meta/screens/Home/homeHelper.dart';
 import 'package:bikroy/meta/screens/Posts/singleProduct.dart';
 import 'package:flutter/material.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
+import 'package:provider/provider.dart';
 
 class HomeTab extends StatelessWidget {
   const HomeTab({Key? key}) : super(key: key);
@@ -104,7 +108,7 @@ class HomeTab extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Icon(
-                            Icons.filter_alt_outlined,
+                            Icons.category_outlined,
                             color: ConstantColors().primaryColor,
                             size: 23,
                           ),
@@ -119,6 +123,107 @@ class HomeTab extends StatelessWidget {
                           ),
                         ],
                       ),
+                    ),
+                  ),
+                ),
+              ),
+              Container(
+                height: 50,
+                width: 1,
+                color: ConstantColors().dividerColor,
+              ),
+              //filter button
+              Material(
+                color: Colors.transparent,
+                child: InkWell(
+                  onTap: () {
+                    showMaterialModalBottomSheet(
+                        enableDrag: false,
+                        context: context,
+                        builder: (context) {
+                          return SingleChildScrollView(
+                            controller: ModalScrollController.of(context),
+                            child: Container(
+                              padding: EdgeInsets.symmetric(
+                                  vertical: 30, horizontal: 20),
+                              // height: MediaQuery.of(context).size.height / 2,
+                              child: SingleChildScrollView(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    // new or used
+                                    Container(
+                                      // width: MediaQuery.of(context).size.width - 170,
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Expanded(
+                                            child: CheckboxListTile(
+                                              activeColor: ConstantColors()
+                                                  .secondaryColor,
+                                              contentPadding: EdgeInsets.all(0),
+                                              title: Text(
+                                                "New",
+                                                style: ConstantsStyle()
+                                                    .paraGraphStyle,
+                                              ),
+                                              value: context
+                                                  .watch<HomeHelper>()
+                                                  .isCheckedNew, //use watch when u are getting a value returned
+                                              onChanged: (newValue) {
+                                                context
+                                                    .read<HomeHelper>()
+                                                    .checkNewChanger(); //use read when you only want to fire a function
+                                              },
+                                              controlAffinity:
+                                                  ListTileControlAffinity
+                                                      .leading, //  <-- leading Checkbox
+                                            ),
+                                          ),
+                                          //used checkbox
+                                          Expanded(
+                                            child: CheckboxListTile(
+                                              activeColor: ConstantColors()
+                                                  .secondaryColor,
+                                              contentPadding: EdgeInsets.all(0),
+                                              title: Text(
+                                                "Used",
+                                                style: ConstantsStyle()
+                                                    .paraGraphStyle,
+                                              ),
+                                              value: context
+                                                  .watch<HomeHelper>()
+                                                  .isCheckedUsed, //use watch when u are getting a value returned
+                                              onChanged: (newValue) {
+                                                context
+                                                    .read<HomeHelper>()
+                                                    .checkUsedChanger(); //use read when you only want to fire a function
+                                              },
+                                              controlAffinity:
+                                                  ListTileControlAffinity
+                                                      .leading, //  <-- leading Checkbox
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    //Price Range Slider
+                                    PriceRangeSlider()
+                                  ],
+                                ),
+                              ),
+                            ),
+                          );
+                        });
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.only(
+                        left: 17, right: 25, bottom: 13, top: 13),
+                    child: Icon(
+                      Icons.filter_alt_outlined,
+                      color: ConstantColors().primaryColor,
+                      size: 23,
                     ),
                   ),
                 ),
@@ -240,7 +345,10 @@ class HomeTab extends StatelessWidget {
                               ),
                             );
                           } else {
-                            return Center(child: CircularProgressIndicator());
+                            return Container(
+                              margin: EdgeInsets.only(top: 30),
+                              child: Helper().showLoading(),
+                            );
                           }
                         })
                   ],

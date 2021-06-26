@@ -4,6 +4,7 @@ import 'package:bikroy/core/Controllers/register-controller.dart';
 import 'package:bikroy/core/Models/categoryModel.dart';
 import 'package:bikroy/core/Services/categoryService.dart';
 import 'package:bikroy/meta/screens/Authentications/loginPage.dart';
+import 'package:bikroy/meta/screens/Home/homeHelper.dart';
 import 'package:bikroy/meta/screens/Home/landingPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -20,7 +21,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: [ChangeNotifierProvider(create: (_) => RegisterController())],
+      providers: [
+        ChangeNotifierProvider(create: (_) => RegisterController()),
+        ChangeNotifierProvider(create: (_) => HomeHelper()),
+      ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(

@@ -9,8 +9,16 @@ import 'package:bikroy/meta/screens/Extras/rules.dart';
 import 'package:bikroy/meta/screens/Posts/allPosts.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class Helper {
+  showLoading() {
+    return SpinKitWave(
+      color: ConstantColors().primaryColor,
+      size: 30.0,
+    );
+  }
+
   //show toast
   void flutterToast(String title, Color color) {
     Fluttertoast.showToast(

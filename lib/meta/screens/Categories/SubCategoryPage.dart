@@ -1,4 +1,5 @@
 import 'package:bikroy/app/constants/Constantcolors.dart';
+import 'package:bikroy/app/widgets/appBar.dart';
 import 'package:bikroy/core/Models/subCategoryModel.dart';
 import 'package:bikroy/core/Services/helper.dart';
 import 'package:bikroy/core/Services/sub_category_Services.dart';
@@ -14,11 +15,18 @@ class SubCategoryPage extends StatelessWidget {
     var categoryId = ModalRoute.of(context)!.settings.arguments;
 
     return Scaffold(
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(kToolbarHeight),
+        child: AppbarCustom(
+          title: subCategoryName,
+        ),
+      ),
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Helper().heroArea(subCategoryName, true, Colors.white, context),
+            // Helper()
+            //     .heroArea(subCategoryName, true, Colors.white, context),
             FutureBuilder<SubCategoryModel>(
                 future: SubCategoryServices().fetchCategory(categoryId),
                 builder: (context, snapshot) {
@@ -94,8 +102,8 @@ class SubCategoryPage extends StatelessWidget {
                     );
                   } else {
                     return Container(
-                        margin: EdgeInsets.only(top: 30),
-                        child: Center(child: LinearProgressIndicator()));
+                        margin: EdgeInsets.only(top: 40),
+                        child: Center(child: Helper().showLoading()));
                   }
                 }),
           ],

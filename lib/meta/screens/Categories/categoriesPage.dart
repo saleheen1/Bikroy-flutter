@@ -1,4 +1,5 @@
 import 'package:bikroy/app/constants/Constantcolors.dart';
+import 'package:bikroy/app/widgets/appBar.dart';
 import 'package:bikroy/app/widgets/categoryList.dart';
 import 'package:bikroy/core/Controllers/categoryController.dart';
 import 'package:bikroy/core/Controllers/sub_category_Controller.dart';
@@ -20,10 +21,16 @@ class CategoriesPage extends StatelessWidget {
 
     return Scaffold(
         backgroundColor: Colors.white,
+        appBar: PreferredSize(
+          preferredSize: const Size.fromHeight(kToolbarHeight),
+          child: AppbarCustom(
+            title: "Categories",
+          ),
+        ),
         body: SingleChildScrollView(
           child: Column(
             children: [
-              Helper().heroArea("Categories", true, Colors.white, context),
+              // Helper().heroArea("Categories", true, Colors.white, context),
               FutureBuilder<CategoryModel>(
                   future: CategoryController().getCategoryData(),
                   builder: (context, snapshot) {
@@ -106,8 +113,8 @@ class CategoriesPage extends StatelessWidget {
                       );
                     } else {
                       return Container(
-                          margin: EdgeInsets.only(top: 30),
-                          child: Center(child: LinearProgressIndicator()));
+                          margin: EdgeInsets.only(top: 40),
+                          child: Center(child: Helper().showLoading()));
                     }
                   }),
             ],

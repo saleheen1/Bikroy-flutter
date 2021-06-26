@@ -5,13 +5,8 @@ class CategoryController {
   bool categoryLoading = false;
 
   Future<CategoryModel> getCategoryData() async {
-    categoryLoading = true;
-    try {
-      CategoryModel categories = await CategoryService().fetchCategory();
+    CategoryModel categories = await CategoryService().fetchCategory();
 
-      return categories;
-    } finally {
-      categoryLoading = false;
-    }
+    return categories;
   }
 }

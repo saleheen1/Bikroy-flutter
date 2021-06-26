@@ -57,13 +57,13 @@ class CustomButton extends StatelessWidget {
                               ),
                             )
                           : Container(),
-                      Text(
-                        text,
-                        style: TextStyle(
-                            color: outlineBtn
-                                ? ConstantColors().primaryColor
-                                : Colors.white),
-                      ),
+                      // Text(
+                      //   text,
+                      //   style: TextStyle(
+                      //       color: outlineBtn
+                      //           ? ConstantColors().primaryColor
+                      //           : Colors.white),
+                      // ),
                       // Consumer<RegisterController>(
                       //     builder: (context, value, child) {
                       //   return value.isloading == true
@@ -83,30 +83,26 @@ class CustomButton extends StatelessWidget {
                       //                   : Colors.white),
                       //         );
                       // })
-                      // Visibility(
-                      //   visible: context.watch<RegisterController>().isloading
-                      //       ? false
-                      //       : true,
-                      //   child: Text(
-                      //     text,
-                      //     style: TextStyle(
-                      //         color: outlineBtn
-                      //             ? ConstantColors().primaryColor
-                      //             : Colors.white),
-                      //   ),
-                      // ),
-                      // Visibility(
-                      //     visible: context.watch<RegisterController>().isloading
-                      //         ? true
-                      //         : false,
-                      //     child: Center(
-                      //       child: SizedBox(
-                      //         height: 36,
-                      //         child: CircularProgressIndicator(
-                      //           color: Colors.white,
-                      //         ),
-                      //       ),
-                      //     )),
+                      Visibility(
+                        visible: isLoading ? false : true,
+                        child: Text(
+                          text,
+                          style: TextStyle(
+                              color: outlineBtn
+                                  ? ConstantColors().primaryColor
+                                  : Colors.white),
+                        ),
+                      ),
+                      Visibility(
+                          visible: isLoading ? true : false,
+                          child: Center(
+                            child: SizedBox(
+                              height: 36,
+                              child: CircularProgressIndicator(
+                                color: Colors.white,
+                              ),
+                            ),
+                          )),
                     ],
                   ),
                 ),

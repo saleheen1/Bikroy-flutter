@@ -3,7 +3,7 @@ class Api {
       'https://beta.tradebangla.com.bd/api/category'; //get method
 
   final String subCategoryApi =
-      'https://beta.tradebangla.com.bd/api/sub-category/'; //get method
+      'https://beta.tradebangla.com.bd/api/sub-category?category_id='; //get method
 
   final String adsApi = 'https://beta.tradebangla.com.bd/api/ads?'; //get method
 

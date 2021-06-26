@@ -177,7 +177,7 @@ class Helper {
               child: Text(title,
                   style: TextStyle(
                       color: Colors.white,
-                      fontSize: 23,
+                      fontSize: 17,
                       fontWeight: FontWeight.bold),
                   textAlign: hasBackArrow ? TextAlign.left : TextAlign.center),
             ),

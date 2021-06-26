@@ -13,41 +13,42 @@ String subCategoryModelToJson(SubCategoryModel data) =>
 
 class SubCategoryModel {
   SubCategoryModel({
-    required this.allData,
-    required this.category,
-    required this.maxSerial,
+    required this.msg,
+    required this.status,
+    required this.data,
   });
 
-  AllData allData;
-  Category category;
-  int maxSerial;
+  String msg;
+  bool status;
+  Data data;
 
   factory SubCategoryModel.fromJson(Map<String, dynamic> json) =>
       SubCategoryModel(
-        allData: AllData.fromJson(json["allData"]),
-        category: Category.fromJson(json["category"]),
-        maxSerial: json["max_serial"],
+        msg: json["msg"],
+        status: json["status"],
+        data: Data.fromJson(json["data"]),
       );
 
   Map<String, dynamic> toJson() => {
-        "allData": allData.toJson(),
-        "category": category.toJson(),
-        "max_serial": maxSerial,
+        "msg": msg,
+        "status": status,
+        "data": data.toJson(),
       };
 }
 
-class AllData {
-  AllData({
+class Data {
+  Data({
     required this.currentPage,
     required this.data,
     required this.firstPageUrl,
     required this.from,
     required this.lastPage,
     required this.lastPageUrl,
+    required this.links,
     required this.nextPageUrl,
     required this.path,
     required this.perPage,
-    required this.prevPageUrl,
+    this.prevPageUrl,
     required this.to,
     required this.total,
   });
@@ -58,6 +59,7 @@ class AllData {
   int from;
   int lastPage;
   String lastPageUrl;
+  List<Link> links;
   dynamic nextPageUrl;
   String path;
   int perPage;
@@ -65,13 +67,14 @@ class AllData {
   int to;
   int total;
 
-  factory AllData.fromJson(Map<String, dynamic> json) => AllData(
+  factory Data.fromJson(Map<String, dynamic> json) => Data(
         currentPage: json["current_page"],
         data: List<Datum>.from(json["data"].map((x) => Datum.fromJson(x))),
         firstPageUrl: json["first_page_url"],
         from: json["from"],
         lastPage: json["last_page"],
         lastPageUrl: json["last_page_url"],
+        links: List<Link>.from(json["links"].map((x) => Link.fromJson(x))),
         nextPageUrl: json["next_page_url"],
         path: json["path"],
         perPage: json["per_page"],
@@ -87,6 +90,7 @@ class AllData {
         "from": from,
         "last_page": lastPage,
         "last_page_url": lastPageUrl,
+        "links": List<dynamic>.from(links.map((x) => x.toJson())),
         "next_page_url": nextPageUrl,
         "path": path,
         "per_page": perPage,
@@ -98,132 +102,48 @@ class AllData {
 
 class Datum {
   Datum({
-    required this.id,
     required this.subCategoryName,
+    required this.id,
     required this.fkCategoryId,
-    required this.serialNum,
-    required this.description,
-    required this.status,
-    required this.createdAt,
-    this.updatedAt,
-    required this.createdBy,
-    this.updatedBy,
-    required this.categoryName,
-    required this.categoryId,
   });
 
-  int id;
   String subCategoryName;
+  int id;
   int fkCategoryId;
-  int serialNum;
-  String description;
-  int status;
-  DateTime createdAt;
-  DateTime? updatedAt;
-  int createdBy;
-  int? updatedBy;
-  String categoryName;
-  int categoryId;
 
   factory Datum.fromJson(Map<String, dynamic> json) => Datum(
-        id: json["id"],
         subCategoryName: json["sub_category_name"],
+        id: json["id"],
         fkCategoryId: json["fk_category_id"],
-        serialNum: json["serial_num"],
-        description: json["description"],
-        status: json["status"],
-        createdAt: DateTime.parse(json["created_at"]),
-        updatedAt: DateTime.parse(json["updated_at"]),
-        createdBy: json["created_by"],
-        updatedBy: json["updated_by"],
-        categoryName: json["category_name"],
-        categoryId: json["category_id"],
       );
 
   Map<String, dynamic> toJson() => {
-        "id": id,
         "sub_category_name": subCategoryName,
+        "id": id,
         "fk_category_id": fkCategoryId,
-        "serial_num": serialNum,
-        "description": description,
-        "status": status,
-        "created_at": createdAt.toIso8601String(),
-        "updated_at": updatedAt!.toIso8601String(),
-        "created_by": createdBy,
-        "updated_by": updatedBy,
-        "category_name": categoryName,
-        "category_id": categoryId,
       };
 }
 
-class Category {
-  Category({
-    required this.id,
-    required this.name,
-    required this.serialNum,
-    required this.description,
-    required this.shortDescription,
-    required this.link,
-    required this.iconPhoto,
-    required this.iconClass,
-    required this.createdBy,
-    required this.updatedBy,
-    required this.status,
-    required this.type,
-    required this.postType,
-    required this.createdAt,
-    required this.updatedAt,
+class Link {
+  Link({
+    this.url,
+    required this.label,
+    required this.active,
   });
 
-  int id;
-  String name;
-  int serialNum;
-  String description;
-  String shortDescription;
-  String link;
-  dynamic iconPhoto;
-  String iconClass;
-  int createdBy;
-  int updatedBy;
-  int status;
-  int type;
-  int postType;
-  DateTime createdAt;
-  DateTime updatedAt;
+  String? url;
+  String label;
+  bool active;
 
-  factory Category.fromJson(Map<String, dynamic> json) => Category(
-        id: json["id"],
-        name: json["name"],
-        serialNum: json["serial_num"],
-        description: json["description"],
-        shortDescription: json["short_description"],
-        link: json["link"],
-        iconPhoto: json["icon_photo"],
-        iconClass: json["icon_class"],
-        createdBy: json["created_by"],
-        updatedBy: json["updated_by"],
-        status: json["status"],
-        type: json["type"],
-        postType: json["post_type"],
-        createdAt: DateTime.parse(json["created_at"]),
-        updatedAt: DateTime.parse(json["updated_at"]),
+  factory Link.fromJson(Map<String, dynamic> json) => Link(
+        url: json["url"] == null ? null : json["url"],
+        label: json["label"],
+        active: json["active"],
       );
 
   Map<String, dynamic> toJson() => {
-        "id": id,
-        "name": name,
-        "serial_num": serialNum,
-        "description": description,
-        "short_description": shortDescription,
-        "link": link,
-        "icon_photo": iconPhoto,
-        "icon_class": iconClass,
-        "created_by": createdBy,
-        "updated_by": updatedBy,
-        "status": status,
-        "type": type,
-        "post_type": postType,
-        "created_at": createdAt.toIso8601String(),
-        "updated_at": updatedAt.toIso8601String(),
+        "url": url == null ? null : url,
+        "label": label,
+        "active": active,
       };
 }

@@ -29,7 +29,7 @@ class SubCategoryPage extends StatelessWidget {
                           horizontal: 25, vertical: 6),
                       child: ListView.builder(
                         padding: EdgeInsets.all(0),
-                        itemCount: snapshot.data!.allData.data.length,
+                        itemCount: snapshot.data!.data.data.length,
                         physics: NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
                         scrollDirection: Axis.vertical,
@@ -60,7 +60,7 @@ class SubCategoryPage extends StatelessWidget {
                                     ),
                                     Expanded(
                                       child: Text(
-                                        snapshot.data!.allData.data[index]
+                                        snapshot.data!.data.data[index]
                                             .subCategoryName,
                                         overflow: TextOverflow.visible,
                                         style: TextStyle(

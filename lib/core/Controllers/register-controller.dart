@@ -6,7 +6,9 @@ import 'package:flutter/material.dart';
 
 class RegisterController with ChangeNotifier {
   bool isloading = false;
-  void loadingCircle() {
+
+  bool get getLoading => isloading;
+  void makeLoadingTrue() {
     isloading = true;
     notifyListeners();
   }
@@ -17,7 +19,7 @@ class RegisterController with ChangeNotifier {
     notifyListeners();
   }
 
-  void submitData(
+  Future submitData(
       String name,
       String mobile,
       String password,
@@ -38,7 +40,7 @@ class RegisterController with ChangeNotifier {
       Helper().flutterToast("Invalid email", Colors.red);
     } else if (password.isEmpty) {
       Helper().flutterToast("Password field cannot be empty", Colors.red);
-    } else if (password.length < 6) {
+    } else if (password.length < 5) {
       Helper().flutterToast(
           "Password must be at least 6 characters long", Colors.red);
     } else if (confirmPass.isEmpty) {
@@ -56,10 +58,12 @@ class RegisterController with ChangeNotifier {
       RegisterModel myData = await RegisterService()
           .submitData(name, mobile, password, email, type);
       if (myData.status == true) {
+        // makeLoadingFalse();
         Helper().flutterToast(
             "Registration Successful, Please login", Colors.green);
         Navigator.pushReplacement(
             context, MaterialPageRoute(builder: (context) => LoginPage()));
+        return true;
       }
     }
   }

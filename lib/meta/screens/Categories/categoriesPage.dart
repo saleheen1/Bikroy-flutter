@@ -20,94 +20,98 @@ class CategoriesPage extends StatelessWidget {
 
     return Scaffold(
         backgroundColor: Colors.white,
-        body: Column(
-          children: [
-            Helper().heroArea("Categories", true, Colors.white, context),
-            FutureBuilder<CategoryModel>(
-                future: CategoryController().getCategoryData(),
-                builder: (context, snapshot) {
-                  if (snapshot.hasData) {
-                    return Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 25, vertical: 6),
-                      child: ListView.builder(
-                        padding: EdgeInsets.all(0),
-                        itemCount: snapshot.data!.data.data.length,
-                        physics: NeverScrollableScrollPhysics(),
-                        shrinkWrap: true,
-                        scrollDirection: Axis.vertical,
-                        itemBuilder: (context, index) {
-                          // final item = items[index];
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              Helper().heroArea("Categories", true, Colors.white, context),
+              FutureBuilder<CategoryModel>(
+                  future: CategoryController().getCategoryData(),
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData) {
+                      return Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 25, vertical: 6),
+                        child: ListView.builder(
+                          padding: EdgeInsets.all(0),
+                          itemCount: snapshot.data!.data.data.length,
+                          physics: NeverScrollableScrollPhysics(),
+                          shrinkWrap: true,
+                          scrollDirection: Axis.vertical,
+                          itemBuilder: (context, index) {
+                            // final item = items[index];
 
-                          return Material(
-                            color: Colors.transparent,
-                            child: InkWell(
-                              onTap: () {
-                                // SubCategoryServices().setCategoryId(
-                                //     snapshot.data!.data.data[index].id);
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => SubCategoryPage(
-                                              subCategoryName: snapshot
-                                                  .data!.data.data[index].name,
-                                            ),
-                                        settings: RouteSettings(
-                                          arguments: snapshot
-                                              .data!.data.data[index].id,
-                                        )));
-                              },
-                              child: Container(
-                                decoration: BoxDecoration(
-                                    border: Border(
-                                        bottom: BorderSide(
-                                            color: ConstantColors()
-                                                .dividerColor))),
-                                padding: EdgeInsets.symmetric(vertical: 14),
-                                child: Row(
-                                  children: [
-                                    SizedBox(
-                                      width: 12,
-                                    ),
-                                    Text(
-                                      snapshot.data!.data.data[index].name,
-                                      style: TextStyle(
-                                          fontSize: 15,
-                                          height: 1.7,
-                                          fontWeight: FontWeight.bold,
-                                          color: ConstantColors().greyPrimary),
-                                    ),
-                                    SizedBox(
-                                      height: 4,
-                                    ),
-                                    Expanded(
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.end,
-                                        children: [
-                                          Icon(
-                                            Icons.arrow_forward_ios_outlined,
-                                            size: 18,
-                                            color: ConstantColors().greyPrimary,
-                                          ),
-                                        ],
+                            return Material(
+                              color: Colors.transparent,
+                              child: InkWell(
+                                onTap: () {
+                                  // SubCategoryServices().setCategoryId(
+                                  //     snapshot.data!.data.data[index].id);
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => SubCategoryPage(
+                                                subCategoryName: snapshot.data!
+                                                    .data.data[index].name,
+                                              ),
+                                          settings: RouteSettings(
+                                            arguments: snapshot
+                                                .data!.data.data[index].id,
+                                          )));
+                                },
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                      border: Border(
+                                          bottom: BorderSide(
+                                              color: ConstantColors()
+                                                  .dividerColor))),
+                                  padding: EdgeInsets.symmetric(vertical: 14),
+                                  child: Row(
+                                    children: [
+                                      SizedBox(
+                                        width: 12,
                                       ),
-                                    )
-                                  ],
+                                      Text(
+                                        snapshot.data!.data.data[index].name,
+                                        style: TextStyle(
+                                            fontSize: 15,
+                                            height: 1.7,
+                                            fontWeight: FontWeight.bold,
+                                            color:
+                                                ConstantColors().greyPrimary),
+                                      ),
+                                      SizedBox(
+                                        height: 4,
+                                      ),
+                                      Expanded(
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.end,
+                                          children: [
+                                            Icon(
+                                              Icons.arrow_forward_ios_outlined,
+                                              size: 18,
+                                              color:
+                                                  ConstantColors().greyPrimary,
+                                            ),
+                                          ],
+                                        ),
+                                      )
+                                    ],
+                                  ),
                                 ),
                               ),
-                            ),
-                          );
-                        },
-                      ),
-                    );
-                  } else {
-                    return Container(
-                        margin: EdgeInsets.only(top: 30),
-                        child: Center(child: LinearProgressIndicator()));
-                  }
-                }),
-          ],
+                            );
+                          },
+                        ),
+                      );
+                    } else {
+                      return Container(
+                          margin: EdgeInsets.only(top: 30),
+                          child: Center(child: LinearProgressIndicator()));
+                    }
+                  }),
+            ],
+          ),
         )
 
         // body: CategoryList(

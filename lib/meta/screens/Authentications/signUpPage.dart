@@ -41,7 +41,7 @@ class _SignUpPageState extends State<SignUpPage>
   AnimationController? _controller;
   Animation? _animation;
   bool checkedValue = false;
-
+  bool isloading = false;
   String dropdownValue = 'Select Account Type';
 
   @override
@@ -229,9 +229,14 @@ class _SignUpPageState extends State<SignUpPage>
                     text: "Register",
                     color: ConstantColors().primaryColor,
                     outlineBtn: false,
-                    onPressed: () {
-                      // context.read<RegisterController>().loadingCircle();
-                      RegisterController().submitData(
+                    // isLoading: context.watch<RegisterController>().getLoading,
+                    isLoading: isloading,
+                    onPressed: () async {
+                      setState(() {
+                        isloading = true;
+                      });
+                      // context.read<RegisterController>().makeLoadingTrue();
+                      bool isSuccesful = await RegisterController().submitData(
                           _name,
                           _mobile,
                           _password,
@@ -240,6 +245,11 @@ class _SignUpPageState extends State<SignUpPage>
                           _selectedAccount.toString(),
                           checkedValue,
                           context);
+                      if (isSuccesful) {
+                        setState(() {
+                          isloading = false;
+                        });
+                      }
                     },
                   ),
 

@@ -2,6 +2,7 @@
 //
 //     final categoryModel = categoryModelFromJson(jsonString);
 
+import 'package:meta/meta.dart';
 import 'dart:convert';
 
 CategoryModel categoryModelFromJson(String str) =>
@@ -11,20 +12,24 @@ String categoryModelToJson(CategoryModel data) => json.encode(data.toJson());
 
 class CategoryModel {
   CategoryModel({
-    required this.maxSerial,
+    required this.msg,
+    required this.status,
     required this.data,
   });
 
-  int maxSerial;
+  String msg;
+  bool status;
   Data data;
 
   factory CategoryModel.fromJson(Map<String, dynamic> json) => CategoryModel(
-        maxSerial: json["max_serial"],
+        msg: json["msg"],
+        status: json["status"],
         data: Data.fromJson(json["data"]),
       );
 
   Map<String, dynamic> toJson() => {
-        "max_serial": maxSerial,
+        "msg": msg,
+        "status": status,
         "data": data.toJson(),
       };
 }
@@ -37,10 +42,11 @@ class Data {
     required this.from,
     required this.lastPage,
     required this.lastPageUrl,
+    required this.links,
     required this.nextPageUrl,
     required this.path,
     required this.perPage,
-    required this.prevPageUrl,
+    this.prevPageUrl,
     required this.to,
     required this.total,
   });
@@ -51,6 +57,7 @@ class Data {
   int from;
   int lastPage;
   String lastPageUrl;
+  List<Link> links;
   String nextPageUrl;
   String path;
   int perPage;
@@ -65,6 +72,7 @@ class Data {
         from: json["from"],
         lastPage: json["last_page"],
         lastPageUrl: json["last_page_url"],
+        links: List<Link>.from(json["links"].map((x) => Link.fromJson(x))),
         nextPageUrl: json["next_page_url"],
         path: json["path"],
         perPage: json["per_page"],
@@ -80,6 +88,7 @@ class Data {
         "from": from,
         "last_page": lastPage,
         "last_page_url": lastPageUrl,
+        "links": List<dynamic>.from(links.map((x) => x.toJson())),
         "next_page_url": nextPageUrl,
         "path": path,
         "per_page": perPage,
@@ -93,70 +102,42 @@ class Datum {
   Datum({
     required this.id,
     required this.name,
-    required this.serialNum,
-    required this.description,
-    required this.shortDescription,
-    required this.link,
-    required this.iconPhoto,
-    required this.iconClass,
-    required this.createdBy,
-    required this.updatedBy,
-    required this.status,
-    required this.type,
-    required this.postType,
-    required this.createdAt,
-    required this.updatedAt,
   });
 
   int id;
   String name;
-  int serialNum;
-  String description;
-  String shortDescription;
-  String link;
-  dynamic iconPhoto;
-  String iconClass;
-  int createdBy;
-  int updatedBy;
-  int status;
-  int type;
-  int postType;
-  DateTime createdAt;
-  DateTime updatedAt;
 
   factory Datum.fromJson(Map<String, dynamic> json) => Datum(
         id: json["id"],
         name: json["name"],
-        serialNum: json["serial_num"],
-        description: json["description"],
-        shortDescription: json["short_description"],
-        link: json["link"],
-        iconPhoto: json["icon_photo"],
-        iconClass: json["icon_class"],
-        createdBy: json["created_by"],
-        updatedBy: json["updated_by"],
-        status: json["status"],
-        type: json["type"],
-        postType: json["post_type"],
-        createdAt: DateTime.parse(json["created_at"]),
-        updatedAt: DateTime.parse(json["updated_at"]),
       );
 
   Map<String, dynamic> toJson() => {
         "id": id,
         "name": name,
-        "serial_num": serialNum,
-        "description": description,
-        "short_description": shortDescription,
-        "link": link,
-        "icon_photo": iconPhoto,
-        "icon_class": iconClass,
-        "created_by": createdBy,
-        "updated_by": updatedBy,
-        "status": status,
-        "type": type,
-        "post_type": postType,
-        "created_at": createdAt.toIso8601String(),
-        "updated_at": updatedAt.toIso8601String(),
+      };
+}
+
+class Link {
+  Link({
+    this.url,
+    required this.label,
+    required this.active,
+  });
+
+  String? url;
+  String label;
+  bool active;
+
+  factory Link.fromJson(Map<String, dynamic> json) => Link(
+        url: json["url"] == null ? null : json["url"],
+        label: json["label"],
+        active: json["active"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "url": url == null ? null : url,
+        "label": label,
+        "active": active,
       };
 }

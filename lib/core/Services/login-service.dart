@@ -1,6 +1,8 @@
 import 'dart:convert';
 
 import 'package:bikroy/core/Models/login-Model.dart';
+import 'package:bikroy/core/helper.dart';
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class LoginService {
@@ -9,11 +11,15 @@ class LoginService {
         Uri.https("beta.tradebangla.com.bd", "api/auth/login"),
         body: {"email": email, "password": password});
 
-    var data = response.body;
-    print("The data is: $data");
+    if (response.statusCode == 200 || response.statusCode == 201) {
+      var data = response.body;
+      print("The data is: $data");
 
-    var jsonData = jsonDecode(data);
-    var finalData = LoginModel.fromJson(jsonData);
-    return finalData;
+      var jsonData = jsonDecode(data);
+      var finalData = LoginModel.fromJson(jsonData);
+      return finalData;
+    } else {
+      Helper().flutterToast("Invalid credential", Colors.red);
+    }
   }
 }

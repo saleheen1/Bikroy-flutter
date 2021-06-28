@@ -7,6 +7,8 @@ import 'package:bikroy/meta/screens/Extras/postFreeAd.dart';
 import 'package:bikroy/meta/screens/Extras/privacyPolicy.dart';
 import 'package:bikroy/meta/screens/Extras/rules.dart';
 import 'package:bikroy/meta/screens/Posts/allPosts.dart';
+import 'package:bikroy/meta/screens/Posts/postHelper.dart';
+import 'package:bikroy/meta/screens/Posts/postSubCategory.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -293,7 +295,7 @@ class Helper {
   }
 
   //Category widget
-  Widget buySellCategory(Function whenClicked) {
+  Widget buySellCategory(BuildContext context) {
     return Container(
       color: Color(0xffF0F0F0),
       child: GridView.count(
@@ -310,29 +312,32 @@ class Helper {
               color: Colors.white,
               child: InkWell(
                 onTap: () {
-                  whenClicked.call();
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => PostSubCategory()));
                 },
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Icon(
-                      getIcon(index),
-                      color: getColor(index),
-                      size: 26,
+                    Container(
+                      margin: EdgeInsets.only(bottom: 8),
+                      height: 30,
+                      width: 60,
+                      child: Image.network(
+                        PostHelper().getCategoryImage(index),
+                        fit: BoxFit.fitHeight,
+                      ),
                     ),
                     SizedBox(
                       height: 10,
                     ),
-                    Container(
-                      margin: EdgeInsets.symmetric(horizontal: 25),
-                      child: Text(
-                        getBuySellText(index),
-                        style: TextStyle(
-                            fontSize: 14,
-                            color: ConstantColors().greyPrimary,
-                            fontWeight: FontWeight.w600),
-                        textAlign: TextAlign.center,
-                      ),
+                    Text(
+                      getBuySellText(index),
+                      style: TextStyle(
+                          fontSize: 14,
+                          color: ConstantColors().greyPrimary,
+                          fontWeight: FontWeight.w600),
                     ),
                   ],
                 ),

@@ -73,39 +73,39 @@ class _SearchTabState extends State<SearchTab> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 25),
+    return SingleChildScrollView(
       child: Column(
         children: [
           SizedBox(
             height: 50,
           ),
           //location row
-          SearchHelper().locationFilter(),
-          SizedBox(
-            height: 25,
+          Padding(
+            padding: const EdgeInsets.only(
+              left: 25,
+              right: 25,
+            ),
+            child: Column(
+              children: [
+                SearchHelper().locationFilter(),
+                SizedBox(
+                  height: 25,
+                ),
+                CustomInput(
+                    hintText: "Search",
+                    onChanged: (value) {
+                      _searchEditingController.text = value;
+                    },
+                    onSubmitted: (value) {},
+                    focusNode: _searchFocusNode),
+              ],
+            ),
           ),
-          CustomInput(
-              hintText: "Search",
-              onChanged: (value) {
-                _searchEditingController.text = value;
-              },
-              onSubmitted: (value) {},
-              focusNode: _searchFocusNode),
 
           // Divider(height: 0, thickness: 1, color: ConstantColors().dividerColor),
-          SizedBox(
-            height: 4,
-          ),
           Column(
             children: [
-              Helper().buySellCategory(() {
-                // SearchHelper().modal(context);
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => ServicesSecondPage()));
-              }),
+              Helper().buySellCategory(context),
             ],
           ),
         ],

@@ -27,8 +27,7 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-            fontFamily: 'poppins', accentColor: ConstantColors().primaryColor),
+        theme: ThemeData(accentColor: ConstantColors().primaryColor),
         home: LoginPage(),
       ),
     );

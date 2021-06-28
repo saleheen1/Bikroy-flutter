@@ -82,7 +82,7 @@ class DrawerPage extends StatelessWidget {
                                 ],
                               ),
                               SizedBox(
-                                height: 5,
+                                height: 3,
                               ),
                               Text(
                                 "smsaleheen3@gmail.com",

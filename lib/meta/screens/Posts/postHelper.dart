@@ -30,6 +30,26 @@ class PostHelper {
     // notifyListeners();
   }
 
+  getCategoryImage(index) {
+    if (index == 0) {
+      return "https://freepngimg.com/thumb/vehicle/56464-3-agriculture-machine-download-free-transparent-image-hq-thumb.png";
+    } else if (index == 1) {
+      return "https://cdn.pixabay.com/photo/2012/04/18/22/04/bicycle-38028__340.png";
+    } else if (index == 2) {
+      return "https://cdn.pixabay.com/photo/2017/01/04/16/40/hudson-1952439__340.png";
+    } else if (index == 3) {
+      return "https://cdn.pixabay.com/photo/2013/07/12/19/16/newspaper-154444__340.png";
+    } else if (index == 4) {
+      return "https://cdn.pixabay.com/photo/2018/07/11/18/25/home-3531629__340.png";
+    } else if (index == 5) {
+      return "https://cdn.pixabay.com/photo/2017/08/24/07/40/abstract-2675672__340.png";
+    } else if (index == 6) {
+      return "https://cdn.pixabay.com/photo/2017/10/06/16/11/towels-2823656__340.png";
+    } else {
+      return "https://cdn.pixabay.com/photo/2016/05/26/17/09/present-1417611__340.png";
+    }
+  }
+
   Widget chooseImageBtn(BuildContext context) {
     return InkWell(
       onTap: () {

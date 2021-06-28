@@ -8,6 +8,7 @@ import 'package:bikroy/core/Services/helper.dart';
 import 'package:bikroy/meta/screens/Categories/categoriesPage.dart';
 import 'package:bikroy/meta/screens/Home/homeHelper.dart';
 import 'package:bikroy/meta/screens/Posts/singleProduct.dart';
+import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:provider/provider.dart';
@@ -160,8 +161,8 @@ class HomeTab extends StatelessWidget {
                                         children: [
                                           Expanded(
                                             child: CheckboxListTile(
-                                              activeColor: ConstantColors()
-                                                  .secondaryColor,
+                                              activeColor:
+                                                  ConstantColors().primaryColor,
                                               contentPadding: EdgeInsets.all(0),
                                               title: Text(
                                                 "New",
@@ -184,8 +185,8 @@ class HomeTab extends StatelessWidget {
                                           //used checkbox
                                           Expanded(
                                             child: CheckboxListTile(
-                                              activeColor: ConstantColors()
-                                                  .secondaryColor,
+                                              activeColor:
+                                                  ConstantColors().primaryColor,
                                               contentPadding: EdgeInsets.all(0),
                                               title: Text(
                                                 "Used",
@@ -221,7 +222,7 @@ class HomeTab extends StatelessWidget {
                     padding: const EdgeInsets.only(
                         left: 17, right: 25, bottom: 13, top: 13),
                     child: Icon(
-                      Icons.filter_alt_outlined,
+                      EvaIcons.funnelOutline,
                       color: ConstantColors().primaryColor,
                       size: 23,
                     ),

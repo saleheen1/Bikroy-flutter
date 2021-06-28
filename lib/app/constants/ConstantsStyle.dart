@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 class ConstantsStyle {
   final regularHeading = TextStyle(
       fontSize: 16,
-      fontWeight: FontWeight.w600,
+      fontWeight: FontWeight.bold,
       color: ConstantColors().headingColor);
 
   final productTitleHeading = TextStyle(
       fontSize: 14,
-      fontWeight: FontWeight.w600,
+      fontWeight: FontWeight.bold,
       color: ConstantColors().headingColor);
 
   final priceStyle = TextStyle(
@@ -18,7 +18,7 @@ class ConstantsStyle {
       color: ConstantColors().primaryColor);
 
   final paraGraphStyle = TextStyle(
-    height: 1.7,
+    height: 1.6,
     fontSize: 14,
     color: ConstantColors().greyPrimary,
   );

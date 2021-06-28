@@ -32,11 +32,11 @@ class _PriceRangeSliderState extends State<PriceRangeSlider> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           RangeSlider(
-            activeColor: ConstantColors().secondaryColor,
+            activeColor: ConstantColors().primaryColor,
             values: _currentRangeValues,
             min: 0,
             max: 1000,
-            divisions: 5,
+            // divisions: 5,
             labels: RangeLabels(
               _currentRangeValues.start.round().toString(),
               _currentRangeValues.end.round().toString(),
@@ -64,7 +64,7 @@ class _PriceRangeSliderState extends State<PriceRangeSlider> {
               // Generate 100 widgets that display their index in the List.
               children: List.generate(4, (index) {
                 return CheckboxListTile(
-                  activeColor: ConstantColors().secondaryColor,
+                  activeColor: ConstantColors().primaryColor,
                   contentPadding: EdgeInsets.all(0),
                   title: Text(
                     getname(index),
@@ -94,7 +94,7 @@ class _PriceRangeSliderState extends State<PriceRangeSlider> {
             },
             child: Container(
               decoration: BoxDecoration(
-                  color: ConstantColors().secondaryColor,
+                  color: ConstantColors().primaryColor,
                   borderRadius: BorderRadius.circular(3)),
               width: double.infinity,
               alignment: Alignment.center,

@@ -1,4 +1,5 @@
-import 'package:bikroy/app/constants/Constantcolors.dart';
+import 'package:bikroy/meta/screens/Posts/singleProduct.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:bikroy/app/constants/ConstantsStyle.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -29,7 +30,6 @@ class HomeHelper with ChangeNotifier {
     notifyListeners();
   }
 
-  
   getCategoryText(int index) {
     if (index == 0) {
       return "Electronics";
@@ -83,6 +83,47 @@ class HomeHelper with ChangeNotifier {
           ),
         ),
       ],
+    );
+  }
+
+  Widget topSlider(double height, Color color) {
+    return CarouselSlider(
+      options: CarouselOptions(
+        height: height,
+        autoPlay: true,
+      ),
+      items: [1, 2, 3, 4, 5].map((i) {
+        return Builder(
+          builder: (BuildContext context) {
+            return InkWell(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => SingleAd(
+                            description: "full new condition, no scratch",
+                            title: "Samsung galaxy s9 full new",
+                            areaName: "Panthapath",
+                            price: 6900,
+                            postedBy: "saleheen")));
+              },
+              child: Container(
+                alignment: Alignment.center,
+                width: MediaQuery.of(context).size.width,
+                margin: EdgeInsets.symmetric(horizontal: 5.0),
+                decoration: BoxDecoration(
+                    color: color,
+                    borderRadius: BorderRadius.circular(8),
+                    image: DecorationImage(
+                        image: NetworkImage(
+                          "https://images.unsplash.com/photo-1541443131876-44b03de101c5?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjZ8fGNhcnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+                        ),
+                        fit: BoxFit.cover)),
+              ),
+            );
+          },
+        );
+      }).toList(),
     );
   }
 }

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:bikroy/meta/screens/Posts/singleProduct.dart';
 import 'package:flutter/material.dart';
 
@@ -9,6 +11,29 @@ class HomePageSlider extends StatefulWidget {
 }
 
 class _SliderState extends State<HomePageSlider> {
+  int _currentPage = 0;
+  PageController _pageController = PageController(
+    initialPage: 0,
+  );
+
+  @override
+  void initState() {
+    super.initState();
+    Timer.periodic(Duration(seconds: 3), (Timer timer) {
+      if (_currentPage < 5) {
+        _currentPage++;
+      } else {
+        _currentPage = 0;
+      }
+
+      _pageController.animateToPage(
+        _currentPage,
+        duration: Duration(milliseconds: 700),
+        curve: Curves.easeIn,
+      );
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     // int _selectedSlide = 0;
@@ -24,13 +49,14 @@ class _SliderState extends State<HomePageSlider> {
               width: double.infinity,
               // height: 200,
               child: PageView(
+                controller: _pageController,
                 // onPageChanged: (num) {
                 //   setState(() {
                 //     _selectedSlide = num;
                 //   });
                 // },
                 children: [
-                  for (var i = 0; i < 3; i++)
+                  for (var i = 0; i < 5; i++)
                     Image.network(
                       "https://images.unsplash.com/photo-1562273138-f46be4ebdf33?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDIwfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60",
                       fit: BoxFit.cover,

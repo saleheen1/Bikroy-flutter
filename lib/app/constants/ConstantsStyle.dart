@@ -8,13 +8,14 @@ class ConstantsStyle {
       color: ConstantColors().headingColor);
 
   final productTitleHeading = TextStyle(
-      fontSize: 14,
-      fontWeight: FontWeight.bold,
+      fontSize: 15,
+      height: 1.5,
+      fontWeight: FontWeight.w600,
       color: ConstantColors().headingColor);
 
   final priceStyle = TextStyle(
       fontSize: 15,
-      fontWeight: FontWeight.w600,
+      fontWeight: FontWeight.bold,
       color: ConstantColors().primaryColor);
 
   final paraGraphStyle = TextStyle(

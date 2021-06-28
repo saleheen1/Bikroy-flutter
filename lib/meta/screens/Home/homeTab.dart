@@ -237,6 +237,14 @@ class HomeTab extends StatelessWidget {
             child: SingleChildScrollView(
           child: Column(
             children: [
+              // Container(
+              //     // margin: EdgeInsets.only(
+              //     //   top: 12,
+              //     // ),
+
+              //     //slider
+              //     child: HomeHelper()
+              //         .topSlider(180, ConstantColors().secondaryColor)),
               HomePageSlider(),
               SizedBox(
                 height: 20,
@@ -259,7 +267,7 @@ class HomeTab extends StatelessWidget {
                               child: GridView.count(
                                 padding: EdgeInsets.zero,
                                 scrollDirection: Axis.vertical,
-                                mainAxisSpacing: 20,
+                                mainAxisSpacing: 5,
                                 crossAxisSpacing: 20,
                                 physics: NeverScrollableScrollPhysics(),
                                 crossAxisCount: 2,
@@ -318,26 +326,55 @@ class HomeTab extends StatelessWidget {
                                           SizedBox(
                                             height: 12,
                                           ),
-                                          Text(
-                                            snapshot.data!.adPost!.data![index]
-                                                .title,
-                                            overflow: TextOverflow.ellipsis,
-                                            style: ConstantsStyle()
-                                                .productTitleHeading,
-                                          ),
-                                          Text(
-                                            "Elephant Road",
-                                            overflow: TextOverflow.ellipsis,
-                                            style:
-                                                ConstantsStyle().paraGraphStyle,
+                                          //price & discount row
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Text(
+                                                "${snapshot.data!.adPost!.data![index].price.toString()} tk",
+                                                style:
+                                                    ConstantsStyle().priceStyle,
+                                              ),
+                                              Container(
+                                                padding: EdgeInsets.symmetric(
+                                                    horizontal: 9, vertical: 2),
+                                                decoration: BoxDecoration(
+                                                  color: ConstantColors()
+                                                      .secondaryColor
+                                                      .withOpacity(0.1),
+                                                  borderRadius:
+                                                      BorderRadius.circular(50),
+                                                  // border: Border.all(color: Color(0xff392361)),
+                                                ),
+                                                child: Text(
+                                                  "5% off",
+                                                  style: TextStyle(
+                                                      color: ConstantColors()
+                                                          .secondaryColor,
+                                                      fontWeight:
+                                                          FontWeight.w600),
+                                                ),
+                                              ),
+                                            ],
                                           ),
                                           SizedBox(
                                             height: 6,
                                           ),
                                           Text(
-                                            "${snapshot.data!.adPost!.data![index].price.toString()} tk",
-                                            style: ConstantsStyle().priceStyle,
+                                            snapshot.data!.adPost!.data![index]
+                                                .title,
+                                            overflow: TextOverflow.ellipsis,
+                                            maxLines: 2,
+                                            style: ConstantsStyle()
+                                                .productTitleHeading,
                                           ),
+                                          // Text(
+                                          //   "Elephant Road",
+                                          //   overflow: TextOverflow.ellipsis,
+                                          //   style:
+                                          //       ConstantsStyle().paraGraphStyle,
+                                          // ),
                                         ],
                                       ),
                                     ),

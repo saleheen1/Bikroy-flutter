@@ -46,7 +46,7 @@ class PostHelper {
     } else if (index == 6) {
       return "https://cdn.pixabay.com/photo/2017/10/06/16/11/towels-2823656__340.png";
     } else {
-      return "https://cdn.pixabay.com/photo/2016/05/26/17/09/present-1417611__340.png";
+      return "https://cdn.pixabay.com/photo/2017/01/04/16/40/hudson-1952439__340.png";
     }
   }
 

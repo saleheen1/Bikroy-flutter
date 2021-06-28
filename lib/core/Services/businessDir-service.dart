@@ -1,16 +1,16 @@
 import 'dart:convert';
 
 import 'package:bikroy/app/constants/api.dart';
-import 'package:bikroy/core/Models/categoryModel.dart';
+import 'package:bikroy/core/Models/businessDir-Model.dart';
 import 'package:http/http.dart' as http;
 
-class CategoryService {
+class BusinessDir_Service {
   Api api = Api();
   //fetch Category
-  Future<CategoryModel> fetchCategory() async {
+  Future<BusinessDirModel> fetchCategory() async {
     var response = await http.get(Uri.parse(api.categoryApi));
 
     var jsonData = jsonDecode(response.body);
-    return CategoryModel.fromJson(jsonData);
+    return BusinessDirModel.fromJson(jsonData);
   }
 }

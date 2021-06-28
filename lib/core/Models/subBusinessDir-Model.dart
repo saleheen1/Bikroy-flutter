@@ -1,17 +1,18 @@
 // To parse this JSON data, do
 //
-//     final categoryModel = categoryModelFromJson(jsonString);
+//     final SubBusinessDirModel = SubBusinessDirModelFromJson(jsonString);
 
 import 'package:meta/meta.dart';
 import 'dart:convert';
 
-CategoryModel categoryModelFromJson(String str) =>
-    CategoryModel.fromJson(json.decode(str));
+SubBusinessDirModel SubBusinessDirModelFromJson(String str) =>
+    SubBusinessDirModel.fromJson(json.decode(str));
 
-String categoryModelToJson(CategoryModel data) => json.encode(data.toJson());
+String SubBusinessDirModelToJson(SubBusinessDirModel data) =>
+    json.encode(data.toJson());
 
-class CategoryModel {
-  CategoryModel({
+class SubBusinessDirModel {
+  SubBusinessDirModel({
     required this.msg,
     required this.status,
     required this.data,
@@ -21,7 +22,8 @@ class CategoryModel {
   bool status;
   Data data;
 
-  factory CategoryModel.fromJson(Map<String, dynamic> json) => CategoryModel(
+  factory SubBusinessDirModel.fromJson(Map<String, dynamic> json) =>
+      SubBusinessDirModel(
         msg: json["msg"],
         status: json["status"],
         data: Data.fromJson(json["data"]),
@@ -58,7 +60,7 @@ class Data {
   int lastPage;
   String lastPageUrl;
   List<Link> links;
-  String nextPageUrl;
+  dynamic nextPageUrl;
   String path;
   int perPage;
   dynamic prevPageUrl;
@@ -100,21 +102,25 @@ class Data {
 
 class Datum {
   Datum({
+    required this.subCategoryName,
     required this.id,
-    required this.name,
+    required this.fkCategoryId,
   });
 
+  String subCategoryName;
   int id;
-  String name;
+  int fkCategoryId;
 
   factory Datum.fromJson(Map<String, dynamic> json) => Datum(
+        subCategoryName: json["sub_category_name"],
         id: json["id"],
-        name: json["name"],
+        fkCategoryId: json["fk_category_id"],
       );
 
   Map<String, dynamic> toJson() => {
+        "sub_category_name": subCategoryName,
         "id": id,
-        "name": name,
+        "fk_category_id": fkCategoryId,
       };
 }
 

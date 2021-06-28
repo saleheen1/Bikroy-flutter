@@ -1,13 +1,10 @@
 import 'package:bikroy/app/constants/Constantcolors.dart';
-import 'package:bikroy/app/constants/ConstantsStyle.dart';
 import 'package:bikroy/app/widgets/customButton.dart';
 import 'package:bikroy/app/widgets/customInput.dart';
-import 'package:bikroy/core/Models/categoryModel.dart';
 import 'package:bikroy/meta/screens/Authentications/signUpPage.dart';
 import 'package:bikroy/meta/screens/Home/landingPage.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
-import 'package:provider/provider.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -104,7 +101,7 @@ class _LoginPageState extends State<LoginPage>
                     text: "Login",
                     color: ConstantColors().primaryColor,
                     outlineBtn: false,
-                    onPressed: () {
+                    onPressed: () async {
                       Navigator.push(
                           context,
                           PageTransition(

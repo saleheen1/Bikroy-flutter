@@ -1,4 +1,4 @@
-import 'package:bikroy/core/Services/helper.dart';
+import 'package:bikroy/core/helper.dart';
 import 'package:flutter/material.dart';
 
 import 'extraPageHelper.dart';

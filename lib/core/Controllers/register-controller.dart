@@ -1,6 +1,6 @@
 import 'package:bikroy/core/Models/Register-model.dart';
 import 'package:bikroy/core/Services/Register-service.dart';
-import 'package:bikroy/core/Services/helper.dart';
+import 'package:bikroy/core/helper.dart';
 import 'package:bikroy/meta/screens/Authentications/loginPage.dart';
 import 'package:flutter/material.dart';
 

@@ -1,5 +1,5 @@
 import 'package:bikroy/app/widgets/customInput.dart';
-import 'package:bikroy/core/Services/helper.dart';
+import 'package:bikroy/core/helper.dart';
 import 'package:bikroy/meta/screens/Search/searchPageHelper.dart';
 import 'package:bikroy/meta/screens/Search/servicesSecondPage.dart';
 import 'package:flutter/material.dart';

@@ -1,15 +1,15 @@
 import 'package:bikroy/app/constants/Constantcolors.dart';
 import 'package:bikroy/app/widgets/appBar.dart';
-import 'package:bikroy/core/Models/subCategoryModel.dart';
+import 'package:bikroy/core/Models/subBusinessDir-Model.dart';
+import 'package:bikroy/core/Services/subBusinessDir-service.dart';
 import 'package:bikroy/core/helper.dart';
-import 'package:bikroy/core/Services/sub_category_Services.dart';
-
 import 'package:flutter/material.dart';
 
-class SubCategoryPage extends StatelessWidget {
-  const SubCategoryPage({Key? key, this.subCategoryName = "Sub Category"})
+class SubBusinessDir extends StatelessWidget {
+  const SubBusinessDir({Key? key, this.subBusinessDir_name = "No data"})
       : super(key: key);
-  final String subCategoryName;
+  final String subBusinessDir_name;
+
   @override
   Widget build(BuildContext context) {
     var categoryId = ModalRoute.of(context)!.settings.arguments;
@@ -18,7 +18,7 @@ class SubCategoryPage extends StatelessWidget {
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(kToolbarHeight),
         child: AppbarCustom(
-          title: subCategoryName,
+          title: subBusinessDir_name,
         ),
       ),
       backgroundColor: Colors.white,
@@ -27,8 +27,8 @@ class SubCategoryPage extends StatelessWidget {
           children: [
             // Helper()
             //     .heroArea(subCategoryName, true, Colors.white, context),
-            FutureBuilder<SubCategoryModel>(
-                future: SubCategoryServices().fetchCategory(categoryId),
+            FutureBuilder<SubBusinessDirModel>(
+                future: SubBusinessDirService().fetchCategory(categoryId),
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
                     print(snapshot.data);

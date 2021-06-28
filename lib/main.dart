@@ -1,8 +1,5 @@
 import 'package:bikroy/app/constants/Constantcolors.dart';
-import 'package:bikroy/core/Controllers/categoryController.dart';
 import 'package:bikroy/core/Controllers/register-controller.dart';
-import 'package:bikroy/core/Models/categoryModel.dart';
-import 'package:bikroy/core/Services/categoryService.dart';
 import 'package:bikroy/meta/screens/Authentications/loginPage.dart';
 import 'package:bikroy/meta/screens/Home/homeHelper.dart';
 import 'package:bikroy/meta/screens/Home/landingPage.dart';

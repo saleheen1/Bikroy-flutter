@@ -1,5 +1,5 @@
 import 'package:bikroy/app/widgets/bottomNav.dart';
-import 'package:bikroy/meta/screens/Directories/BusinessDirectoriesPage.dart';
+import 'package:bikroy/meta/screens/Directories/BusinessDirPage.dart';
 import 'package:bikroy/meta/screens/Home/homeTab.dart';
 import 'package:bikroy/meta/screens/Posts/postCategoryPage.dart';
 import 'package:bikroy/meta/screens/Tabs/drawerPage.dart';
@@ -28,7 +28,7 @@ class _HomePageState extends State<LandingPage> {
     // SliverPage(),
     SearchTab(),
     PostCategoryPage(),
-    BusinessDirectoriesPage(),
+    BusinessDirPage(),
     DrawerPage()
   ];
   @override

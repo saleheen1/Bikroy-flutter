@@ -1,16 +1,19 @@
 import 'dart:convert';
 
+import 'package:bikroy/app/constants/api.dart';
 import 'package:bikroy/core/Models/Register-model.dart';
 import 'package:bikroy/core/helper.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class RegisterService {
+  Api api = Api();
+
   Future submitData(String name, String mobile, String password, String email,
       String type) async {
     //after sending this to the server we will get some data returned
     var response = await http
-        .post(Uri.https('beta.tradebangla.com.bd', 'api/auth/register'), body: {
+        .post(Uri.https(api.authorityApi, api.registerUnencodedPathApi), body: {
       "name": name,
       "mobile": mobile,
       "password": password,

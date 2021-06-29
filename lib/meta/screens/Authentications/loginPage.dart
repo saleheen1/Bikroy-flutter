@@ -102,11 +102,11 @@ class _LoginPageState extends State<LoginPage>
                     color: ConstantColors().primaryColor,
                     outlineBtn: false,
                     onPressed: () async {
-                      // Navigator.push(
-                      //     context,
-                      //     PageTransition(
-                      //         child: LandingPage(),
-                      //         type: PageTransitionType.rightToLeft));
+                      Navigator.push(
+                          context,
+                          PageTransition(
+                              child: LandingPage(),
+                              type: PageTransitionType.rightToLeft));
                     },
                   ),
                   CustomButton(

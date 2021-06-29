@@ -8,7 +8,7 @@ class BusinessDir_Service {
   Api api = Api();
   //fetch Category
   Future<BusinessDirModel> fetchCategory() async {
-    var response = await http.get(Uri.parse(api.categoryApi));
+    var response = await http.get(Uri.parse(api.businessDirApi));
 
     var jsonData = jsonDecode(response.body);
     return BusinessDirModel.fromJson(jsonData);

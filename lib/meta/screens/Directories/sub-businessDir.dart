@@ -3,6 +3,7 @@ import 'package:bikroy/app/widgets/appBar.dart';
 import 'package:bikroy/core/Models/subBusinessDir-Model.dart';
 import 'package:bikroy/core/Services/subBusinessDir-service.dart';
 import 'package:bikroy/core/helper.dart';
+import 'package:bikroy/meta/screens/Directories/businessShops.dart';
 import 'package:flutter/material.dart';
 
 class SubBusinessDir extends StatelessWidget {
@@ -48,11 +49,18 @@ class SubBusinessDir extends StatelessWidget {
                             color: Colors.transparent,
                             child: InkWell(
                               onTap: () {
-                                // Navigator.push(
-                                //     context,
-                                //     MaterialPageRoute(
-                                //         builder: (context) =>
-                                //             SubCategoryPage()));
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => BusinessDirShops(
+                                              subBusinessTypeID: snapshot
+                                                  .data!.data.data[index].id,
+                                              subBusinessType: snapshot
+                                                  .data!
+                                                  .data
+                                                  .data[index]
+                                                  .subCategoryName,
+                                            )));
                               },
                               child: Container(
                                 decoration: BoxDecoration(

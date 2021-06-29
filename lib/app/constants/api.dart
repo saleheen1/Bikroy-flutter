@@ -13,6 +13,7 @@ class Api {
       'https://beta.tradebangla.com.bd/api/sub-category?category_id=';
   final String businessDirShopsApi =
       "https://beta.tradebangla.com.bd/api/sub-category/business";
+  final String shopDetailsApi = "https://beta.tradebangla.com.bd/api/business";
 
   final String adsApi = 'https://beta.tradebangla.com.bd/api/ads?';
 

@@ -3,6 +3,7 @@ import 'package:bikroy/app/constants/ConstantsStyle.dart';
 import 'package:bikroy/core/Controllers/businessShops-controller.dart';
 import 'package:bikroy/core/Models/businessShops-Model.dart';
 import 'package:bikroy/core/helper.dart';
+import 'package:bikroy/meta/screens/Directories/shopDetailsPage.dart';
 import 'package:bikroy/meta/screens/Posts/postDetailsPage.dart';
 import 'package:bikroy/meta/screens/Search/searchPageHelper.dart';
 import 'package:flutter/material.dart';
@@ -54,7 +55,10 @@ class BusinessDirShops extends StatelessWidget {
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) =>
-                                                PostDetailsPage()));
+                                                ShopDetailsPage(
+                                                  link: snapshot.data!.data
+                                                      .data[index].link,
+                                                )));
                                   },
                                   child: Container(
                                     margin: EdgeInsets.only(bottom: 28),

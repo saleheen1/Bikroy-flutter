@@ -6,6 +6,7 @@ import 'package:bikroy/meta/screens/Authentications/signUpPage.dart';
 import 'package:bikroy/meta/screens/Home/landingPage.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:provider/provider.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -109,13 +110,16 @@ class _LoginPageState extends State<LoginPage>
                     text: "Login",
                     color: ConstantColors().primaryColor,
                     outlineBtn: false,
+                    // isLoading:
+                    //     Provider.of<LoginController>(context, listen: true)
+                    //         .isloading,
                     onPressed: () async {
-                      LoginController().fetchData(_email, _password, context);
-                      // Navigator.push(
-                      //     context,
-                      //     PageTransition(
-                      //         child: LandingPage(),
-                      //         type: PageTransitionType.rightToLeft));
+                      // LoginController().fetchData(_email, _password, context);
+                      Navigator.push(
+                          context,
+                          PageTransition(
+                              child: LandingPage(),
+                              type: PageTransitionType.rightToLeft));
                     },
                   ),
                   CustomButton(

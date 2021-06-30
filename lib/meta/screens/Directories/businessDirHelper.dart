@@ -4,6 +4,55 @@ import 'package:bikroy/core/helper.dart';
 import 'package:flutter/material.dart';
 
 class BusinessDirHelper {
+//Pagination
+  Widget bDirPagination(List data) {
+    return Container(
+      height: 46,
+      child: ListView(
+        scrollDirection: Axis.horizontal,
+        children: [
+          //previous page button
+          // Container(
+          //     alignment: Alignment.center,
+          //     color: ConstantColors().dividerColor,
+          //     padding: EdgeInsets.symmetric(horizontal: 13, vertical: 10),
+          //     margin: EdgeInsets.symmetric(horizontal: 8),
+          //     child: Icon(
+          //       Icons.arrow_back_ios,
+          //       color: ConstantColors().greyPrimary,
+          //     )),
+          for (var j = 0; j < data.length; j++)
+            InkWell(
+              onTap: () {},
+              child: Container(
+                color: ConstantColors().dividerColor,
+                padding: EdgeInsets.symmetric(horizontal: 18, vertical: 10),
+                margin: EdgeInsets.symmetric(horizontal: 8),
+                child: Text(
+                  "${data[j].label}",
+                  style: TextStyle(
+                      color: ConstantColors().primaryColor,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
+            ),
+
+          //Next page button
+          // Container(
+          //     alignment: Alignment.center,
+          //     color: ConstantColors().dividerColor,
+          //     padding: EdgeInsets.symmetric(horizontal: 13, vertical: 10),
+          //     margin: EdgeInsets.symmetric(horizontal: 8),
+          //     child: Icon(
+          //       Icons.arrow_forward_ios,
+          //       color: ConstantColors().greyPrimary,
+          //     )),
+        ],
+      ),
+    );
+  }
+
 //Shop details page  top big image area
   Widget buildCarousel(String coverLink, String profileImgLink, String name,
       BuildContext context) {

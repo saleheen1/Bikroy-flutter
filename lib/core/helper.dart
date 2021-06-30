@@ -15,7 +15,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class Helper {
   showLoading() {
-    return SpinKitWave(
+    return SpinKitRing(
       color: ConstantColors().primaryColor,
       size: 30.0,
     );

@@ -3,8 +3,23 @@ import 'package:bikroy/core/Services/login-service.dart';
 import 'package:bikroy/core/helper.dart';
 import 'package:bikroy/meta/screens/Home/landingPage.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-class LoginController {
+class LoginController with ChangeNotifier {
+  bool isloading = false;
+
+  bool get getLoading => isloading;
+  void makeLoadingTrue() {
+    isloading = true;
+    notifyListeners();
+  }
+
+  void makeLoadingFalse() {
+    print("visbility false function rannnnn");
+    isloading = false;
+    notifyListeners();
+  }
+
   Future fetchData(String email, String password, BuildContext context) async {
     if (email.isEmpty) {
       Helper().flutterToast("Email field cannot be empty", Colors.red);
@@ -20,8 +35,8 @@ class LoginController {
           "Password must be at least 6 characters long", Colors.red);
       return false;
     } else {
-      LoginModel myData =
-          await LoginService().submitData(email, password, context);
+      Provider.of<LoginController>(context, listen: false).makeLoadingTrue();
+      LoginService().submitData(email, password, context);
     }
   }
 }

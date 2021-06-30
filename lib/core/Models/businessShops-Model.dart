@@ -49,7 +49,7 @@ class Data {
     required this.path,
     required this.perPage,
     this.prevPageUrl,
-    required this.to,
+    this.to,
     required this.total,
   });
 
@@ -64,7 +64,7 @@ class Data {
   String path;
   int perPage;
   dynamic prevPageUrl;
-  int to;
+  int? to;
   int total;
 
   factory Data.fromJson(Map<String, dynamic> json) => Data(

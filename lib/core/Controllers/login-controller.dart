@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 class LoginController {
   Future fetchData(String email, String password, BuildContext context) async {
     if (email.isEmpty) {
-      Helper().flutterToast("Name field cannot be empty", Colors.red);
+      Helper().flutterToast("Email field cannot be empty", Colors.red);
       return false;
     } else if (!email.contains("@")) {
       Helper().flutterToast("Invalid email", Colors.red);
@@ -20,11 +20,8 @@ class LoginController {
           "Password must be at least 6 characters long", Colors.red);
       return false;
     } else {
-      LoginModel myData = await LoginService().submitData(email, password);
-      if (myData.status == true) {
-        Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => LandingPage()));
-      }
+      LoginModel myData =
+          await LoginService().submitData(email, password, context);
     }
   }
 }

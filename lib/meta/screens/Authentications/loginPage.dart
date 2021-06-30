@@ -1,6 +1,7 @@
 import 'package:bikroy/app/constants/Constantcolors.dart';
 import 'package:bikroy/app/widgets/customButton.dart';
 import 'package:bikroy/app/widgets/customInput.dart';
+import 'package:bikroy/core/Controllers/login-controller.dart';
 import 'package:bikroy/meta/screens/Authentications/signUpPage.dart';
 import 'package:bikroy/meta/screens/Home/landingPage.dart';
 import 'package:flutter/material.dart';
@@ -19,6 +20,9 @@ class _LoginPageState extends State<LoginPage>
 
   AnimationController? _controller;
   Animation? _animation;
+
+  String _email = "";
+  String _password = "";
 
   @override
   void initState() {
@@ -79,7 +83,9 @@ class _LoginPageState extends State<LoginPage>
                     children: [
                       CustomInput(
                         hintText: "Email",
-                        onChanged: (value) {},
+                        onChanged: (value) {
+                          _email = value;
+                        },
                         onSubmitted: (value) {
                           focusNode.nextFocus();
                         },
@@ -88,7 +94,9 @@ class _LoginPageState extends State<LoginPage>
                       //password
                       CustomInput(
                         hintText: "Password",
-                        onChanged: (value) {},
+                        onChanged: (value) {
+                          _password = value;
+                        },
                         onSubmitted: (value) {},
                         focusNode: focusNode,
                       ),
@@ -102,11 +110,12 @@ class _LoginPageState extends State<LoginPage>
                     color: ConstantColors().primaryColor,
                     outlineBtn: false,
                     onPressed: () async {
-                      Navigator.push(
-                          context,
-                          PageTransition(
-                              child: LandingPage(),
-                              type: PageTransitionType.rightToLeft));
+                      LoginController().fetchData(_email, _password, context);
+                      // Navigator.push(
+                      //     context,
+                      //     PageTransition(
+                      //         child: LandingPage(),
+                      //         type: PageTransitionType.rightToLeft));
                     },
                   ),
                   CustomButton(

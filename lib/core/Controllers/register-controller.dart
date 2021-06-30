@@ -3,6 +3,7 @@ import 'package:bikroy/core/Services/Register-service.dart';
 import 'package:bikroy/core/helper.dart';
 import 'package:bikroy/meta/screens/Authentications/loginPage.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class RegisterController with ChangeNotifier {
   bool isloading = false;
@@ -66,16 +67,9 @@ class RegisterController with ChangeNotifier {
       return false;
     } else {
       //if everything is fine then proceed with the registration
-      RegisterModel myData = await RegisterService()
-          .submitData(name, mobile, password, email, type);
-      if (myData.status == true) {
-        // makeLoadingFalse();
-        Helper().flutterToast(
-            "Registration Successful, Please login", Colors.green);
-        Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => LoginPage()));
-        return true;
-      }
+      Provider.of<RegisterController>(context, listen: false).makeLoadingTrue();
+      RegisterService()
+          .submitData(name, mobile, password, email, type, context);
     }
   }
 }

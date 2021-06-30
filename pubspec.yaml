@@ -34,7 +34,6 @@ dependencies:
   modal_bottom_sheet: ^2.0.0
   page_transition: ^2.0.2
   provider: ^5.0.0
-  responsive_grid: ^2.0.0
 
 dev_dependencies:
   flutter_test:

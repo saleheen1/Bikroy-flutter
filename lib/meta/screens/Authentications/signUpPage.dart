@@ -27,8 +27,6 @@ class _SignUpPageState extends State<SignUpPage>
   String _confirmPassword = "";
   String _email = "";
 
-  bool isSuccesful = false;
-
   //account type list
   var _accountType = [
     "Select Account Type",
@@ -232,13 +230,13 @@ class _SignUpPageState extends State<SignUpPage>
                     color: ConstantColors().primaryColor,
                     outlineBtn: false,
                     // isLoading: context.watch<RegisterController>().getLoading,
-                    isLoading: isloading,
-                    onPressed: () async {
+                    isLoading: context.watch<RegisterController>().isloading,
+                    onPressed: () {
                       // setState(() {
                       //   isloading = true;
                       // });
-                      // context.read<RegisterController>().makeLoadingTrue();
-                      isSuccesful = await RegisterController().submitData(
+
+                      RegisterController().submitData(
                           _name,
                           _mobile,
                           _password,

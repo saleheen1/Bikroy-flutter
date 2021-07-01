@@ -2,6 +2,7 @@ import 'package:bikroy/app/constants/Constantcolors.dart';
 import 'package:bikroy/core/Controllers/drawerMenu-controller.dart';
 import 'package:bikroy/core/Controllers/login-controller.dart';
 import 'package:bikroy/core/Controllers/register-controller.dart';
+import 'package:bikroy/core/Services/businessShops-service.dart';
 import 'package:bikroy/meta/screens/Authentications/loginPage.dart';
 import 'package:bikroy/meta/screens/Home/homeHelper.dart';
 import 'package:bikroy/meta/screens/Home/landingPage.dart';
@@ -25,6 +26,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => RegisterController()),
         ChangeNotifierProvider(create: (_) => LoginController()),
         ChangeNotifierProvider(create: (_) => DrawerMenuController()),
+        ChangeNotifierProvider(create: (_) => BusinessShopsService()),
         ChangeNotifierProvider(create: (_) => HomeHelper()),
       ],
       child: MaterialApp(

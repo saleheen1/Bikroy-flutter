@@ -29,10 +29,16 @@ class BusinessShopsService with ChangeNotifier {
       } catch (e) {
         _errorMessage = e.toString();
       }
-      notifyListeners();
     } else {
       _error = true;
-      notifyListeners();
     }
+    notifyListeners();
+  }
+
+  void initialValues() {
+    _finalData = "";
+    _error = false;
+    _errorMessage = "";
+    notifyListeners();
   }
 }

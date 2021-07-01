@@ -18,7 +18,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class Helper {
   showLoading() {
-    return SpinKitRing(
+    return SpinKitHourGlass(
       color: ConstantColors().primaryColor,
       size: 30.0,
     );
@@ -346,12 +346,12 @@ class Helper {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            InkWell(
-                onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => UserProfile()));
-                },
-                child: ListTile(title: Text('View profile'))),
+            // InkWell(
+            //     onTap: () {
+            //       Navigator.push(context,
+            //           MaterialPageRoute(builder: (context) => UserProfile()));
+            //     },
+            //     child: ListTile(title: Text('View profile'))),
             InkWell(
                 onTap: () async {
                   SharedPreferences prefs =

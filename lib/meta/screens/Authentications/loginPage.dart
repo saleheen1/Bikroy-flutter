@@ -110,16 +110,16 @@ class _LoginPageState extends State<LoginPage>
                     text: "Login",
                     color: ConstantColors().primaryColor,
                     outlineBtn: false,
-                    // isLoading:
-                    //     Provider.of<LoginController>(context, listen: true)
-                    //         .isloading,
+                    isLoading:
+                        Provider.of<LoginController>(context, listen: true)
+                            .isloading,
                     onPressed: () async {
-                      // LoginController().fetchData(_email, _password, context);
-                      Navigator.push(
-                          context,
-                          PageTransition(
-                              child: LandingPage(),
-                              type: PageTransitionType.rightToLeft));
+                      LoginController().fetchData(_email, _password, context);
+                      // Navigator.push(
+                      //     context,
+                      //     PageTransition(
+                      //         child: LandingPage(),
+                      //         type: PageTransitionType.rightToLeft));
                     },
                   ),
                   CustomButton(

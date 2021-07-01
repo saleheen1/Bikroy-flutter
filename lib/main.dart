@@ -1,9 +1,11 @@
 import 'package:bikroy/app/constants/Constantcolors.dart';
+import 'package:bikroy/core/Controllers/drawerMenu-controller.dart';
 import 'package:bikroy/core/Controllers/login-controller.dart';
 import 'package:bikroy/core/Controllers/register-controller.dart';
 import 'package:bikroy/meta/screens/Authentications/loginPage.dart';
 import 'package:bikroy/meta/screens/Home/homeHelper.dart';
 import 'package:bikroy/meta/screens/Home/landingPage.dart';
+import 'package:bikroy/meta/screens/SplashScreen/splashScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
@@ -22,12 +24,13 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (_) => RegisterController()),
         ChangeNotifierProvider(create: (_) => LoginController()),
+        ChangeNotifierProvider(create: (_) => DrawerMenuController()),
         ChangeNotifierProvider(create: (_) => HomeHelper()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(accentColor: ConstantColors().primaryColor),
-        home: LoginPage(),
+        home: SplashScreen(),
       ),
     );
   }

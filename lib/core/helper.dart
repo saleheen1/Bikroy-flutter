@@ -1,4 +1,5 @@
 import 'package:bikroy/app/constants/Constantcolors.dart';
+import 'package:bikroy/meta/screens/Authentications/loginPage.dart';
 import 'package:bikroy/meta/screens/Extras/aboutUs.dart';
 import 'package:bikroy/meta/screens/Extras/advertising.dart';
 import 'package:bikroy/meta/screens/Extras/contactUs.dart';
@@ -9,9 +10,11 @@ import 'package:bikroy/meta/screens/Extras/rules.dart';
 import 'package:bikroy/meta/screens/Posts/allPosts.dart';
 import 'package:bikroy/meta/screens/Posts/postHelper.dart';
 import 'package:bikroy/meta/screens/Posts/postSubCategory.dart';
+import 'package:bikroy/meta/screens/Profile/userProfile.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Helper {
   showLoading() {
@@ -88,18 +91,6 @@ class Helper {
       return "Animals & Pet";
     }
   }
-
-  // jobTypeText(index) {
-  //   if (index == 0) {
-  //     return "All Ads";
-  //   } else if (index == 1) {
-  //     return "Jobs in BD";
-  //   } else if (index == 2) {
-  //     return "Overseas Jobs";
-  //   } else {
-  //     return "Directory";
-  //   }
-  // }
 
   getIcon(index) {
     if (index == 0) {
@@ -347,55 +338,36 @@ class Helper {
     );
   }
 
-  //Jobs widget
-  // Widget jobTypes(Function whenClicked) {
-  //   return Container(
-  //     color: Color(0xffF0F0F0),
-  //     child: GridView.count(
-  //         padding: EdgeInsets.zero,
-  //         scrollDirection: Axis.vertical,
-  //         mainAxisSpacing: 1,
-  //         crossAxisSpacing: 1,
-  //         physics: NeverScrollableScrollPhysics(),
-  //         childAspectRatio: 3 / 2,
-  //         crossAxisCount: 2,
-  //         shrinkWrap: true,
-  //         children: List.generate(6, (index) {
-  //           return Material(
-  //             color: Colors.white,
-  //             child: InkWell(
-  //               onTap: () {
-  //                 whenClicked.call();
-  //               },
-  //               child: Column(
-  //                 mainAxisAlignment: MainAxisAlignment.center,
-  //                 children: [
-  //                   Icon(
-  //                     getIcon(index),
-  //                     color: getColor(index),
-  //                     size: 26,
-  //                   ),
-  //                   SizedBox(
-  //                     height: 10,
-  //                   ),
-  //                   Container(
-  //                     margin: EdgeInsets.symmetric(horizontal: 25),
-  //                     child: Text(
-  //                       jobTypeText(index),
-  //                       style: TextStyle(
-  //                           fontSize: 14,
-  //                           color: ConstantColors().greyPrimary,
-  //                           fontWeight: FontWeight.w600),
-  //                       textAlign: TextAlign.center,
-  //                     ),
-  //                   ),
-  //                 ],
-  //               ),
-  //             ),
-  //           );
-  //         })),
-  //   );
-  // }
+  //Profile popup menu
+  Widget profilePopup(BuildContext context) {
+    return Material(
+      elevation: 8,
+      child: IntrinsicWidth(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            InkWell(
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => UserProfile()));
+                },
+                child: ListTile(title: Text('View profile'))),
+            InkWell(
+                onTap: () async {
+                  SharedPreferences prefs =
+                      await SharedPreferences.getInstance();
+                  prefs.setBool('userSaved', false);
+                  Navigator.pushReplacement(context,
+                      MaterialPageRoute(builder: (context) => LoginPage()));
+                },
+                child: ListTile(
+                    title:
+                        Text('Log out', style: TextStyle(color: Colors.red)))),
+          ],
+        ),
+      ),
+    );
+  }
 
   drawerLinks(BuildContext context, index) {
     if (index == 0) {

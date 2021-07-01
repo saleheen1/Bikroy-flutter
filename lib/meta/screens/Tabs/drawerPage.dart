@@ -1,11 +1,14 @@
 import 'package:bikroy/app/constants/Constantcolors.dart';
 import 'package:bikroy/app/constants/ConstantsStyle.dart';
+import 'package:bikroy/core/Controllers/drawerMenu-controller.dart';
 import 'package:bikroy/core/helper.dart';
 import 'package:bikroy/meta/screens/Posts/allPosts.dart';
 import 'package:bikroy/meta/screens/Profile/resumeView.dart';
 import 'package:bikroy/meta/screens/Profile/userProfile.dart';
+import 'package:flutter_portal/flutter_portal.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class DrawerPage extends StatelessWidget {
   const DrawerPage({Key? key}) : super(key: key);
@@ -55,40 +58,58 @@ class DrawerPage extends StatelessWidget {
                     shrinkWrap: true,
                     scrollDirection: Axis.vertical,
                     children: [
-                      InkWell(
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => UserProfile()));
-                        },
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 18, bottom: 10),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    "S.M. Saleheen",
-                                    style: ConstantsStyle().regularHeading,
-                                  ),
-                                  Icon(
-                                    Icons.settings,
-                                    color: ConstantColors().greyPrimary,
-                                  )
-                                ],
+                      Portal(
+                        child: GestureDetector(
+                          onTap: () {
+                            Provider.of<DrawerMenuController>(context,
+                                    listen: false)
+                                .menuToggle();
+                          },
+                          child: PortalEntry(
+                            portalAnchor: Alignment.topRight,
+                            childAnchor: Alignment.topRight,
+                            visible: Provider.of<DrawerMenuController>(context,
+                                    listen: true)
+                                .isMenuOpen,
+                            portal: Helper().profilePopup(context),
+                            child: InkWell(
+                              onTap: () {
+                                Provider.of<DrawerMenuController>(context,
+                                        listen: false)
+                                    .menuToggle();
+                              },
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.only(left: 18, bottom: 10),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          "S.M. Saleheen",
+                                          style:
+                                              ConstantsStyle().regularHeading,
+                                        ),
+                                        Icon(
+                                          Icons.settings,
+                                          color: ConstantColors().greyPrimary,
+                                        )
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 3,
+                                    ),
+                                    Text(
+                                      "smsaleheen3@gmail.com",
+                                      style: ConstantsStyle().paraGraphStyle,
+                                    ),
+                                  ],
+                                ),
                               ),
-                              SizedBox(
-                                height: 3,
-                              ),
-                              Text(
-                                "smsaleheen3@gmail.com",
-                                style: ConstantsStyle().paraGraphStyle,
-                              ),
-                            ],
+                            ),
                           ),
                         ),
                       ),

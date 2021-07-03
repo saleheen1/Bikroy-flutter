@@ -58,58 +58,37 @@ class DrawerPage extends StatelessWidget {
                     shrinkWrap: true,
                     scrollDirection: Axis.vertical,
                     children: [
-                      Portal(
-                        child: GestureDetector(
-                          onTap: () {
-                            Provider.of<DrawerMenuController>(context,
-                                    listen: false)
-                                .menuToggle();
-                          },
-                          child: PortalEntry(
-                            portalAnchor: Alignment.topRight,
-                            childAnchor: Alignment.topRight,
-                            visible: Provider.of<DrawerMenuController>(context,
-                                    listen: true)
-                                .isMenuOpen,
-                            portal: Helper().profilePopup(context),
-                            child: InkWell(
-                              onTap: () {
-                                Provider.of<DrawerMenuController>(context,
-                                        listen: false)
-                                    .menuToggle();
-                              },
-                              child: Padding(
-                                padding:
-                                    const EdgeInsets.only(left: 18, bottom: 10),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          "S.M. Saleheen",
-                                          style:
-                                              ConstantsStyle().regularHeading,
-                                        ),
-                                        Icon(
-                                          Icons.settings,
-                                          color: ConstantColors().greyPrimary,
-                                        )
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      height: 3,
-                                    ),
-                                    Text(
-                                      "smsaleheen3@gmail.com",
-                                      style: ConstantsStyle().paraGraphStyle,
-                                    ),
-                                  ],
-                                ),
+                      InkWell(
+                        onTap: () {
+                          Helper().profilePopup(context);
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 18, bottom: 10),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    "S.M. Saleheen",
+                                    style: ConstantsStyle().regularHeading,
+                                  ),
+                                  Icon(
+                                    Icons.settings,
+                                    color: ConstantColors().greyPrimary,
+                                  )
+                                ],
                               ),
-                            ),
+                              SizedBox(
+                                height: 3,
+                              ),
+                              Text(
+                                "smsaleheen3@gmail.com",
+                                style: ConstantsStyle().paraGraphStyle,
+                              ),
+                            ],
                           ),
                         ),
                       ),

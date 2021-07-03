@@ -1,4 +1,5 @@
 import 'package:bikroy/app/constants/Constantcolors.dart';
+import 'package:bikroy/app/constants/ConstantsStyle.dart';
 import 'package:bikroy/meta/screens/Authentications/loginPage.dart';
 import 'package:bikroy/meta/screens/Extras/aboutUs.dart';
 import 'package:bikroy/meta/screens/Extras/advertising.dart';
@@ -7,6 +8,7 @@ import 'package:bikroy/meta/screens/Extras/faqPage.dart';
 import 'package:bikroy/meta/screens/Extras/postFreeAd.dart';
 import 'package:bikroy/meta/screens/Extras/privacyPolicy.dart';
 import 'package:bikroy/meta/screens/Extras/rules.dart';
+import 'package:bikroy/meta/screens/Home/homeHelper.dart';
 import 'package:bikroy/meta/screens/Posts/allPosts.dart';
 import 'package:bikroy/meta/screens/Posts/postHelper.dart';
 import 'package:bikroy/meta/screens/Posts/postSubCategory.dart';
@@ -14,6 +16,8 @@ import 'package:bikroy/meta/screens/Profile/userProfile.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Helper {
@@ -339,34 +343,84 @@ class Helper {
   }
 
   //Profile popup menu
-  Widget profilePopup(BuildContext context) {
-    return Material(
-      elevation: 8,
-      child: IntrinsicWidth(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            // InkWell(
-            //     onTap: () {
-            //       Navigator.push(context,
-            //           MaterialPageRoute(builder: (context) => UserProfile()));
-            //     },
-            //     child: ListTile(title: Text('View profile'))),
-            InkWell(
-                onTap: () async {
-                  SharedPreferences prefs =
-                      await SharedPreferences.getInstance();
-                  prefs.setBool('userSaved', false);
-                  Navigator.pushReplacement(context,
-                      MaterialPageRoute(builder: (context) => LoginPage()));
-                },
-                child: ListTile(
-                    title:
-                        Text('Log out', style: TextStyle(color: Colors.red)))),
-          ],
-        ),
-      ),
-    );
+  Future profilePopup(BuildContext context) {
+    return showMaterialModalBottomSheet(
+        enableDrag: false,
+        context: context,
+        builder: (context) {
+          return SingleChildScrollView(
+            controller: ModalScrollController.of(context),
+            child: Container(
+              padding: EdgeInsets.symmetric(vertical: 30, horizontal: 20),
+              // height: MediaQuery.of(context).size.height / 2,
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Text(
+                      "S.M. Saleheen",
+                      style: ConstantsStyle().regularHeading,
+                    ),
+                    Text(
+                      "smsaleheen3@gmail.com",
+                      style: ConstantsStyle().paraGraphStyle,
+                    ),
+                    SizedBox(
+                      height: 16,
+                    ),
+
+                    //view profile or logout
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        //view profile
+                        InkWell(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => UserProfile()));
+                          },
+                          child: Container(
+                            color: Color(0xffe3e3e3),
+                            padding: EdgeInsets.symmetric(
+                                vertical: 10, horizontal: 12),
+                            child: Text("View profile"),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 14,
+                        ),
+
+                        //logout button
+                        InkWell(
+                          onTap: () async {
+                            SharedPreferences prefs =
+                                await SharedPreferences.getInstance();
+                            prefs.setBool('userSaved', false);
+
+                            Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => LoginPage()));
+                          },
+                          child: Container(
+                            color: Colors.red,
+                            padding: EdgeInsets.symmetric(
+                                vertical: 10, horizontal: 12),
+                            child: Text(
+                              "Log Out",
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          );
+        });
   }
 
   drawerLinks(BuildContext context, index) {
